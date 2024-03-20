@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Welcome!MenuLecture 3: References and Recursion  Primitive Types Reference Types Linked Data Structures  List In lecture2, we saw how we can create a List in Java.  Unlike Python, lists are not bulit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/20/Lecture3-List%201%20Refrence%20Recursion%20and%20Lists/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Welcome!MenuLecture 3: References and Recursion  Primitive Types Reference Types Linked Data Structures  List In lecture2, we saw how we can create a List in Java.  Unlike Python, lists are not bulit">
+<meta property="og:locale">
+<meta property="og:image" content="https://primeluoqiu.github.io/img/404.jpg">
+<meta property="article:published_time" content="2024-03-20T14:21:05.836Z">
+<meta property="article:modified_time" content="2024-03-20T14:24:20.763Z">
+<meta property="article:author" content="LuoQiu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://primeluoqiu.github.io/img/404.jpg">
+
+
+<title >Hello World</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"primeluoqiu.github.io","author":"LuoQiu","root":"/","typed_text":["独善其身,浪迹天涯"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-dark"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"16/03/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 22:24:20"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            王<span>落秋</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/archives2/" target="">
+                            archives2
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Hello World
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="https://img2.imgtp.com/2024/03/18/fitTEwGW.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        落秋的学习小屋
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com" title="Tencent" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-qq"></i>
+        </a>
+    
+        <a href="https://www.acwing.com" title="Wechat" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-weixin"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                性别:
+            </div>
+            <div class="trm-label trm-label-light">
+                男
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                地址:
+            </div>
+            <div class="trm-label trm-label-light">
+                河北
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年龄:
+            </div>
+            <div class="trm-label trm-label-light">
+                18
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            22:21
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            LuoQiu
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome!"></a>Welcome!</h1><h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><p>Lecture 3: References and Recursion</p>
+<ul>
+<li>Primitive Types</li>
+<li>Reference Types</li>
+<li>Linked Data Structures</li>
+</ul>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><hr>
+<p>In lecture2, we saw how we can create a List in Java.</p>
+<ul>
+<li>Unlike Python, lists are not bulit directly into the Java language<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; L = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">L.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">L.add(<span class="string">&quot;b&quot;</span>);</span><br></pre></td></tr></table></figure>
+Today, we’ll begin our 3 lecture journey towards building our own list implementation</li>
+<li>We’ll exploit recursion to allow our list to grow infinitely large.</li>
+<li>But first we need to slove … the mystery of the walrus</li>
+</ul>
+<hr>
+<h1 id="Video-1-The-Mystery-of-the-Walrus"><a href="#Video-1-The-Mystery-of-the-Walrus" class="headerlink" title="Video 1:The Mystery of the Walrus."></a>Video 1:The Mystery of the Walrus.</h1><p>先看一段代码并回答一个问题：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Walrus</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Walrus</span>(<span class="number">1000</span>, <span class="number">8.3</span>) <span class="comment">//创建了一个海象的类，前面是体重，后面是象牙大小</span></span><br><span class="line">Walrus b;</span><br><span class="line">b = a;</span><br><span class="line">b.weight = <span class="number">5</span>;</span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>
+<p>Will the change to b affect a?(y&#x2F;n) :…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weight: 5, tusk size: 8.30</span><br><span class="line">weight: 5, tusk size: 8.30</span><br></pre></td></tr></table></figure>
+<p>我们很惊讶的发现A居然会受到B的影响，体重居然被改成了5.<br>接下来，再看一段代码，回答一个问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> y;</span><br><span class="line">y = x;</span><br><span class="line">x = <span class="number">2</span>;</span><br><span class="line">System.out.println(<span class="string">&quot;x is:&quot;</span> + x);</span><br><span class="line">System.out.println(<span class="string">&quot;y is:&quot;</span> + y);</span><br></pre></td></tr></table></figure>
+<p>Will the change to x affect y?(y&#x2F;n)…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x is: 2</span><br><span class="line">y is: 5</span><br></pre></td></tr></table></figure>
+<p>但是在这里我们发现x并不受y的影响，但是这到底是为什么呢？<br>接下来，让我们在可视化工具这里运行他，发现差异的地方</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PollQuestions</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">Walrus</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Walrus</span>(<span class="number">1000</span>, <span class="number">8.3</span>);</span><br><span class="line">      Walrus b;</span><br><span class="line">      b = a;</span><br><span class="line">      b.weight = <span class="number">5</span>;</span><br><span class="line">      System.out.println(a);</span><br><span class="line">      System.out.println(b);      </span><br><span class="line"></span><br><span class="line">      <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">      <span class="type">int</span> y;</span><br><span class="line">      y = x;</span><br><span class="line">      x = <span class="number">2</span>;</span><br><span class="line">      System.out.println(<span class="string">&quot;x is: &quot;</span> + x);</span><br><span class="line">      System.out.println(<span class="string">&quot;y is: &quot;</span> + y);      </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Walrus</span> &#123;</span><br><span class="line">      <span class="keyword">public</span> <span class="type">int</span> weight;</span><br><span class="line">      <span class="keyword">public</span> <span class="type">double</span> tuskSize;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">public</span> <span class="title function_">Walrus</span><span class="params">(<span class="type">int</span> w, <span class="type">double</span> ts)</span> &#123;</span><br><span class="line">         weight = w;</span><br><span class="line">         tuskSize = ts;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> String.format(<span class="string">&quot;weight: %d, tusk size: %.2f&quot;</span>, weight, tuskSize);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>![[Pasted image 20240119121426.png]]在<code>b=a</code>这里时，我们可以看到，我们有两个箭头指向同一个<code>Walrus</code>，所以无论出于何种原因a和b实际上指的都是同一只海象，如果执行<code>b.weight = 5</code>那么就会改变着一个海象(Walrus)的值，因此打印出来为5就不那么奇怪了。</p>
+<p>那么整数情况呢<br>![[Pasted image 20240119123108.png]]<br>我们发现在图中这两个整数对应的是两个小盒子，修改的话只会修改对应的小盒子的值。<br>那么，这到底是为什么呢？</p>
+<hr>
+<h1 id="Video-2-Primitive-Types"><a href="#Video-2-Primitive-Types" class="headerlink" title="Video 2: Primitive Types"></a>Video 2: Primitive Types</h1><p>这个时候就要先解释一下计算机的底层工作原理了(61C)</p>
+<h2 id="Bits"><a href="#Bits" class="headerlink" title="Bits"></a>Bits</h2><hr>
+<p>Your computer stores information in “memory”</p>
+<ul>
+<li>Information is stored in memory as a sequence of ones and zeros<ul>
+<li>Example:72 stored as 01001000</li>
+<li>Example:205.75 stored as …01000011 01001101 11000000 00000000</li>
+<li>Example:The letter H stored as 01001000(same as the number 72)(计算机知道如何根据特定上下文解释这些位)</li>
+<li>Example:True stored as 00000001<br>Each Java type has a different way to interpret the bits:</li>
+</ul>
+</li>
+<li>8 primitive types in Java:byte, short, int, long, float, double, boolean, char</li>
+</ul>
+<p>想要存储在计算机上的东西实际上都存储在所谓的内存中，内存所存的信息都被编码为0和1的序列<br>即使<code>H</code>和<code>72</code>有单独的表现形式，该类型也会告诉Java解释器如何解释这个变量应该是什么。因此如果有一个字符类型的变量，那么当它看到后面的序列的时候就会考虑到字符<code>H</code>。但是如果有一个整数变量，那么当它看到后面的序列的时候就会考虑到72</p>
+<h2 id="Declaring-a-Variable-Simplified"><a href="#Declaring-a-Variable-Simplified" class="headerlink" title="Declaring a Variable(Simplified)"></a>Declaring a Variable(Simplified)</h2><hr>
+<p>When you declare a variable of a certain type in Java:</p>
+<ul>
+<li>Your computer sets aside exactly enough bits to hold a thing of that type.<ul>
+<li>Example:Declaring an int sets aside a “box” of 32 bits.</li>
+<li>Example:Declaring an double sets aside a “box” of 64 bits.</li>
+</ul>
+</li>
+<li>Java creates an internal(内部的) table that maps(映射) each variable name to a location.</li>
+<li>Java does NOT write anything into the reserved boxes.<ul>
+<li>For safety, Java will not let access a variable that is uninitialized(未初始化的).<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br><span class="line"><span class="type">int</span> y;  <span class="comment">//以上只是声明，并未赋值</span></span><br><span class="line">x = -<span class="number">1431195969</span>;</span><br><span class="line">y = <span class="number">567213.112</span>;</span><br></pre></td></tr></table></figure>
+当运行int x的时候，我们得到了一个长度为32位的盒子，而运行<code>double y</code>的时候，我们得到了一个64位的盒子。<br>虽然我们在定义变量的时候并没有往里面放入任何东西，但是实际上里面是有东西的，是因为内存是一些世界上主观存在的物理对象。所以内存将包含一些0和1的序列。但是Java并不允许实际访问现有的信息。这有点像在着急的时候从桌子上拿起来一张纸，因为需要快速写下笔记，类似电话号或者一些其他的事情，上面可能已经有一些东西了，但是我们通常不关心它。因为我们拿起来是想要写一些我们要关注的东西。<br>那么因此，当我们在定义玩变量但是未赋初值的时候，这种操作是不被允许的。</li>
+</ul>
+</li>
+</ul>
+<p>接下来，当运行赋值语句的时候，这些数值就会被变化成一串带有0和1的序列存到int的32位的盒子中，而y存进对应的64位的盒子中。<br>![[Pasted image 20240119153743.png]]</p>
+<h2 id="Simplified-Box-Natation"><a href="#Simplified-Box-Natation" class="headerlink" title="Simplified Box Natation"></a>Simplified Box Natation</h2><hr>
+<p>We’ll use simplified box notation from here on out:</p>
+<ul>
+<li>Instead of writing memory box contents in binary,we’ll write them in human readable symbols.<br>正是因为当我们看见那一串0和1的序列的时候看起来很长，很令人生畏。那么这种所谓<strong>方框表示法</strong>是可以被简化的。也就是说，当我们对x和y存入值的时候，我们用我们能够更轻易理解的数字来代替那些二进制形式写出的内存盒。当x&#x3D;-1431195969的时候，我们就用这一串数来存进去，y同理。而它也就恰好和Java Visulizer所展现的是一样的原理。<br>![[Pasted image 20240119154105.png]]<br>接下来，就可以解开这项谜题了</li>
+</ul>
+<h2 id="The-Golden-Rule-of-Equals-GRoE"><a href="#The-Golden-Rule-of-Equals-GRoE" class="headerlink" title="The Golden Rule of Equals(GRoE)"></a>The Golden Rule of Equals(GRoE)</h2><hr>
+<p>Given variables y and x:</p>
+<ul>
+<li>y &#x3D; x <strong>copies</strong> all the bits from x into y.<br>![[Pasted image 20240119154447.png]]<br>[<a target="_blank" rel="noopener" href="https://cscircles.cemc.uwaterloo.ca/java_visualize/#mode=display]">https://cscircles.cemc.uwaterloo.ca/java_visualize/#mode=display]</a><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PollQuestions</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">		<span class="type">int</span> y;</span><br><span class="line">		y = x;</span><br><span class="line">		x = <span class="number">2</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;x is: &quot;</span> + x);</span><br><span class="line">		System.out.println(<span class="string">&quot;y is: &quot;</span> + y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+那么当x被执行等于2的时候，根据GRoE法则，也就是只会把用二进制表示的二的这些位放入x所表示的那个框中。所以y没有被改变。有两个不同的盒子。这就是整数为什么不会发生变化所表现出来的答案。</li>
+</ul>
+<hr>
+<h1 id="Video-3-Reference-Types"><a href="#Video-3-Reference-Types" class="headerlink" title="Video 3: Reference Types"></a>Video 3: Reference Types</h1><h2 id="Reference-Types"><a href="#Reference-Types" class="headerlink" title="Reference Types"></a>Reference Types</h2><hr>
+<p>There are 8 primitive(原始的) types in Java：</p>
+<ul>
+<li>byte, short, int, long, float, double, boolean, char<br>Everything else, including arrays,is a <strong>reference(引用) type</strong></li>
+</ul>
+<hr>
+<h2 id="Class-Instantiations"><a href="#Class-Instantiations" class="headerlink" title="Class Instantiations"></a>Class Instantiations</h2><hr>
+<p>When we instantiate an Object(e.g Dog, Walrus, Planet):</p>
+<ul>
+<li>Java first allocates a box of bits for each instance variable of the class and fills them with a default value(e.g 0, Null).</li>
+<li>The constructor then usually fills every such box with some other value.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Walrus</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> weight;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">double</span> tuskSize;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Warlus</span><span class="params">(<span class="type">int</span> w, <span class="type">double</span> ts)</span> &#123;</span><br><span class="line">		weight = w;</span><br><span class="line">		tuskSize = ts;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-eUMI5o31wY&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=5#t=53.778095">00:53</a>(一个例子)<br>通过这个例子可以看出来每当我们调用new的时候，Java会做的事就是挖掘内存，并找到96位(一个<code>double</code>一个<code>int</code>加起来一共96位)，然后函数找到之后用1000填充这个顶部位，8.3填充那个底部位<br>在此处可见<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-eUMI5o31wY&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=5#t=166.55406453030815">02:46</a><br>new关键字可以认为是返回了一个放置这个东西的一个首位数。<br>Can you think of new as returning the address of the newly created object.</li>
+<li>Address in Java are 64 bits.</li>
+<li>Example(rough picture): If object is created memory location 23874723423, then new returns 2384723423.<br>接下来讨论一下引用类型变量的声明</li>
+</ul>
+<hr>
+<h2 id="Reference-Type-Variable-Declarations"><a href="#Reference-Type-Variable-Declarations" class="headerlink" title="Reference Type Variable Declarations"></a>Reference Type Variable Declarations</h2><p>When we declare a variable of any reference type(Warlus, Dog, Planet):</p>
+<ul>
+<li>Java allocates exactly a box of size 64bits, no matter what type of object.</li>
+<li>These bits can be either set to:<ul>
+<li>Null(all zeros).</li>
+<li>The 64 bits “address” of a specific instance of that class(return by <strong>new</strong>)<br>当我们声明的时候,Java会做的就是分配一个刚好64位的盒子（无论类型是什么），这些盒子的返回值可以是0，也可以设置为new返回的该类的特定实例的地址。<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-eUMI5o31wY&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=5#t=261.72781569048425">04:21</a><br>也就意味着说，即使<code>Warlus</code>本身需要96位，但是我们存储的地址依旧是64位的</li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-eUMI5o31wY&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=5#t=379.1762745689994">06:19</a>介绍了一种方法来简化上面的表达方式，同样也是在Java Visulizer中呈现的</p>
+</blockquote>
+<p>The 64 bit address are meaningless to us as humans, so we’ll represent:</p>
+<ul>
+<li>All zero addresses with “null”</li>
+<li>Non-zero addresses as arrows.<br>This is sometimes called “box and pointer” notation.<br>上述是原理</li>
+</ul>
+<hr>
+<h2 id="Reference-Types-Obey-the-Golden-Rule-of-Equals"><a href="#Reference-Types-Obey-the-Golden-Rule-of-Equals" class="headerlink" title="Reference Types Obey the Golden Rule of Equals"></a>Reference Types Obey the Golden Rule of Equals</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-eUMI5o31wY&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=5#t=418.6632564333278">06:58</a>对于<code>Warlus</code>的一步一步解释</p>
+</blockquote>
+<p>Just as with primitive types, the equals sign copies the bits.</p>
+<ul>
+<li>In terms of our visual metaphor, we “copy” the arrow by making the arrow in the b box point at the same instance as a.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Warlus a;</span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Warlus</span>(<span class="number">1000</span>, <span class="number">8.3</span>);</span><br><span class="line">Warlus b;</span><br><span class="line">b = a;</span><br></pre></td></tr></table></figure>
+<code>equal</code>只是复制位，这对于基本类型是正确的，对于引用类型也是一样的。</li>
+</ul>
+<hr>
+<h1 id="Video-4-Parameter-Passing"><a href="#Video-4-Parameter-Passing" class="headerlink" title="Video 4: Parameter Passing"></a>Video 4: Parameter Passing</h1><h2 id="The-Golden-Rule-of-Equals-and-Parameter-Passing"><a href="#The-Golden-Rule-of-Equals-and-Parameter-Passing" class="headerlink" title="The Golden Rule of Equals(and Parameter Passing)"></a>The Golden Rule of Equals(and Parameter Passing)</h2><hr>
+<p>Given variables b and a:</p>
+<ul>
+<li>b &#x3D; a copies all the bits from a into b.<br>Passing parameters obeys the same rule:Simply <strong>copy the bits（This is also called by value按值传递)</strong> to the new scope.<br>Example:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">average</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (a + b) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	<span class="type">double</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">5.5</span>;</span><br><span class="line">	<span class="type">double</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">10.5</span>;</span><br><span class="line">	<span class="type">double</span> <span class="variable">avg</span> <span class="operator">=</span> average(x, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例子解释在<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=3hiXeB8rNKA&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=5#t=31.427012">00:31</a></p>
+</blockquote>
+</li>
+</ul>
+<p>总结：</p>
+<h2 id="The-Golden-Role-Summary"><a href="#The-Golden-Role-Summary" class="headerlink" title="The Golden Role: Summary"></a>The Golden Role: Summary</h2><hr>
+<p>There are 9 types of variables in Java:</p>
+<ul>
+<li>8 primitive types(bytes, short, int, long, float, double, boolean, char).</li>
+<li>The 9th type is references to Object(an arrow). References may be null.</li>
+</ul>
+<p>In box-and-pointer notation, each variable is drawn as a labeled box and values are shown in the box.</p>
+<ul>
+<li>Addresses are represented by arrows to object instance.</li>
+</ul>
+<p>The golden rule:</p>
+<ul>
+<li>b &#x3D; a <strong>copies the bits</strong> from a into b.</li>
+<li>Passing parameters <strong>copies the bits</strong></li>
+</ul>
+<hr>
+<h1 id="Video-5-Test-Your-Understand-of-the-GRoE"><a href="#Video-5-Test-Your-Understand-of-the-GRoE" class="headerlink" title="Video 5:Test Your Understand of the GRoE"></a>Video 5:Test Your Understand of the GRoE</h1><h2 id="Test-Your-Understanding"><a href="#Test-Your-Understanding" class="headerlink" title="Test Your Understanding:"></a>Test Your Understanding:</h2><p>Does the call to doStuff(walrus, x) have an affect on Warlus and&#x2F;or main’s x?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	<span class="type">Warlus</span> <span class="variable">walrus</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Warlus</span>(<span class="number">3500</span>, <span class="number">10.5</span>);</span><br><span class="line">	<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">9</span>;</span><br><span class="line">	doStuff(warlus, x);</span><br><span class="line">	System.out.println(warlus);</span><br><span class="line">	System.out.println(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">doStuff</span><span class="params">(Warlus W, <span class="type">int</span> x)</span> &#123;</span><br><span class="line">	W.weight = W.weight - <span class="number">100</span>;</span><br><span class="line">	x = x - <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A. Neither will change.<br>B. warlus will lose 100 lbs, but main’s x will not change.√<br>C. warlus will not change, but main’s x will decrease by 5.<br>D. Both will decrease.</p>
+<p>解开答案在视频的这一段<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zGdNjPZxIdA&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=6#t=66.712139">01:06</a><img src="https://www.youtube.com/watch?v=zGdNjPZxIdA&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=6#t=66.712139" alt="01:06" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>简单的来说，就是因为对象类数组是通过一个指针进行访问的，不管是哪个函数，只要是引用到了<code>warlus</code>这个对象，那么都会通过对应的指针访问到这个变量当中，最终修改它最后的值，而数字<code>x</code>所存的是那个数字对应的二进制符号，那么在函数中修改的话，修改范围也就仅限那个函数<br>![[..&#x2F;..&#x2F;Pasted image 20240124112801.png]]</p>
+<h1 id="Video-6-Instantiating-Arrays"><a href="#Video-6-Instantiating-Arrays" class="headerlink" title="Video 6:Instantiating Arrays."></a>Video 6:Instantiating Arrays.</h1><p>视频讲解<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=t57Xi1G__Vc&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=7#t=133.616942">02:13</a></p>
+<h2 id="Declaration-and-Instantiation-of-Arrays"><a href="#Declaration-and-Instantiation-of-Arrays" class="headerlink" title="Declaration and Instantiation of Arrays"></a>Declaration and Instantiation of Arrays</h2><hr>
+<p>Arrays are also Objects.As we’ve seen, object are (usually) instantiated using the <strong>new</strong> keyword.</p>
+<ul>
+<li><code>Planet p = new Planet(0, 0, 0, 0, 0, &quot;blah.png&quot;);</code></li>
+<li><code>int []x = new int[]&#123;0, 1, 2, 95, 4&#125;;</code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> [] a;<span class="comment">//Declaration</span></span><br></pre></td></tr></table></figure></li>
+<li>Declaration creates a 64 bit box intended only for storing a reference to an int array.<strong>No objects in instantiated</strong>(声明创建了一个64位的盒子，仅仅用于存储对int数组的引用，但是<strong>并没有实例化对象</strong>)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">95.</span> <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Instantiates a new Object, in this case an int array.</li>
+<li>Object is anonymous<br>上述两种类型创建的数组都是没有效果的，第一个只是声明了有一个a数组，然后并没有对它进行实例化。而第二个数组是anonymous(匿名的)，也就是说，并没有给它赋予名字，<code>new</code>这个函数返回的是一个地址，也就是存放这个数组的地址，但是显然没有一个名称赋予给这个地址的变量，那么在执行完这句话之后这个数组也就会消失。</li>
+</ul>
+<hr>
+<h2 id="Assignments-of-Arrays"><a href="#Assignments-of-Arrays" class="headerlink" title="Assignments of Arrays"></a>Assignments of Arrays</h2><hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> [] a = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">95</span>, <span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Creates a 64 bit box for stroring an int array address.(declaration)</li>
+<li>Creates a new Object, in this case an int array.(instantiation)</li>
+<li>Puts the address of this new Object into the 64 bit box named a.(assignments)</li>
+</ul>
+<p>Note: Instantiated objects can be lost.</p>
+<ul>
+<li>If we were to reassign a to something else, we’d never be able to get the original Object back!<br>也就是说，在上面的语句中，我们将声明、实例化和命名同时进行了，那么我们就会存储这么一个对象a，存了balabala这么一些东西。不过，有趣的是，即使我们存好之后，这个实例化的对象还是有可能会丢失的，假如我们重新new了一个新的对象令它&#x3D;a，那么我们之前创建的这balabala的变量就会被Java的收集器所消耗掉，也就是消失了。<br>![[..&#x2F;..&#x2F;Pasted image 20240124114823.png]]</li>
+</ul>
+<hr>
+<h1 id="Video-7-Introducing-IntLists"><a href="#Video-7-Introducing-IntLists" class="headerlink" title="Video 7:Introducing IntLists"></a>Video 7:Introducing IntLists</h1><p>在了解完这一切之后，我们准备创建一个列表，因此，列表和数组之间的区别在于，列表可以任意增长，这与具有固定大小的数组不同。所以我们将完全从头开始构建它。</p>
+<h2 id="IntList"><a href="#IntList" class="headerlink" title="IntList"></a>IntList</h2><hr>
+<p>Let’s define an IntList as an object containing two member variables:</p>
+<ul>
+<li>int first;</li>
+<li>IntList rest;</li>
+</ul>
+<p>And define two version of the same method:</p>
+<ul>
+<li>size()</li>
+<li>iterativeSize()<br>列表将有两个变量，一个是名为first的整数，另一个是另一个int列表的指针或地址。为了简单起见，我们的列表仅仅只用来存储整数。</li>
+</ul>
+<p>详情创建及过程视频见<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=TzuAiXTZmYo&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=8#t=43.202592">00:43</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntList</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> first;</span><br><span class="line">	<span class="keyword">public</span> IntList rest;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>事实上在这个时候我们就已经创建好一个列表了。<br>接下来我们添加东西</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntList</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> first;</span><br><span class="line">	<span class="keyword">public</span> IntList rest;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">		<span class="type">IntList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntList</span>();</span><br><span class="line">		L.first = <span class="number">5</span>;</span><br><span class="line">		L.rest = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">		L.rest = <span class="keyword">new</span> <span class="title class_">IntList</span>();</span><br><span class="line">		L.rest.first = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">		L.rest.rest = <span class="keyword">new</span> <span class="title class_">IntList</span>();</span><br><span class="line">		L.rest.rest.first = <span class="number">15</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过Java Visualizer来理解过程<br>![[..&#x2F;..&#x2F;Pasted image 20240124122549.png]]<br>这样的代码看起来似乎略有尴尬，那么我们选择往前退一步来看。<br>我们首先先创建一个构造函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">IntList</span><span class="params">(<span class="type">int</span> f, IntList r)</span> &#123;</span><br><span class="line">		first = f;</span><br><span class="line">		rest = r;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们将以相反的方式建立list</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntList</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> first;</span><br><span class="line">	<span class="keyword">public</span> IntList rest;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">IntList</span><span class="params">(<span class="type">int</span> f, IntList r)</span> &#123;</span><br><span class="line">		first = f;</span><br><span class="line">		rest = r;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">		<span class="type">IntList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntList</span>(<span class="number">15</span>, <span class="literal">null</span>);</span><br><span class="line">		L = <span class="keyword">new</span> <span class="title class_">IntList</span>(<span class="number">10</span>, L);</span><br><span class="line">		L = <span class="keyword">new</span> <span class="title class_">IntList</span>(<span class="number">5</span>, L);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>![[..&#x2F;..&#x2F;Pasted image 20240124123309.png]]<br>在这个时候，因为13的L还未执行完成，那么此时的L就是在12行创建出来的L<br>不过这看起来似乎还是略有尴尬…</p>
+<h1 id="Video-8-IntList-size"><a href="#Video-8-IntList-size" class="headerlink" title="Video 8:IntList size"></a>Video 8:IntList size</h1><p>这个时候我们会发先如果我们想要访问这个列表的大小啊，获取第i个元素啊非常麻烦。这个时候，我们就需要对这个列表添加一个size方法和一个迭代size的方法<br>，其行为就类似于Python中的<code>length</code>函数<br>这个函数需要用递归的方法来实现，当我们每次访问它的时候，它会去问它剩下的rest里面还有多少个节点…</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(rest == <span class="literal">null</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">this</span>.rest.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以通过Visualizer来阅读每一步的操作<br>![[..&#x2F;..&#x2F;Pasted image 20240124140057.png]]</p>
+<h1 id="Video-9-IntList-iterativeSize"><a href="#Video-9-IntList-iterativeSize" class="headerlink" title="Video 9:IntList iterativeSize"></a>Video 9:IntList iterativeSize</h1><p>在上述方法的基础上，我们还可以考虑用迭代的方法来解决这个问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Return the size of the list using no recursion!</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">interativeSize</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> <span class="built_in">this</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">totalSize</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(p != <span class="literal">null</span>) &#123;</span><br><span class="line">			totalSize += <span class="number">1</span>;</span><br><span class="line">			p = p.rest;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> totalSize;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Video-10-More-IntList-Exercise"><a href="#Video-10-More-IntList-Exercise" class="headerlink" title="Video 10:More IntList Exercise"></a>Video 10:More IntList Exercise</h1><h2 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h2><hr>
+<p>Write a method int get(int i) that returns the ith item in the list.</p>
+<ul>
+<li>For simplicity, OK to assume the item exists.</li>
+<li>Front item is the 0th item.</li>
+</ul>
+<p>Ways to work:</p>
+<ul>
+<li>Paper(best)</li>
+<li>Laptop(see lecture)</li>
+<li>Head…<br>先决条件<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntList</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> first;</span><br><span class="line">	<span class="keyword">public</span> IntList rest;</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">IntList</span><span class="params">(<span class="type">int</span> f, IntList r)</span> &#123;</span><br><span class="line">		first = f;</span><br><span class="line">		rest = r;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">// Return the size of this IntList</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (rest == <span class="literal">null</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">this</span>.rest.size();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">	<span class="type">IntList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntLise</span>(<span class="number">15</span>, <span class="literal">null</span>);</span><br><span class="line">	L = <span class="keyword">new</span> <span class="title class_">IntList</span>(<span class="number">10</span>, L);</span><br><span class="line">	L = <span class="keyword">new</span> <span class="title class_">IntList</span>(<span class="number">5</span>, L);</span><br><span class="line"></span><br><span class="line">	System.out.println(L.get(<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+输出应该是5</li>
+</ul>
+<p>实现函数想法如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">(<span class="type">int</span> i)</span> &#123;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="type">IntList</span> <span class="variable">p</span> <span class="operator">=</span> <span class="built_in">this</span>;  </span><br><span class="line">    <span class="keyword">while</span>( a != i)  </span><br><span class="line">    &#123;  </span><br><span class="line">       a ++;  </span><br><span class="line">       p = p.rest;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> p.first;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用迭代方式实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> first;</span><br><span class="line">	<span class="keyword">return</span> rest.size(i - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用递归的方式实现。</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/Lecture4-List%202%20SLLists/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CS61B/">
+                    CS61B
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/Lecture4-List%202%20SLLists/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>22:21</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/Lecture2-Defining%20and%20Using%20Classes%20%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8C%96/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CS61B/">
+                    CS61B
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/Lecture2-Defining%20and%20Using%20Classes%20%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8C%96/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>22:21</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>

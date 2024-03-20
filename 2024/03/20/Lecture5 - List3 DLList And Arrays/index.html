@@ -7,16 +7,20 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://primeluoqiu.github.io/categories/CS61B/index.html">
+<meta name="description" content="之前说到的SLList还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于addLast函数而言，还是相对来说比较缓慢地，效率也是比较低的。 就像是最一开始的size函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了 那便是remove操作，那么如果我们想要删除一个节点的话，那么我们只能首">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/20/Lecture5%20-%20List3%20DLList%20And%20Arrays/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="之前说到的SLList还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于addLast函数而言，还是相对来说比较缓慢地，效率也是比较低的。 就像是最一开始的size函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了 那便是remove操作，那么如果我们想要删除一个节点的话，那么我们只能首">
 <meta property="og:locale">
+<meta property="article:published_time" content="2024-03-20T14:21:05.839Z">
+<meta property="article:modified_time" content="2024-03-20T14:24:24.042Z">
 <meta property="article:author" content="LuoQiu">
 <meta name="twitter:card" content="summary">
 
 
-<title >Hexo</title>
+<title >Hello World</title>
 
 <!-- Favicon -->
 
@@ -55,7 +59,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"primeluoqiu.github.io","author":"LuoQiu","root":"/","typed_text":["独善其身,浪迹天涯"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-dark"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"16/03/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2024-03-20 22:25:21"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 22:24:24"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
@@ -217,10 +221,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            The article archive
+                            NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            云间连下榻，<br>天上接行杯。
+                            Hello World
                         </h1>
 
                         
@@ -230,7 +234,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        categories
+                                        2024
                                     </span>
                                 </li>
                             </ul>
@@ -339,203 +343,110 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="row trm-list"><li class="col-lg-4 trm-list-item " style="margin: 6px 0;"><a class="category-list-link" href="/categories/CS61A/">CS61A</a><span class="category-list-count">（1）</span></li><li class="col-lg-4 trm-list-item " style="margin: 6px 0;"><a class="category-list-link" href="/categories/CS61B/">CS61B</a><span class="category-list-count">（6）</span></li><li class="col-lg-4 trm-list-item " style="margin: 6px 0;"><a class="category-list-link" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B/">大二下</a><span class="category-list-count">（1）</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            22:21
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            LuoQiu
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>之前说到的<code>SLList</code>还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于<code>addLast</code>函数而言，还是相对来说比较缓慢地，效率也是比较低的。</p>
+<p>就像是最一开始的<code>size</code>函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了</p>
+<p>那便是<code>remove</code>操作，那么如果我们想要删除一个节点的话，那么我们只能首先遍历到节点那里，然后删除这个节点的指针，然后再将<code>last</code>的那个指针指向删除的节点的前一个节点。这听起来实在是太麻烦了，所以这种方法似乎也是不可取的。那么还有什么别的方法吗</p>
+<p>那么，我们就想到能不能就是给每一个节点添加一个当前节点的前置节点的指针呢？答案是可以的</p>
+<p>这种每个节点都有两个链接的列表叫做双向链表</p>
+<p>完成这种方法之后，我们的添加在头部和尾部，删除头部和尾部的方法就会变得十分的快，不过在中间的节点操作相对来说就会比较慢。</p>
+<p>不过这样的链表还是会存在一个 限制有这样一种情况：最后一个节点的next指针有的时候指向最开始的哨兵节点，有的时候指向我们称之的<code>最开始的节点(real node)</code>。那么就有可能需要我们在后面再去写相关的判断语句来判断它是否真的是哨兵节点。</p>
+<p>为了避免这种麻烦的情况，我们尝试让他变得更纯粹一些。</p>
+<pre><code>所以为了完善我们的方法的最自然的方法就是添加第二个哨兵，然后让着第二个哨兵来指向最后一个节点，我们不再是一个指向最后一项的一个指针，而是在开始和末尾两端都添加一个哨兵（因为此时我们已经有了prev和next指针），这样的话，前面就有一个哨兵，后面也有一个哨兵了，那么这样再添加节点或者项目的时候，就只需要将节点滑入这两个哨兵之间就可以了
 
-<!-- history -->
+那么其实还有一种办法，这里依旧还是只有一个哨兵，它既是前面的哨兵也是后面的哨兵
 
-<div class="row">
+![[../一些截图（笔记用）/Pasted image 20240226134251.png]]
+就像这里的，先指向哨兵节点，然后指向3，指向9，最终再回到sentinal.所以这实际上更像一个循环。
+</code></pre>
+<p>不过即便是这样，还是会有一个限制，就是说在现实世界中不太好使，就是说，如果我们要添加的东西是数字时，它会非常的好用，但是如果我们添加的是字符串或者字符呢？我们又该怎么办，例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLListLauncher</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	<span class="type">SLList</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>(<span class="string">&quot;Bone&quot;</span>);</span><br><span class="line">	s1.addFirst(<span class="string">&quot;thugs&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是说，我们不能将字符串转化成整数这样的报错。</p>
+<p>我们可以选择重新创建一个全新的<code>SLList</code>类，不过这意味着我们还需要重新写一遍我们的类。这听起来可太麻烦了。</p>
+<p>不过，还有一种方法就是使<code>SLList</code>参数化，我们可以参数化<code>SLList</code>将采用的类型，这应该如何操作呢</p>
+<p>就是我们要在<code>SLList</code>后面添加新的尖括号<code>&lt;&gt;</code>，然后在尖括号里面添加任意的字符串，例如<code>LochNess</code>，这是充当创建<code>SLList</code>时尚未决定的类型的占位符，因此这个时候我们将使用<code>LochNess</code>来代替<code>int</code>项，然后这个时候我们也会将我们创建一个节点的名字改成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private class StuffNode(LochNess i, StuffNode n) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义是这样的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span>&lt;LochNess&gt; &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">StuffNode</span> &#123;</span><br><span class="line">		<span class="keyword">public</span> LochNess item;</span><br><span class="line">		<span class="keyword">public</span> StuffNode next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个时候我们只需要将main函数修改一下即可</p>
+<p>现在想要创建一个<code>SLList</code>的话，需要指定一个类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SLList&lt;String&gt; s1 = <span class="keyword">new</span> <span class="title class_">SLList</span>&lt;String&gt;(<span class="string">&quot;bone&quot;</span>); <span class="comment">//定义并实例化</span></span><br></pre></td></tr></table></figure>
+<p>然后就正常工作了。</p>
+<p>在我们使用的时候，我们往&lt;&gt;里传什么，对应的函数里的&lt;&gt;也会传什么，所以它基本上是一个类型变量或类型参数</p>
+<p>在更现代的java中，不再需要在实例化方面指定类型，也是行得通的。</p>
+<p>在指定类型的时候，只需要指定一次计科，可以在其他地方多次使用它。使用的时候尖括号内的首字母需要<strong>大写</strong>!!!</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                CS61B
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/Lecture4-List%202%20SLLists/" class="trm-cover-frame trm-anima-link">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-a trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/03/20/Lecture5%20-%20List3%20DLList%20And%20Arrays/" class="trm-anima-link">
-                                        Hello World
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/20</li>
-                                        <li class="trm-accent-color">22:21</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CS61B/">
+                    CS61B
+                </a>
             </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-a trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/03/20/Lecture4-List%202%20SLLists/" class="trm-anima-link">
-                                        Hello World
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/20</li>
-                                        <li class="trm-accent-color">22:21</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-a trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/03/20/Lecture3-List%201%20Refrence%20Recursion%20and%20Lists/" class="trm-anima-link">
-                                        Hello World
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/20</li>
-                                        <li class="trm-accent-color">22:21</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-a trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/03/20/Lecture2-Defining%20and%20Using%20Classes%20%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8C%96/" class="trm-anima-link">
-                                        Hello World
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/20</li>
-                                        <li class="trm-accent-color">22:21</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-a trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/03/20/Lecture1-Introduction/" class="trm-anima-link">
-                                        Hello World
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/20</li>
-                                        <li class="trm-accent-color">22:21</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-a trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/03/18/something/" class="trm-anima-link">
-                                        Something
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/18</li>
-                                        <li class="trm-accent-color">13:32</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
+            <h5>
+                <a href="/2024/03/20/Lecture4-List%202%20SLLists/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>22:21</li>
+                
+                
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
+    
+</div>
 
-<!-- history end -->
-
-
-    <div class="trm-pagination">
-        <span class="page-number current">1</span>
-    </div>
-
-
+    
 
 
 
@@ -583,6 +494,10 @@
 <div class="trm-fixed-container">
     
     
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
     
     <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
         <i class="iconfont fas fa-arrow-up"></i>
@@ -616,6 +531,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 

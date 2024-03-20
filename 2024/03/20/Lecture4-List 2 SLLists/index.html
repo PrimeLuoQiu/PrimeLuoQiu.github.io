@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Video 1:Class A:Introducing the SLListLast Time in 61B: Recursive Implementation of a List 12345678910public class IntList &amp;#123;	public int first;	public IntList rest;	public IntList(int f, IntList r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/20/Lecture4-List%202%20SLLists/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Video 1:Class A:Introducing the SLListLast Time in 61B: Recursive Implementation of a List 12345678910public class IntList &amp;#123;	public int first;	public IntList rest;	public IntList(int f, IntList r">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-03-20T14:21:05.838Z">
+<meta property="article:modified_time" content="2024-03-20T14:24:22.475Z">
+<meta property="article:author" content="LuoQiu">
+<meta name="twitter:card" content="summary">
+
+
+<title >Hello World</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"primeluoqiu.github.io","author":"LuoQiu","root":"/","typed_text":["独善其身,浪迹天涯"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-dark"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"16/03/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 22:24:22"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            王<span>落秋</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/archives2/" target="">
+                            archives2
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Hello World
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="https://img2.imgtp.com/2024/03/18/fitTEwGW.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        落秋的学习小屋
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com" title="Tencent" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-qq"></i>
+        </a>
+    
+        <a href="https://www.acwing.com" title="Wechat" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-weixin"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                性别:
+            </div>
+            <div class="trm-label trm-label-light">
+                男
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                地址:
+            </div>
+            <div class="trm-label trm-label-light">
+                河北
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年龄:
+            </div>
+            <div class="trm-label trm-label-light">
+                18
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            22:21
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            LuoQiu
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="Video-1"><a href="#Video-1" class="headerlink" title="Video 1:"></a>Video 1:</h1><h2 id="Class-A-Introducing-the-SLList"><a href="#Class-A-Introducing-the-SLList" class="headerlink" title="Class A:Introducing the SLList"></a>Class A:Introducing the SLList</h2><h3 id="Last-Time-in-61B-Recursive-Implementation-of-a-List"><a href="#Last-Time-in-61B-Recursive-Implementation-of-a-List" class="headerlink" title="Last Time in 61B: Recursive Implementation of a List"></a>Last Time in 61B: Recursive Implementation of a List</h3><hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntList</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> first;</span><br><span class="line">	<span class="keyword">public</span> IntList rest;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">IntList</span><span class="params">(<span class="type">int</span> f, IntList r)</span> &#123;</span><br><span class="line">		first = f;</span><br><span class="line">		rest = r;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>While functional, “naked”linked lists like the one above are hard to use.</p>
+<ul>
+<li>Users of this class are probably going to need to know references very well, and be able to think recursively.Let’s make our users’ lives easier.<br>这些代码对于我们来讲是比较容易看懂的，但是对于用户来讲可能就比较费解，那么我们需要一些其他的方式来重新叙写我们的IntList。对它进行更新换代，以至于让我们的用户理解起来也很方便</li>
+</ul>
+<h3 id="Improvement-1-Rebaranding-and-Culling"><a href="#Improvement-1-Rebaranding-and-Culling" class="headerlink" title="Improvement #1: Rebaranding and Culling"></a>Improvement #1: Rebaranding and Culling</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntNode</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> item;</span><br><span class="line">	<span class="keyword">public</span> IntNode next;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">IntNode</span><span class="params">(<span class="type">int</span> i, IntNode n)</span> &#123;</span><br><span class="line">	item = i;</span><br><span class="line">	next = n;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>IntNode</code> is now dumb, has no methods.We will reintroduce functionality in the coming slides.</p>
+<p>Not much of an improvement obviously, but this next weird trick will be more impressive.</p>
+<h2 id="Class-B-Introducing-the-SLList-Bureaucracy"><a href="#Class-B-Introducing-the-SLList-Bureaucracy" class="headerlink" title="Class B:Introducing the SLList Bureaucracy"></a>Class B:Introducing the SLList Bureaucracy</h2><p>这个也提供了一些小方面的改善。<br>下一步，我们创建另一个类，命名为<code>SLList</code>，这个类表示是一个整数列表，隐藏了内部是单纯的数字的真相。这个列表的工作原理是我们已经有一个IntList类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Lecture4;  </span><br><span class="line"><span class="comment">/* An SLList is a list of integers, which hides the terrible truth * of thr nakedness within. */</span>  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> IntNode first;  </span><br><span class="line">      </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">       first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">       <span class="comment">/*Create a list of one integer, namely 10*/</span>  </span><br><span class="line">       <span class="type">SLList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>(<span class="number">10</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么我们为什么要做这种看起来似乎没什么意义的事情呢？<br>这是一个线索，如果考虑一下某个程序员如何创建列表，那么他实际上不必指定<code>null</code>，只需要添加一个数字即可。<br>在之前，当我们想要创建一个列表，我们需要</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">IntNode</span> <span class="variable">X</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntNode</span>(<span class="number">10</span>, <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+<p>而现在我们只需要</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SLList</span> <span class="variable">Y</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>SLList is easier to instantiate(no need to specify null), but wait, there’s more.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> IntNode first;</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">	front = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Next: Let’s add addFirst and getFirst method to SLList.</p>
+<h2 id="Class-C-Introducing-the-SLList-Methods"><a href="#Class-C-Introducing-the-SLList-Methods" class="headerlink" title="Class C: Introducing the SLList Methods"></a>Class C: Introducing the SLList Methods</h2><p>在我们拿走了<code>IntNode</code>能做的所有事情之后，我们将会在<code>SLList</code>中还原他，接下来是我们准备还原的一部分<code>addFirst</code> <code>getFirst</code><br>当我们想要完成第一个函数的<code>addFirst</code>的时候，我们可以从之前的<code>IntList</code>当中寻找灵感，在这里我们创建一个新的点的时候<br>![[..&#x2F;..&#x2F;Pasted image 20240126093348.png]]<br>用到的是<code>L = new IntList</code>，那么我们在这里也是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Add x to the front of the list.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addFirst</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">    first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于<code>getFirst</code>的话，相对来说我们只需要返回第一个的<code>item</code>，相对来说会简单很多</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Returns the first item in the list</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getFirst</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> first.item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SLLists-vs-IntLists"><a href="#SLLists-vs-IntLists" class="headerlink" title="SLLists vs. IntLists"></a>SLLists vs. IntLists</h2><p>对比一下之前写的和最近写的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SLList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>(<span class="number">15</span>);</span><br><span class="line">L.addFirst(<span class="number">10</span>);</span><br><span class="line">L.addFirst(<span class="number">5</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> L.getFirst();</span><br><span class="line"></span><br><span class="line"><span class="type">IntList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntList</span>(<span class="number">15</span>, <span class="literal">null</span>);</span><br><span class="line">L = <span class="keyword">new</span> <span class="title class_">IntList</span>(L, <span class="number">10</span>);</span><br><span class="line">L = <span class="keyword">new</span> <span class="title class_">IntList</span>(L, <span class="number">5</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> L.first;</span><br></pre></td></tr></table></figure>
+
+<p>While functional, “naked”linked lists like the <strong>IntList</strong> class are hard to use.</p>
+<ul>
+<li>Users of <strong>IntList</strong> are need to know Java references well, and be able to think recursively.</li>
+<li><strong>SLList</strong> is much simpler to use. Simply use the provided methods.</li>
+<li>Why not just add an addFirst method to the <strong>IntList</strong> class? Turn out there is no efficent way to do this. See exercise in LectureCode repository.</li>
+</ul>
+<h1 id="Video-2-Access-Control-and-Nested-Classes"><a href="#Video-2-Access-Control-and-Nested-Classes" class="headerlink" title="Video 2: Access Control and Nested Classes"></a>Video 2: Access Control and Nested Classes</h1><p>我们不难发现，<code>SLList</code>是很好用的，想要添加，删除，或者获取内容的话，最好使用该类提供的方法，不过，根据java的工作效益，可以尝试做一些奇怪的事情。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> IntNode first;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">	first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addFirst</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">	first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, first);</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Users of our classes might be tempted to try to manipulate our secret IntNode directly in uncouth ways!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SLList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>(<span class="number">15</span>);</span><br><span class="line">L.addFirst(<span class="number">10</span>);</span><br><span class="line">L.first.next.next = L.first.next;</span><br></pre></td></tr></table></figure>
+<p>显然，这是不被允许的。可以猜一下会发生什么<br>![[..&#x2F;..&#x2F;Pasted image 20240127092904.png]]<br>![[..&#x2F;..&#x2F;Pasted image 20240127092922.png]]<br>它最终会指向自身，我们最终毁掉了这个列表。<br>很显然，我们并不想被类似这样的调用其他方法来毁掉我们的列表，因此我们可以在我们的程序之前添加注释，类似</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Don&#x27;t mess up my programmer*/</span></span><br></pre></td></tr></table></figure>
+<p>但是这很显然没有下述方式来的更加畅快</p>
+<h2 id="Access-Control"><a href="#Access-Control" class="headerlink" title="Access Control"></a>Access Control</h2><hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> IntNode first;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">	first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addFirst</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">	first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, first);</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>We can prevent programmers from making such mistakes with the <strong>private</strong> keyword.<br>我们可以给类的成员声明为<code>private</code>而不是声明为<code>public</code>例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IntNode first;</span><br></pre></td></tr></table></figure>
+<p>现在，好处是，这不仅是自行记录的，而且还有编译器强制执行，那么在别的类中访问这个变量就会报错<br>因此<code>private</code>关键字的作用是防止其他类中的代码使用该类的成员(包括变量，方法…)<br>不过，java中有一个有趣的功能称为反射。允许绕过这些修饰符，不过很少使用。</p>
+<hr>
+<h2 id="Why-Restrict-Access"><a href="#Why-Restrict-Access" class="headerlink" title="Why Restrict Access?"></a>Why Restrict Access?</h2><p>Hide implementation details from users of your class.</p>
+<ul>
+<li>Less for user of class to understand.</li>
+<li>Safe for you to change private methods.(implementation).<br>E.g:<br>Car analogy:</li>
+<li>Public: Pedals, Steering Wheel Private:Fuel line, Rotary valve.</li>
+<li>Despite the term ‘access control’:<ul>
+<li>Nothing to do with protection against hackers, spies, and other evil entities.<br>至于为什么要限制通过呢，也就是说为什么要用<code>private</code>，一个方面是为了对使用你的类的人隐藏实施细节，他们不需要了解这个原理是什么，他们有对应的输入和输出即可。其次，对你来讲去修改这种私有方法是很安全的。<br>例如在一个车的系统当中，公共的部分有例如踏板，轮胎这些，而私有的例如燃油管线（现在有纯电车）。<br>不过，当有人获取到你的源码之后，这些所谓的安全也就不存在了。</li>
+</ul>
+</li>
+</ul>
+<p>总结一下，私有就是你可以随便处置但是用户不可以，公共就是都可以访问你的方法等一系列东西。</p>
+<h2 id="Improvement-4-Nested-Classes"><a href="#Improvement-4-Nested-Classes" class="headerlink" title="Improvement 4: Nested Classes"></a>Improvement 4: Nested Classes</h2><p>Can combine two classes into one file pretty simply.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntNode</span> &#123; <span class="comment">//Nested class definition</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> item;</span><br><span class="line">	<span class="keyword">public</span> IntNode next;</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">IntNode</span><span class="params">(<span class="type">int</span> i, IntNode n)</span> &#123;</span><br><span class="line">	item = i;</span><br><span class="line">	next = n;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="comment">// Could have made IntNode a private nested class if we wanted.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> IntNode first; <span class="comment">//Instance variables, constructors, and methods of SLList typical go below nested class definition.</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">	first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);</span><br><span class="line">	&#125;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个嵌套的类定义，那么，嵌套的类有什么好处呢？</p>
+<h2 id="Why-Nested-Classes"><a href="#Why-Nested-Classes" class="headerlink" title="Why Nested Classes?"></a>Why Nested Classes?</h2><p>Nested Classes are useful when a class doesn’t stand on its own and is obvious subordinate(从属，下属) to another class.</p>
+<ul>
+<li>Make the nested(嵌套的) class private if other classes should never use the nested class.</li>
+</ul>
+<p>In my opinion, probably makes sense to make IntNode a nested private class.</p>
+<ul>
+<li>Hard to imagine other classes having a need to manipulate IntNodes</li>
+</ul>
+<h2 id="Static-Nested-Classes"><a href="#Static-Nested-Classes" class="headerlink" title="Static Nested Classes"></a>Static Nested Classes</h2><hr>
+<p>If the nested class never uses any instance variables or methods of the outer class, declare it static</p>
+<ul>
+<li>Static classes cannot access outer class’s instance variables or methods.</li>
+<li>Results in a minor savings of memory. See book for more details.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">IntNode</span> &#123; <span class="comment">//we can declare IntNode static, since it never use any of SLList&#x27;s instance variables or methods.</span></span><br><span class="line">		<span class="keyword">public</span> <span class="type">int</span> item;</span><br><span class="line">		<span class="keyword">public</span> <span class="type">int</span> IntNode next;</span><br><span class="line">		<span class="keyword">public</span> <span class="title function_">IntNode</span><span class="params">(<span class="type">int</span> i, IntNode n)</span></span><br><span class="line">		&#123;</span><br><span class="line">			item = i;</span><br><span class="line">			next = n;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+Unimportant note:For private nested classes, access modifiers are irrelevant.<br>如果嵌套类从不需要查找，那么可以添加<code>staitc</code>关键字。</li>
+</ul>
+<h1 id="Video3-addLast-and-size"><a href="#Video3-addLast-and-size" class="headerlink" title="Video3: addLast and size"></a>Video3: addLast and size</h1><h2 id="Adding-more-SLList-Functionality"><a href="#Adding-more-SLList-Functionality" class="headerlink" title="Adding more SLList Functionality"></a>Adding more SLList Functionality</h2><hr>
+<p>To motivate our remaining improvements, and to give more functionality to our SLList class, let’s add:</p>
+<ul>
+<li>.addLast(int x)</li>
+<li>.size()<br>Recommendation: Try writing them yourself before watching how I do it.<br>添加了两个其他的方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addLast</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">    <span class="type">IntNode</span> <span class="variable">p</span> <span class="operator">=</span> first;  </span><br><span class="line">    <span class="comment">/*Move p until it reaches the end of the list. */</span>  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">while</span>(p.next != <span class="literal">null</span>) &#123;  </span><br><span class="line">       p = p.next;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    p.next = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>当想要尝试<code>.size()</code>的时候，我们发现试图搞清楚基本情况是比较困难的。如果使用递归的话情况也是很奇怪，如果想要用递归来做的话，那么就无从下手。<br>原因是SLList这个数据结构本身就不是递归的，它没有SLList指针。<br>因此只能采用相对来说通用性更强一些的策略了、<br>    通常会创建一个私有的静态帮助器方法，它会采用一个特定的节点来帮助我们解决这个问题。所以现在的话，这就是一个非常清晰的递归数据结构<br>    那么这样的话</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">(IntNode p)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span>(p.next == <span class="literal">null</span>)  </span><br><span class="line">       <span class="keyword">return</span> <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + size(p.next);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> size(first);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Video-4-Caching"><a href="#Video-4-Caching" class="headerlink" title="Video 4: Caching"></a>Video 4: Caching</h1><p>假设有一个长度为1000的SLList，我们遍历一遍获得它的长度的时间是两秒，那么如果有一个长度为1,000,000的链表的时候，时间就是2,000秒，那么这个函数实际上是效率很低的，那么我们应该用什么方式来提高它的效率呢？</p>
+<p>我们可以选择在类的内部定义一个私有的成员变量size，然后在类似<code>addFirst, addLast</code>这里对<code>size += 1</code>，然后在定义一个链表的时候让<code>size = 1</code>，这样在写<code>size</code>函数的时候直接<code>return size</code>即可。</p>
+<p>不过其实，这样和遍历一个链表的所花费的空间或者说时间还是一样的，只不过是把一个很大的任务分散化了，</p>
+<p>也就是说，当我们每操作一次链表，size的值就会被更新一下。</p>
+<p>那么还有没有别的办法呢</p>
+<p>当然肯定是有的。<br>就是利用我们最开始引入的那个中间人，也就是<code>first</code>节点，在这里我们可以用他来存储有关整个列表的元信息的自然位置</p>
+<pre><code>之前说过`SLList`有一个很好的优势，就是每当想要操作数据或者查看数据的时候，都必须经过这个中间人，这个中间人为我们提供了非常简单易懂的办法来保证安全，避免我们以各种方式搬起石头砸自己的脚。
+
+现在`SLList`结构拥有这个中间人的另一个好处是，它可以作为存储有关整个列表元信息的自然位置。例如，我们可以在这里存储列表的大小，这在技术上是多余的，我们可以在没有这个变量的情况下计算大小，但它会加快大小的计算速度，因为我们只需要返回这个大小的值，我们也可以在这里存放其他东西，就像可以存储曾经放入其中的最大值、最小值等，这些也可以正常工作。
+
+相比之下，使用裸递归列表就不那么容易了，指图片中的上者，原则上可以执行诸如缓存每个节点内部的大小之类的操作。但即便如此，这也意味着每当我们更改列表中的某些内容时，都必须更新一堆大大小小的变量，例如如果有一种允许这样做的语言，我们还可以以某种方式在此处绑定一个变量来跟踪整个事物的大小。但是在Java中，没有天然的工具（函数）可以做到这一点。因此，实际上，我们最终要做的就是拥有多个必须保持一致的变量，在这里，这种面向对象的编程方法意味着我们让对象来控制一切，我们告诉对象，你的工作不仅是王城所有这些任务，还要为我跟踪尺寸，这样，这就是组织代码的自然方式。
+
+也就是说，`intList`可以做`SLList`可以做的所有的事情，但是`SLList`在几乎所有方面都是一种更自然的方法
+</code></pre>
+<h1 id="Video-5-The-Empty-List"><a href="#Video-5-The-Empty-List" class="headerlink" title="Video 5 The Empty List"></a>Video 5 The Empty List</h1><p>那么<code>SLList</code>这么好用，他还可以允许我们自己代表空列表，也就是说创建列表的时候可以很自然的实例化一个空列表，那么我们来修改一下我们的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Create an empty SLList*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">()</span>&#123;</span><br><span class="line">	size = <span class="number">0</span>;</span><br><span class="line">	first = <span class="literal">null</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>源码此时是这样的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Lecture4;  </span><br><span class="line"><span class="comment">/* An SLList is a list of integers, which hides the terrible truth * of thr nakedness within. */</span>  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> Lecture3.IntList;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> IntNode first;  </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">()</span> &#123;  </span><br><span class="line">       first = <span class="literal">null</span>;  </span><br><span class="line">       size = <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">/*Creates an empty SLList*/</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">       first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Adds x to the front of the list.  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addFirst</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">       first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, first); size += <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Returns the first item in the list.  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getFirst</span><span class="params">()</span> &#123;  </span><br><span class="line">       <span class="keyword">return</span> first.item;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//Adds x to the last of the list.  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addLast</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">       <span class="type">IntNode</span> <span class="variable">p</span> <span class="operator">=</span> first;  </span><br><span class="line">       <span class="comment">/*Move p until it reaches the end of the list. */</span>  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">while</span>(p.next != <span class="literal">null</span>) &#123;  </span><br><span class="line">          p = p.next;  </span><br><span class="line">       &#125;  </span><br><span class="line">  </span><br><span class="line">       p.next = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);  </span><br><span class="line">       size += <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">/*Returns the sizes of the list from IntNode p*/</span>  </span><br><span class="line">    <span class="comment">/*private static int size(IntNode p) &#123;       if(p.next == null)          return 1;       return 1 + size(p.next);    &#125;  </span></span><br><span class="line"><span class="comment">    public int size() &#123;       return size(first);    &#125;*/</span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">       <span class="comment">/*Create a list of one integer, namely 10*/</span>  </span><br><span class="line">       <span class="type">SLList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>();  </span><br><span class="line">       L.addFirst(<span class="number">10</span>);  </span><br><span class="line">       L.addFirst(<span class="number">5</span>);  </span><br><span class="line">       L.addLast(<span class="number">20</span>);  </span><br><span class="line">  </span><br><span class="line">       System.out.println(L.size);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果自然而然的就是3<br>但是实际上这个代码会存在一个小小的bug<br>就是，如果我们不是先从头插入的话，就会报错，例如我们第一步先用<code>addLast</code>的话就会报错<br>![[..&#x2F;一些截图（笔记用）&#x2F;Pasted image 20240222155831.png]]<br>是因为我们将一个指针指向了空指针，然而空指针的下一位是空的，就会报错。<br>那么我们应该如何处理这个问题呢？<br>有一个方法就是在<code>addLast</code>中添加一个判断语句，即</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addLast</span><span class="params">(<span class="type">int</span> x)</span></span><br><span class="line">&#123;</span><br><span class="line">	size += <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(first == <span class="literal">null</span>) &#123;</span><br><span class="line">		first = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, first);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样再看的话，我们的程序目前工作就正常了<br>![[..&#x2F;一些截图（笔记用）&#x2F;Pasted image 20240222160836.png]]</p>
+<h1 id="Video-6-Sentinel-Nodes"><a href="#Video-6-Sentinel-Nodes" class="headerlink" title="Video 6: Sentinel Nodes"></a>Video 6: Sentinel Nodes</h1><p>在我们了解到上述问题之后，其实还有一种解决的方式，这种方式未来会在我们在构筑大型项目上的时候有所优势。就是创建一个哨兵节点，然后哨兵节点来传递到第一个节点、第二个节点…这些，然后我们用一个指针来讲创建的列表指向我们的哨兵节点，这样的话无论列表是不是空的都会有一个节点在那里。不过这样的话，我们就需要对基本上所有的函数进行修改了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Lecture4;  </span><br><span class="line"><span class="comment">/* An SLList is a list of integers, which hides the terrible truth * of thr nakedness within. */</span>  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> Lecture3.IntList;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span> &#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">IntNode</span> &#123;  </span><br><span class="line">       <span class="keyword">public</span> <span class="type">int</span> item;  </span><br><span class="line">       <span class="keyword">public</span> IntNode next;  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">public</span> <span class="title function_">IntNode</span><span class="params">(<span class="type">int</span> i, IntNode n)</span> &#123;  </span><br><span class="line">          item = i;  </span><br><span class="line">          next = n;  </span><br><span class="line">       &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;  </span><br><span class="line">    <span class="comment">/*The first item (if it exists) is at sentinel.next*/</span>  </span><br><span class="line">    <span class="keyword">private</span> IntNode sentinel;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">()</span> &#123;  </span><br><span class="line">       sentinel = <span class="keyword">new</span> <span class="title class_">IntNode</span>(<span class="number">66</span>, <span class="literal">null</span>);  </span><br><span class="line">       size = <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">/*Creates an empty SLList*/</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SLList</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">       sentinel = <span class="keyword">new</span> <span class="title class_">IntNode</span>(<span class="number">66</span>, <span class="literal">null</span>);  </span><br><span class="line">       sentinel.next = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);  </span><br><span class="line">       size = <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Adds x to the front of the list.  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addFirst</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">       sentinel.next = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, sentinel.next);  </span><br><span class="line">       size += <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Returns the first item in the list.  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getFirst</span><span class="params">()</span> &#123;  </span><br><span class="line">       <span class="keyword">return</span> sentinel.next.item;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//Adds x to the last of the list.  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addLast</span><span class="params">(<span class="type">int</span> x)</span> &#123;  </span><br><span class="line">  </span><br><span class="line">       size += <span class="number">1</span>;  </span><br><span class="line">  </span><br><span class="line">       <span class="type">IntNode</span> <span class="variable">p</span> <span class="operator">=</span> sentinel;  </span><br><span class="line">       <span class="comment">/*Move p until it reaches the end of the list. */</span>  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">while</span>(p.next != <span class="literal">null</span>) &#123;  </span><br><span class="line">          p = p.next;  </span><br><span class="line">       &#125;  </span><br><span class="line">  </span><br><span class="line">       p.next = <span class="keyword">new</span> <span class="title class_">IntNode</span>(x, <span class="literal">null</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">/*Returns the sizes of the list from IntNode p*/</span>  </span><br><span class="line">    <span class="comment">/*private static int size(IntNode p) &#123;       if(p.next == null)          return 1;       return 1 + size(p.next);    &#125;  </span></span><br><span class="line"><span class="comment">    public int size() &#123;       return size(first);    &#125;*/</span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">       <span class="comment">/*Create a list of one integer, namely 10*/</span>  </span><br><span class="line">       <span class="type">SLList</span> <span class="variable">L</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>();  </span><br><span class="line">       L.addFirst(<span class="number">10</span>);  </span><br><span class="line">       L.addFirst(<span class="number">5</span>);  </span><br><span class="line">       L.addLast(<span class="number">20</span>);  </span><br><span class="line">  </span><br><span class="line">       System.out.println(L.size);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改完之后就是大致这样的</p>
+<p>那么哨兵节点实际上就是一个虚拟的节点，一个忠实的伙伴。鉴于第一个不再指向第一项，那么我们重命名它为哨兵代码</p>
+<p>当然，哨兵对于我们便携的所有代码来说它永远不会为空，并且它总是指向哨兵节点，哨兵节点的值可以随机，我在这里选择了66.当我们编写带么和检查每个构造函数和方法时，我们必须确保所有内容都与我们的哨兵节点兼容。理想情况下，一开始就这样做的话这样就不会感觉那么随意。我们不会一次性做出一堆微小的改变</p>
+<h1 id="Video-7-Invariants"><a href="#Video-7-Invariants" class="headerlink" title="Video 7: Invariants"></a>Video 7: Invariants</h1><p>我们可以使用术语<code>不变性</code>来概括这种保持简单的想法。因此不变量只是一个在代码运行时保证为真的条件。<br>所以它列出了所有可以信赖的事实。因此，带有哨兵节点的<code>SLList</code><br>那么它总是具有一些不变量，例如哨兵变量——哨兵应用它总是指向一个哨兵节点，这是我们所拥有的东西，并且保证是真实的<br>另一个是列表中的第一个节点(如果存在的话)，那么它始终位于<code>sentinel.next</code>，事实上，这在代码中是作为注释明确写出得一个不变量。</p>
+<p>因此，不变量的好处是它可以让我们更容易地推理代码<br>它可能让我们避免出错</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/Lecture5%20-%20List3%20DLList%20And%20Arrays/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CS61B/">
+                    CS61B
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/Lecture5%20-%20List3%20DLList%20And%20Arrays/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>22:21</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/Lecture3-List%201%20Refrence%20Recursion%20and%20Lists/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CS61B/">
+                    CS61B
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/Lecture3-List%201%20Refrence%20Recursion%20and%20Lists/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>22:21</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>

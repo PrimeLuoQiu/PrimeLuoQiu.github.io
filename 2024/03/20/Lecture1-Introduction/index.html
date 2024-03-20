@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="多做事来获得能力是很重要的  Class 1:Hello World 课程链接：[[https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;E3noTK6T8AE&amp;list&#x3D;PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q&amp;index&#x3D;4]]  Java 和Python的对比Java 是一种认为类非常重要的语言，事实上呢，所有的代码都必须在类中。它是一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/20/Lecture1-Introduction/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="多做事来获得能力是很重要的  Class 1:Hello World 课程链接：[[https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;E3noTK6T8AE&amp;list&#x3D;PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q&amp;index&#x3D;4]]  Java 和Python的对比Java 是一种认为类非常重要的语言，事实上呢，所有的代码都必须在类中。它是一">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-03-20T14:21:05.826Z">
+<meta property="article:modified_time" content="2024-03-20T14:24:17.895Z">
+<meta property="article:author" content="LuoQiu">
+<meta name="twitter:card" content="summary">
+
+
+<title >Hello World</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"primeluoqiu.github.io","author":"LuoQiu","root":"/","typed_text":["独善其身,浪迹天涯"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-dark"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"16/03/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 22:24:17"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            王<span>落秋</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/archives2/" target="">
+                            archives2
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Hello World
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="https://img2.imgtp.com/2024/03/18/fitTEwGW.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        落秋的学习小屋
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com" title="Tencent" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-qq"></i>
+        </a>
+    
+        <a href="https://www.acwing.com" title="Wechat" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-weixin"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                性别:
+            </div>
+            <div class="trm-label trm-label-light">
+                男
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                地址:
+            </div>
+            <div class="trm-label trm-label-light">
+                河北
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年龄:
+            </div>
+            <div class="trm-label trm-label-light">
+                18
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            22:21
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            LuoQiu
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>多做事来获得能力是很重要的</p>
+</blockquote>
+<h1 id="Class-1-Hello-World"><a href="#Class-1-Hello-World" class="headerlink" title="Class 1:Hello World"></a>Class 1:Hello World</h1><blockquote>
+<p>课程链接：[[<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=E3noTK6T8AE&list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q&index=4%5D%5D">https://www.youtube.com/watch?v=E3noTK6T8AE&amp;list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q&amp;index=4]]</a></p>
+</blockquote>
+<h2 id="Java-和Python的对比"><a href="#Java-和Python的对比" class="headerlink" title="Java 和Python的对比"></a>Java 和Python的对比</h2><p>Java 是一种认为<strong>类</strong>非常重要的语言，事实上呢，所有的代码都必须在类中。它是一种迫使我们<strong>面向对象</strong>的语言，那么因此定义这个类的话。我们<strong>首先</strong>要做的是<strong>定义一个公共类</strong><code>Hello World</code>.<br>可以认为public class就像另一种语言中的类定义一样</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>这个时候，我们会发现报错是在类HelloWorld中找不到main方法，即报错信息中会显示<code>the main method as: public static void main(String[] args)</code>，然后我们复制这段代码之后</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们会发现这段代码可以工作了<br>那么从中我们可以总结出来有关Java这个语言什么样子的特性呢？</p>
+<ol>
+<li>In java, all code must be part a class</li>
+<li>Classes are defined with “public class CLASSNAME”</li>
+<li>We use { } to delineate the begining and ending of things.</li>
+<li>We must end lines with a semicolon.</li>
+<li>The code we want to run must be inside <code>public static void main(String[] args)</code>.</li>
+</ol>
+<h1 id="Class-2-Static-Typing"><a href="#Class-2-Static-Typing" class="headerlink" title="Class 2:Static Typing"></a>Class 2:Static Typing</h1><blockquote>
+<p>课程链接：[[<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=xX04gYy9en0&list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q&index=5%5D%5D">https://www.youtube.com/watch?v=xX04gYy9en0&amp;list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q&amp;index=5]]</a></p>
+</blockquote>
+<p>一个例题：在Python中和Java中输出从0-9这十个数。<br><strong>Python</strong>只是为了用来对比</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> x &lt; <span class="number">10</span></span><br><span class="line">	<span class="built_in">print</span>(x)</span><br><span class="line">	x ++</span><br></pre></td></tr></table></figure>
+<p>Java：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloNumbers</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		x = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(x &lt; <span class="number">10</span>)&#123;</span><br><span class="line">			System.out.println(x);<span class="comment">//ln指line</span></span><br><span class="line">			x = x + <span class="number">1</span>;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在看了Python的语言之后，你似乎也想在Java中如是这么写，但是很显然，这个在Java的编译中是错误的。(Error:cannot find symbol x),实际上，编译器只是想要提醒我们需要声明变量，也就意味着，在使用这个变量之前，要先声明它存在。<br>所以，正确的应该是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloNumbers</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(x &lt; <span class="number">10</span>)&#123;</span><br><span class="line">			System.out.println(x);<span class="comment">//ln指line</span></span><br><span class="line">			x = x + <span class="number">1</span>;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于Java和Python在变量的方面存在一些很大的差异，使用Python这种非所谓静态类型语言的语言，可以随机创建变量。而在Java中，变量有特定的类型，这些类型永远不会改变。Java会在运行这个程序之前先检验一遍变量的类型是不是正确。<br>接下来是一段总结</p>
+<ol>
+<li>Before Java variables can be used, they must be declared.</li>
+<li>Java variables must have a specific type.</li>
+<li>Java variables types can never change.</li>
+</ol>
+<p>对于现在来讲，类型的错误不仅仅只会存在于Java中，在Python中，如果我们进行这样的语句的时候</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;horse&quot;</span> + <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<p>我们就会看到出现错误，而且是建立在之前程序都进行输出了的情况下，指在本节最开始的地方添加了这么一句话，那么久就会发现程序是先输出了0123456789之后才输出了报错信息。但是对于Java来说，当我们尝试运行存在类型错误的代码时，我们在此之前并不会得到任何输出，而是给予了我们一大堆的错误信息，由此我们可以得到Java的第四条特性<br>4. Types are varified before the code even runs !!!<br>在这里，这段代码基本上在运行之前就获得了类型正确的证书，这意味着(静态类型的三个优点)</p>
+<ol>
+<li>最终用户遇到的错误会更少</li>
+<li>使我们更容易调试</li>
+<li>当我们使用代码的时候，我们应该知道一切应该是什么，例如x应该始终是整数</li>
+</ol>
+<h1 id="Class-3-Declaring-Functions"><a href="#Class-3-Declaring-Functions" class="headerlink" title="Class 3: Declaring Functions"></a>Class 3: Declaring Functions</h1><p>接下来是有关定义函数的内容 还是先以一个Python程序来作为示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">large</span>(<span class="params">x, y</span>):</span><br><span class="line">	<span class="keyword">if</span>(x &gt; y):</span><br><span class="line">		<span class="keyword">return</span> x</span><br><span class="line">	<span class="keyword">return</span> y</span><br><span class="line"><span class="built_in">print</span>(large(-<span class="number">5</span>, <span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+<p>我们最终可以得到10，那么Java版本长什么样子呢？(我们给这个Java文件命名为LargeDemo)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果我们想要定义一个函数，我们不能把它放到这里</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LargeDemo</span>&#123;</span><br><span class="line"><span class="comment">//所以实际上应该在这里进行函数定义</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们要记住，在Java中，所有代码都必须是类的一部分，而在Java中使用特殊短语<code>public static</code>而不是<code>def</code>。那么这个函数目前看起来应该这么写</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LargeDemo</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="title function_">large</span><span class="params">(x, y)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(x &gt; y)</span><br><span class="line">			<span class="keyword">return</span> x; </span><br><span class="line">		<span class="keyword">return</span> y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，如果尝试对其进行编译，它会给我们提醒说需要告诉他x是什么，y是什么，而且还要说返回的值是一个什么类型的值。接下来的函数应该是长这个样子的。最后，我们想要在主函数当中调用这个函数的话，就应该用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LargeDemo</span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">large</span><span class="params">(x, y)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(x &gt; y)</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		System.out.println(large(-<span class="number">5</span>, <span class="number">10</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里有一些注意事项</p>
+<ol>
+<li>Functions must be declared as a part of a class in Java.A function that is part of a class is called method.So, in Java, all functions are methods</li>
+<li>To define a function in Java, we use “public static”.We will see alternate ways of defining functions Later.</li>
+<li>All parameters of a function must have a declared type, and the return value of the function must have a declared type.<br>那么因此，我们在定义函数的时候就不可以定义有两种返回值的函数，类似<code>int String ...</code><br>有一个重点是，我们完全可以不对函数的名字或者类的名字起名起的如此繁琐，我们完全可以用一个符号来代替一堆繁琐的字符，类似<code>f(x, y)</code>这样，但是我们最后选择以相对来说比较繁琐的方式来命名这个函数的原因是<blockquote>
+<p>使我们的代码看起来更加可读</p>
+</blockquote>
+</li>
+</ol>
+<p>还有一个建议是在编写函数的时候，我们可以选择在它的头顶添加一些字符让他看起来更加的可读，例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Returns the large of x and y.*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">large</span><span class="params">(x, y)</span> &#123;</span><br></pre></td></tr></table></figure>
+<p>最后其实会发现，可读性方便的还是自己。</p>
+<h1 id="Class4-Reflection"><a href="#Class4-Reflection" class="headerlink" title="Class4.Reflection"></a>Class4.Reflection</h1><h2 id="1-Java-and-Object-Orientation"><a href="#1-Java-and-Object-Orientation" class="headerlink" title="1.Java and Object Orientation"></a>1.Java and Object Orientation</h2><h3 id="Java-is-an-object-oriented-language-with-strict-declarations"><a href="#Java-is-an-object-oriented-language-with-strict-declarations" class="headerlink" title="Java is an object oriented language with strict declarations:"></a>Java is an object oriented language with strict declarations:</h3><ul>
+<li>Every Java file must contain a class declaration.*</li>
+<li><strong>All code</strong> lives inside a class*, even helper functions,global constants, etc.</li>
+<li>To run a Java program, you typically define a main method using public static void main(String[] args)<br>      * This is not completely true, e.g. we can also declare “interface” in Java files that may contain code.We’ll cover these later.</li>
+</ul>
+<h2 id="2-Java-and-Static-Typing"><a href="#2-Java-and-Static-Typing" class="headerlink" title="2.Java and Static Typing"></a>2.Java and Static Typing</h2><h3 id="Java-is-statically-typed"><a href="#Java-is-statically-typed" class="headerlink" title="Java is statically typed!"></a>Java is statically typed!</h3><ul>
+<li>All variables, parameters, and methods must have a declared type.</li>
+<li>That type can never change.</li>
+<li>Expressions also have a type.</li>
+<li>The compiler checks that all the types in your program are compatible before the program ever runs!<ul>
+<li>This is unlike a language like Python, where type checks are performed DURING execution.</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Reflections-on-Static-Typing"><a href="#3-Reflections-on-Static-Typing" class="headerlink" title="3.Reflections on Static Typing"></a>3.Reflections on Static Typing</h2><h3 id="The-Good"><a href="#The-Good" class="headerlink" title="The Good:"></a>The Good:</h3><ul>
+<li>Catches certain types of errors, making it easior on the programmer to debug their code.</li>
+<li>Type errors can(almost) never occur on the end user’s computer(Even their Android).</li>
+<li>Makes it easier to read about code.</li>
+<li>Code can run more effciently, e.g. no need to do expensive runtime type checks.</li>
+</ul>
+<h3 id="The-Bad"><a href="#The-Bad" class="headerlink" title="The Bad:"></a>The Bad:</h3><ul>
+<li>Code is more verbose.</li>
+<li>Code is less general. There is a way around this in Java.<br>例如，还是之前的比较大小的函数，对于Python而言，我们可以对除了字符串之外的所有类型进行比大小的操作，而在Java中就必须要重新写类似于float类型的函数这样才可以进行大小的比较。</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/Lecture2-Defining%20and%20Using%20Classes%20%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8C%96/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CS61B/">
+                    CS61B
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/Lecture2-Defining%20and%20Using%20Classes%20%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8C%96/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>22:21</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/18/something/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CS61B/">
+                    CS61B
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/18/something/" class="trm-anima-link">
+                    Something
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/18</li>
+                <li>13:32</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>
