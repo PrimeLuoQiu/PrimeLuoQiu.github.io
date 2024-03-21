@@ -7,20 +7,20 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="之前说到的SLList还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于addLast函数而言，还是相对来说比较缓慢地，效率也是比较低的。 就像是最一开始的size函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了 那便是remove操作，那么如果我们想要删除一个节点的话，那么我们只能首">
+<meta name="description" content="如何手写一个堆维护一个数据集合支持的基本操作：  插入一个数 求集合当中的最小值 删除最小值  还有操作可以支持  删除任意一个元素 修改任意一个元素  堆是一个二叉树，完全二叉树，树除了最后一层节点之外，上面的所有节点都是满的。最后一层节点从左到右排列。小根堆有个性质：每个点都小于左右儿子，一个递归定义，根节点就是整个数据结构的最小值。堆的存储：(全新的存储方式):用一个一维数组来存。堆状数据结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lecture 5 - List3">
-<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/20/Lecture5%20-%20List3%20DLList%20And%20Arrays/index.html">
+<meta property="og:title" content="acwing -堆排序">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/21/sort/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="之前说到的SLList还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于addLast函数而言，还是相对来说比较缓慢地，效率也是比较低的。 就像是最一开始的size函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了 那便是remove操作，那么如果我们想要删除一个节点的话，那么我们只能首">
+<meta property="og:description" content="如何手写一个堆维护一个数据集合支持的基本操作：  插入一个数 求集合当中的最小值 删除最小值  还有操作可以支持  删除任意一个元素 修改任意一个元素  堆是一个二叉树，完全二叉树，树除了最后一层节点之外，上面的所有节点都是满的。最后一层节点从左到右排列。小根堆有个性质：每个点都小于左右儿子，一个递归定义，根节点就是整个数据结构的最小值。堆的存储：(全新的存储方式):用一个一维数组来存。堆状数据结">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-03-20T14:21:05.839Z">
-<meta property="article:modified_time" content="2024-03-21T13:56:27.690Z">
+<meta property="article:published_time" content="2024-03-21T13:54:55.018Z">
+<meta property="article:modified_time" content="2024-03-21T13:56:15.931Z">
 <meta property="article:author" content="LuoQiu">
 <meta name="twitter:card" content="summary">
 
 
-<title >Lecture 5 - List3</title>
+<title >acwing -堆排序</title>
 
 <!-- Favicon -->
 
@@ -59,7 +59,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"primeluoqiu.github.io","author":"LuoQiu","root":"/","typed_text":["独善其身,浪迹天涯"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-dark"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"16/03/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-21 21:56:27"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-21 21:56:15"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
@@ -224,7 +224,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Lecture 5 - List3
+                            acwing -堆排序
                         </h1>
 
                         
@@ -347,13 +347,13 @@
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            03/20
+            03/21
         </div>
     </div>
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-clock trm-icon"></i><br>
-            22:21
+            21:54
         </div>
     </div>
     <div class="col-sm-4">
@@ -365,39 +365,35 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <p>之前说到的<code>SLList</code>还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于<code>addLast</code>函数而言，还是相对来说比较缓慢地，效率也是比较低的。</p>
-<p>就像是最一开始的<code>size</code>函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了</p>
-<p>那便是<code>remove</code>操作，那么如果我们想要删除一个节点的话，那么我们只能首先遍历到节点那里，然后删除这个节点的指针，然后再将<code>last</code>的那个指针指向删除的节点的前一个节点。这听起来实在是太麻烦了，所以这种方法似乎也是不可取的。那么还有什么别的方法吗</p>
-<p>那么，我们就想到能不能就是给每一个节点添加一个当前节点的前置节点的指针呢？答案是可以的</p>
-<p>这种每个节点都有两个链接的列表叫做双向链表</p>
-<p>完成这种方法之后，我们的添加在头部和尾部，删除头部和尾部的方法就会变得十分的快，不过在中间的节点操作相对来说就会比较慢。</p>
-<p>不过这样的链表还是会存在一个 限制有这样一种情况：最后一个节点的next指针有的时候指向最开始的哨兵节点，有的时候指向我们称之的<code>最开始的节点(real node)</code>。那么就有可能需要我们在后面再去写相关的判断语句来判断它是否真的是哨兵节点。</p>
-<p>为了避免这种麻烦的情况，我们尝试让他变得更纯粹一些。</p>
-<pre><code>所以为了完善我们的方法的最自然的方法就是添加第二个哨兵，然后让着第二个哨兵来指向最后一个节点，我们不再是一个指向最后一项的一个指针，而是在开始和末尾两端都添加一个哨兵（因为此时我们已经有了prev和next指针），这样的话，前面就有一个哨兵，后面也有一个哨兵了，那么这样再添加节点或者项目的时候，就只需要将节点滑入这两个哨兵之间就可以了
+    <p>如何手写一个堆<br>维护一个数据集合<br>支持的基本操作：</p>
+<ol>
+<li>插入一个数</li>
+<li>求集合当中的最小值</li>
+<li>删除最小值</li>
+</ol>
+<p>还有操作可以支持</p>
+<ol>
+<li>删除任意一个元素</li>
+<li>修改任意一个元素</li>
+</ol>
+<p>堆是一个二叉树，完全二叉树，树除了最后一层节点之外，上面的所有节点都是满的。最后一层节点从左到右排列。<br>小根堆有个性质：每个点都小于左右儿子，一个递归定义，根节点就是整个数据结构的最小值。<br>堆的存储：(全新的存储方式):用一个一维数组来存。堆状数据结构几乎都可以用一位数组来存储。</p>
+<p>存储的话，数组的第一个节点是根节点，然后从x开始，x的左儿子是2x, x的右儿子是2x+1<br>有两种操作，分别是<code>up 和 down</code>，五个操作都可以用这两个函数来解决。</p>
+<p><code>down</code>操作实际上就是在这三个数字里面找到最小的数字，然后把最大的数字和最小的数字进行交换，然后把相对来说小的数推上去</p>
+<ol>
+<li>插入一个数：heap [++size] &#x3D; x; up(size);</li>
+<li>求集合当中的最小值:heap[1];</li>
+<li>删除最小值 用堆的最后一个元素来覆盖掉堆顶的元素，然后再把堆顶down一下即可。删除头节点比较困难，尾节点比较简单。 heap[1] &#x3D; heap[size]; size –;down(1); </li>
+<li>删除任意一个元素: heap[k] &#x3D; heap[size]; heap –; down(k); up(k); 分情况讨论，变大就down一遍，变小就up一下，或者直接不管，up，down一边就行。</li>
+<li>修改任意一个元素:heap[k] &#x3D; x; down(k); up(k);<br>下标从1开始</li>
+</ol>
+<p>然后我们来看一道题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入一个长度为n的整数数列，从小到大输出前m小的数。</span><br></pre></td></tr></table></figure>
 
-那么其实还有一种办法，这里依旧还是只有一个哨兵，它既是前面的哨兵也是后面的哨兵
-
-![[../一些截图（笔记用）/Pasted image 20240226134251.png]]
-就像这里的，先指向哨兵节点，然后指向3，指向9，最终再回到sentinal.所以这实际上更像一个循环。
-</code></pre>
-<p>不过即便是这样，还是会有一个限制，就是说在现实世界中不太好使，就是说，如果我们要添加的东西是数字时，它会非常的好用，但是如果我们添加的是字符串或者字符呢？我们又该怎么办，例如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLListLauncher</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	<span class="type">SLList</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>(<span class="string">&quot;Bone&quot;</span>);</span><br><span class="line">	s1.addFirst(<span class="string">&quot;thugs&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>也就是说，我们不能将字符串转化成整数这样的报错。</p>
-<p>我们可以选择重新创建一个全新的<code>SLList</code>类，不过这意味着我们还需要重新写一遍我们的类。这听起来可太麻烦了。</p>
-<p>不过，还有一种方法就是使<code>SLList</code>参数化，我们可以参数化<code>SLList</code>将采用的类型，这应该如何操作呢</p>
-<p>就是我们要在<code>SLList</code>后面添加新的尖括号<code>&lt;&gt;</code>，然后在尖括号里面添加任意的字符串，例如<code>LochNess</code>，这是充当创建<code>SLList</code>时尚未决定的类型的占位符，因此这个时候我们将使用<code>LochNess</code>来代替<code>int</code>项，然后这个时候我们也会将我们创建一个节点的名字改成</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private class StuffNode(LochNess i, StuffNode n) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>定义是这样的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span>&lt;LochNess&gt; &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">StuffNode</span> &#123;</span><br><span class="line">		<span class="keyword">public</span> LochNess item;</span><br><span class="line">		<span class="keyword">public</span> StuffNode next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个时候我们只需要将main函数修改一下即可</p>
-<p>现在想要创建一个<code>SLList</code>的话，需要指定一个类型</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SLList&lt;String&gt; s1 = <span class="keyword">new</span> <span class="title class_">SLList</span>&lt;String&gt;(<span class="string">&quot;bone&quot;</span>); <span class="comment">//定义并实例化</span></span><br></pre></td></tr></table></figure>
-<p>然后就正常工作了。</p>
-<p>在我们使用的时候，我们往&lt;&gt;里传什么，对应的函数里的&lt;&gt;也会传什么，所以它基本上是一个类型变量或类型参数</p>
-<p>在更现代的java中，不再需要在实例化方面指定类型，也是行得通的。</p>
-<p>在指定类型的时候，只需要指定一次计科，可以在其他地方多次使用它。使用的时候尖括号内的首字母需要<strong>大写</strong>!!!</p>
-
+<p>通过读题我们可以看出来，在这里我们只需要down这个操作，我们来看一下down这个操作是怎么实现的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> h[N], cnt; <span class="comment">//存的heap和存了多少元素</span></span><br><span class="line"><span class="comment">//我们只需要把数组建成堆，然后每一次输出堆顶，第一次输出就是第一小的数，然后是第二小的数，然后balabala</span></span><br><span class="line"><span class="comment">//需要第二个操作和第三个操作，然后我们发现只需要实现down就可以了。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> t = u;</span><br><span class="line">	<span class="keyword">if</span>(u * <span class="number">2</span> &lt;= cnt &amp;&amp; h[u * <span class="number">2</span>] &lt; h[t]) t = u * <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(u * <span class="number">2</span> + <span class="number">1</span> &lt;= cnt &amp;&amp; h[u * <span class="number">2</span> + <span class="number">1</span>] &lt; h[t]) t = u * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(u != t)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">swap</span>(h[u], h[t]);</span><br><span class="line">		<span class="built_in">down</span>(t);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;h[i]);</span><br><span class="line">    cnt = n;</span><br><span class="line">	<span class="comment">//正常输入，然后建堆，如果是一个一个往里面插入的话，时间复杂度是(nlogn)的，有一种时间复杂度是O(n)的方法是从1/2开始往下down</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = n / <span class="number">2</span>; i; i --) <span class="built_in">down</span>(i);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">while</span>(m --)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, h[<span class="number">1</span>]);</span><br><span class="line">		h[<span class="number">1</span>] = h[cnt];</span><br><span class="line">		cnt --;</span><br><span class="line">		<span class="built_in">down</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于为什么是O(n)的呢？  </p>
+<p>down操作很简单，用t来表示三个点里面的最小值，首先判断一下有没有左儿子。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> t = u;</span><br><span class="line">	<span class="keyword">if</span>(u * <span class="number">2</span> &lt;= size &amp;&amp; h[u * <span class="number">2</span>] &lt; h[t]) t = u * <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(u * <span class="number">2</span> + <span class="number">1</span> &lt;= size &amp;&amp; h[u * <span class="number">2</span> + <span class="number">1</span>] &lt; h[t]) t = u * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(u != t)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">swap</span>(h[u], h[t]);</span><br><span class="line">		<span class="built_in">down</span>(t);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </article>
     
     
@@ -412,41 +408,10 @@
         </h5>
     </div>
     
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/03/21/sort/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/acwing/">
-                    acwing
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/03/21/sort/" class="trm-anima-link">
-                    acwing -堆排序
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>24/03/21</li>
-                <li>21:54</li>
-                
-                
-            </ul>
-        </div>
-    </div>
-</div>
-    
     
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/03/20/Lecture4-List%202%20SLLists/" class="trm-cover-frame trm-anima-link">
+        <a href="/2024/03/20/Lecture5%20-%20List3%20DLList%20And%20Arrays/" class="trm-cover-frame trm-anima-link">
             
             
                 <img alt="cover" class="no-fancybox" src="/img/block.jpg">
@@ -460,8 +425,8 @@
                 </a>
             </div>
             <h5>
-                <a href="/2024/03/20/Lecture4-List%202%20SLLists/" class="trm-anima-link">
-                    Hello World
+                <a href="/2024/03/20/Lecture5%20-%20List3%20DLList%20And%20Arrays/" class="trm-anima-link">
+                    Lecture 5 - List3
                 </a>
             </h5>
             <div class="trm-divider trm-mb-20 trm-mt-20"></div>
