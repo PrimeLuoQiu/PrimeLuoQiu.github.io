@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Wang LuoQiu">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://PrimeLuoQiu.github.io/2024/03/20/计算机网络/lecture2-defining and using classes 类的定义和实例化/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Class 2Video a:Defining and Instantiating Classes. 想要实际运行一个类，那么我们必须有main方法  假设我们目前创建了一个名为”Dog”的新类，并先暂时取消掉它的main方法。相反，我们给它一个方法，让它发出噪音。 12345public class Dog&amp;#123;	public static void makeNoise() &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Lecture2-Defining%20and%20Using%20Classes%20%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8C%96/index.html">
+<meta property="og:site_name" content="秋过冬漫长">
+<meta property="og:description" content="Class 2Video a:Defining and Instantiating Classes. 想要实际运行一个类，那么我们必须有main方法  假设我们目前创建了一个名为”Dog”的新类，并先暂时取消掉它的main方法。相反，我们给它一个方法，让它发出噪音。 12345public class Dog&amp;#123;	public static void makeNoise() &amp;#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-20T14:21:05.833Z">
+<meta property="article:modified_time" content="2024-03-20T14:24:19.350Z">
+<meta property="article:author" content="LuoQiu">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Hello World -
+        
+        落秋的小屋
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        落秋的小屋
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"primeluoqiu.github.io","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"落秋的小屋","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Status":{"path":"https://status.ohevan.com/","icon":"fa-regular fa-chart-bar"},"Category":{"path":"/categories"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/EvanNotFound/hexo-theme-redefine","Blog":"https://ohevan.com","Friends":"/friends"}}},"search":{"enable":false,"preload":true},"categories":{"Categories":{"icon":"fa-solid fa-folder","path":"/categories"}}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"YYYY-MM-DD HH:mm:ss","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="秋过冬漫长" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                落秋的小屋
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://status.ohevan.com/"
+                                        >
+                                    <i class="fa-regular fa-chart-bar fa-fw"></i>
+                                    状态
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories"
+                                        >
+                                    
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/EvanNotFound/hexo-theme-redefine">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://ohevan.com">
+                                                    BLOG
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/friends">
+                                                    友情链接
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://status.ohevan.com/"
+                        >
+                            <span>
+                                状态
+                            </span>
+                            
+                                <i class="fa-regular fa-chart-bar fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/EvanNotFound/hexo-theme-redefine">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://ohevan.com">BLOG</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/friends">友情链接</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>归档</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>分类</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">15</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">Hello World</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://img2.imgtp.com/2024/03/18/fitTEwGW.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Wang LuoQiu</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-03-20 22:21:05</span>
+        <span class="mobile">2024-03-20 22:21:05</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-03-20 22:24:19</span>
+            <span class="mobile">2024-03-20 22:24:19</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CS61B/">CS61B</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>6.5k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>29 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="Class-2"><a href="#Class-2" class="headerlink" title="Class 2"></a>Class 2</h1><h2 id="Video-a-Defining-and-Instantiating-Classes"><a href="#Video-a-Defining-and-Instantiating-Classes" class="headerlink" title="Video a:Defining and Instantiating Classes."></a>Video a:Defining and Instantiating Classes.</h2><blockquote>
+<p><strong>想要实际运行一个类，那么我们必须有main方法</strong></p>
+</blockquote>
+<p>假设我们目前创建了一个名为”Dog”的新类，并先暂时取消掉它的main方法。相反，我们给它一个方法，让它发出噪音。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;Bark!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>那么，这个类就是可以编译的，那么当要运行这个程序的时候，就会报错<br>![[Pasted image 20240106163816.png]]<br>也就意味着这只狗不知道应该如何跑(run)<br>对于Python来讲就是</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">makeNoise</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;Bark!&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+<p>没有任何调用<code>makeNoise</code>的地方<br>于是我们放回<code>main</code>函数</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">makeNoises</span><span class="params">()</span> &#123;  </span><br><span class="line">        System.out.println(<span class="string">&quot;Bark!&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;  </span><br><span class="line">        makeNoises();  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>于是，在我们重新编译运行之后我们看到<br>![[Pasted image 20240106164240.png]]<br>通常情况下，我们用Java创建的类没有main方法，就像狗这个类中一开始并没有main方法，相反，我们经常会有其他的类来使用<code>Dog</code>，因此我们创建一个<code>DogLauncher.java</code></p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**The DogLauncher class will &#x27;test drive&#x27; the Dog class ,所以这只是为了展示这个‘狗’是如何工作的**/</span>  </span><br><span class="line"><span class="comment">//因此在这种情况下，DogLaunch应该有main方法  </span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogLaunch</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123; <span class="comment">//在这里调用我们的狗类的制造噪音的方法  </span></span><br><span class="line">        Dog.makeNoises();<span class="comment">//这里的意思就是，告诉Java，我想让你去找狗这个类，然后找到它的对应的制造噪音的方法。  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>![[Pasted image 20240106165927.png]]<br>编译运行之后就是这个结果了</p>
+<p>那么DogLaunch到底是做了什么呢？当它开始运行的时候，它会进入<code>Dog</code>类，然后采用<code>makeNoise</code>这个函数。<br>那么这就是定义类的核心</p>
+<h3 id="Dog"><a href="#Dog" class="headerlink" title="Dog"></a>Dog</h3><p>As we saw last time:</p>
+<ul>
+<li>Every method(a.k.a Function)is associated with some class.</li>
+<li>To run a class, we must define a main method.<ul>
+<li>Not all classes have a main method.<br>这里有一个main方法可以调用到其他类中的方法。一个类可以使用另一个类，<strong>这是我们能够将问题分解为更小的部分的全部基础</strong>。<br>当然，很显然的是，在现实生活中，并不是所有的狗都是相同的。也就意味着，我们并不希望它们都发出相同的叫声，那么我们应该如何才能实现这个目标呢？</li>
+</ul>
+</li>
+</ul>
+<p>有一个不那么好的方式是：(对于每只狗都创建一个新的类)<br>We could create a separate class for every single dog out there, but this is going to get redundant in a hurry.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MayaTheDog</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;arooooooooooooooo!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">YapsterTheDog</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;awawwaawaw wawawawa&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>虽然可以这么做，不过在品类多样之后，这显然变得很烦</p>
+<h2 id="Video-b-Defining-and-Instantianing-Classes"><a href="#Video-b-Defining-and-Instantianing-Classes" class="headerlink" title="Video b:Defining and Instantianing Classes"></a>Video b:Defining and Instantianing Classes</h2><p>那么，我们将使用的关键语言功能是，Java中的类不仅可以包含函数，当然还可以包含数据，以便更自然的表示狗或者其他的任何东西。那么我们就可以通过增强<code>Dog</code>类，以便让<code>Dog</code>拥有属性，例如大小。而这个Class将会成为其他dog的模板，然后我们可以将这个实例化为我们可以操作的特定对象</p>
+<h3 id="Object-Instantiation"><a href="#Object-Instantiation" class="headerlink" title="Object Instantiation"></a>Object Instantiation</h3><p>Classes can contain not just functions(a.k.a methods), but also data.</p>
+<p>Classes can be instantiated as objects.</p>
+<ul>
+<li>We’ll create a single Dog class, and then create instances of this Dog.</li>
+<li>The classes provides a blueprint that all Dog objects will follow.<br>重写dog class<br>例子如下<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123; <span class="comment">//狗不只是只有制造噪音，还有一些属性将是狗所拥有的，例如重量  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> weightInPounds;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//然后更改下面的函数  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">makeNoises</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="keyword">if</span>(weightInPounds &lt; <span class="number">10</span>) &#123;  </span><br><span class="line">            System.out.println(<span class="string">&quot;yip!&quot;</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (weightInPounds &lt; <span class="number">30</span>) &#123;  </span><br><span class="line">            System.out.println(<span class="string">&quot;bark!&quot;</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            System.out.println(<span class="string">&quot;wooooof!&quot;</span>);  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></div>
+当我们在编译这个程序的时候，会发现报这样的错误<br>![[Pasted image 20240106192022.png]]<br>对于我们来说，最快的解决方式就是删掉方法当中的<del>static</del>即可，现在再尝试编译的话就可以通过了。<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123; <span class="comment">//狗不只是只有制造噪音，还有一些属性将是狗所拥有的，例如重量  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> weightInPounds;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//然后更改下面的函数  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">makeNoises</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="keyword">if</span>(weightInPounds &lt; <span class="number">10</span>) &#123;  </span><br><span class="line">            System.out.println(<span class="string">&quot;yip!&quot;</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (weightInPounds &lt; <span class="number">30</span>) &#123;  </span><br><span class="line">            System.out.println(<span class="string">&quot;bark!&quot;</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            System.out.println(<span class="string">&quot;wooooof!&quot;</span>);  </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+以上就是对<code>Dog</code>的一个模板，它可以根据狗的体重（磅数）有不同的行为。<br>这个时候我们再<code>DogLaunch</code>编译一下，我们会发现<br>![[Pasted image 20240106192733.png]]或许你也会想像上面的报错一样只删掉<code>DogLaunch</code>中的static，但是显然这是错误的，这个时候我们就要用到一个新语法。<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Dog</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure></div>
+这意味着创建一个狗，一只新狗，在这种情况下，我们称那只狗为d，那么接下来的语法将会是这样的<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**The DogLauncher class will &#x27;test drive&#x27; the Dog class ,所以这只是为了展示这个‘狗’是如何工作的**/</span>  </span><br><span class="line"><span class="comment">//因此在这种情况下，DogLaunch应该有main方法  </span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogLaunch</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123; <span class="comment">//在这里调用我们的狗类的制造噪音的方法  </span></span><br><span class="line">        <span class="type">Dog</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();  </span><br><span class="line">        d.weightInPounds = <span class="number">25</span>;  </span><br><span class="line">        d.makeNoises();  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+就是相当于，在这里我们来问d，让他发出声音，这个时候它去找makeNoise这个方法，然后这里只有三种声音，然后就会有这样的执行结果<br>![[Pasted image 20240106194134.png]]<br>如果我们将25换成51的话并重新编译的话，我们就会得到woof<br>还有最后一点调整<br>可能会有另外的一种想法，例如为什么不在构造这个d的时候直接在后面的()当中赋值呢？就是给定它作为<code>Dog</code>创建过程的参数。为了实现这个呢（当然，直接这么做是不可以的）<br>![[Pasted image 20240106194511.png]]<br>也就是意味着它并不知道应该如何处理这个数字。<br>因此，为了处理这个问题，我们需要在Dog这个类中创建一个特殊的东西，它有点像方法，被称为<strong>构造函数</strong><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// One integer constructor for dogs.  </span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">(<span class="type">int</span> w)</span> &#123;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+因此，当调用new Dog并给出一个整数的时候，就会调用这个构造函数，这将指定<code>Dog</code>是如何创建的</li>
+</ul>
+<p>接下来，我们对这个构造函数里的WeightPounds设置为w</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// One integer constructor for dogs.  </span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">(<span class="type">int</span> w)</span> &#123;  </span><br><span class="line">  weightPounds = w;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>接下来再编译运行的话，就可以直接得到<code>Wooof</code>了<br>![[Pasted image 20240106195124.png]]</p>
+<h2 id="Video-c-Terminology"><a href="#Video-c-Terminology" class="headerlink" title="Video c:Terminology"></a>Video c:Terminology</h2><p>在进行下一步之前，我们首先要搞清楚Java的一些相关术语</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> weightInPounds;</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">(<span class="type">int</span> startingWeight)</span> &#123;</span><br><span class="line">		weightPounds = startingWeight;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(weightInPounds &lt; <span class="number">10</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;yipyipyip&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (weightInPounds &lt; <span class="number">30</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;bark, bark.&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;woof&quot;</span>)&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这是一个例子，我们从中来剖析一些术语。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> weightInPounds;</span><br></pre></td></tr></table></figure></div>
+<p><strong>Instance variable</strong>. Can have as many of these as you want.<br>一个实例变量，是一个跟踪当前类的特定实例的属性的变量，我们在这里定义了一个狗的体重，但是原则上我们还可以有它的身高，喜欢的食物，喜欢的颜色等等</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">(<span class="type">int</span> startingWeight)</span> &#123;</span><br><span class="line">		weightPounds = startingWeight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong>Constructor</strong>(similar to a method, but not a method). Determines how to instantiate the class.<br>这里是构造函数：我们目前只有一个参数来设置单个实例变量，不过在原则上，可以在构造函数中执行任何操作，但通常最重要的事情之一是<strong>设置所有实例变量</strong>，不过也不必设置所有的实例变量，可以让他们保持默认值。构造函数告诉我们如何构造对象的实例。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(weightInPounds &lt; <span class="number">10</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;yipyipyip&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (weightInPounds &lt; <span class="number">30</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;bark, bark.&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;woof&quot;</span>)&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong>Non-static method, a.k.a Instance Method</strong>.Idea: If the method is going to be invoked by an instance of the class(as in the next slide), then it should be non-static.</p>
+<p>Roughly speaking: If the method needs to use “<em><strong>my</strong></em> instance variables”, the method must be non-static.</p>
+<p>非静态方法（实例方法）：也就是由特定实例调用的方法。例如我们有一个叫做<code>Steven</code>的狗 ，它在<code>Steve</code>变量中，那么当我们告诉<code>Steve</code>，<code>Steve.MakeNoise</code>的时候，它就会使用它的体重来决定它要做什么（怎么叫）。<br>当我们阅读方法的时候，可以说，如果我们的体重小于10，那么<code>yipyipyip</code>，这意味着他是一个<strong>非静态的方法</strong>，事实上，如果这个方法需要使用任何实例变量，那么在定义的时候加入<code>static</code>关键字就会令Java感到困惑，会提示我们不能从静态上下文访问实例变量。</p>
+<p>再来点术语</p>
+<h3 id="Instantiating-a-Class-and-Terminology"><a href="#Instantiating-a-Class-and-Terminology" class="headerlink" title="Instantiating a Class and Terminology"></a>Instantiating a Class and Terminology</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogLauncher</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">		Dog smallDog;</span><br><span class="line">		<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>);</span><br><span class="line">		smallDog = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">5</span>);</span><br><span class="line">		<span class="type">Dog</span> <span class="variable">hugeDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">150</span>);</span><br><span class="line">		smallDog.makeNoise();</span><br><span class="line">		hugeDog.makeNoise();</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></div>
+<p>我们最开始的<code>DogLauncher</code>实现的功能很简单，只是让它发出了一下声音。但是我们可能会遇到更复杂的情况（如上）</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog smallDog;</span><br></pre></td></tr></table></figure></div>
+<p>Declaration of a Dog variable.声明了一个<code>Dog</code>型的变量，有一个<code>Dog</code>变量叫做<code>smallDog</code>，不过我们目前还没创造出任何种类的狗，也就是没有实例化。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>);</span><br></pre></td></tr></table></figure></div>
+<p>Instantiation of the Dog class as a Dog Object.<br>这会创建一条尺寸为20的<code>Dog</code>，但是不会将它放置在任何地方，在这种情况下，因为没有人使用它，它只会被所谓的垃圾收集器给销毁掉。、<br>意味着，如果实例化<code>Dog</code>，他们将被某种无情的垃圾收集器销毁</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smallDog = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">5</span>);</span><br></pre></td></tr></table></figure></div>
+<p>Instantiation and Assignment.<br>现在呢，如果想要避免失去这条狗，我们会想把它放在某个地方，所以上述代码实例化了一只狗，然后将其分配给一个已经声明的变量。那么这就是实例化和赋值。尽管通常情况下，我们要做的就是同时完成这三项工作。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Dog</span> <span class="variable">hugeDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">150</span>);</span><br></pre></td></tr></table></figure></div>
+<p>Declaration, Instantiation and Assignment.<br>声明有一个名为<code>HugeDog</code>的变量，我们实例化它，然后将<code>new Dog</code>分配给这个变量</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugeDog.makeNoise();</span><br></pre></td></tr></table></figure></div>
+<p>Invocation of the 150lb Dog’s makeNoise method.<br>The dot notation means that we want to use a method or variable belonging to hugeDog,or more succinctly, a member of hugeDog.<br>在这里有一些调用，在这里，我们想要<code>HugeDog</code>调用<code>makeNoise</code>方法。可以将这个<code>.</code>视为其成员的意思，所以它属于<code>hugeDog</code>这类。</p>
+<h2 id="Video-d-Arrays-of-Objects"><a href="#Video-d-Arrays-of-Objects" class="headerlink" title="Video d:Arrays of Objects"></a>Video d:Arrays of Objects</h2><p>To create an array of objects:</p>
+<ul>
+<li>First use the new keyword to create the array.</li>
+<li>Then use new again for each object that you want to put in the array.<br>Example:<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Dog[] dogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[<span class="number">2</span>];  <span class="comment">//Create an array of Dogs of size 2.</span></span><br><span class="line">dogs[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">8</span>);</span><br><span class="line">dogs[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>);</span><br><span class="line">dogs[<span class="number">0</span>].makeNoise();  <span class="comment">//Yipping occurs</span></span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>After code runs<br>![[Pasted image 20240107170741.png]]<br>在项目0中，不仅要创建对象，还要创建对象数组。<br>那么，如果想要创建一个对象数组而不是整数数组，那么就要以两种不同的方式使用<code>new</code>，首先要使用<code>new</code>来创建一个实际的数组。<br>此时还没有创建任何<code>Dog</code>，可以把这个操作想象成建造了目前空着的狗屋，然后后面才会说，在狗屋0中放一只小狗，在狗屋1中放一只中型狗。这样在最后就可以看见两个狗屋辣。</p>
+<p>然后我们可以问，嘿，狗屋0里的那个，发出声音，然后它就会<code>YipYipYip</code></p>
+<h1 id="Class-3"><a href="#Class-3" class="headerlink" title="Class 3"></a>Class 3</h1><h2 id="Video-a-Static-vs-Instance-Methods"><a href="#Video-a-Static-vs-Instance-Methods" class="headerlink" title="Video a:Static vs Instance Methods"></a>Video a:Static vs Instance Methods</h2><p>我们现在知道什么<br>Key differences between static and non-static (a.k.a instance) methods:</p>
+<ul>
+<li>Static methods are invoke using the class name, e.g. Dog.makeNoise();</li>
+<li>Instance methods are invoked using an instance name, e.g. maya.makeNoise();</li>
+<li>Static methods can’t access “my” instance variables, because there is no “me”.<br>Static<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;Bark!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+This method cannot access weightlnPound.<br>Invocation:<code>Dog.makeNoise();</code><br>目前我们知道存在静态方法（在声明中包含静态一词）和非静态方法（也被称为实例方法），他们没有静态方法。因此<br>静态方法是使用类名调用的。<br>所以当我们想要调用的时候，就要选择上述的方式<br>Non-static<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(weightInPounds &lt; <span class="number">10</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;yipyipyip&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (weightInPounds &lt; <span class="number">30</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;bark, bark.&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;woof&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+Invocation:<code>maya = newDog(100); maya.makeNoise();</code><br>而这种即时方法，是使用实例名称调用的。所以创建了一个特定的<code>Dog</code>并说发出声音</li>
+</ul>
+<p>他们之间的重要区别是 静态方法不能访问实例变量，就是对于静态而言，不能用<code>System.out.println(&quot;makeNoise()&quot;);</code>这样，传入不了实际的变量。而对于非静态方法的话，就是创建出来了一个新的狗并赋予了实际变量，然后就可以通过调用函数输出特定的声音。</p>
+<p>虽然非静态方法非常的强势，但是静态方法也有它的用武之地，例如某些类从来没有被实例化，例如数学类，我们通常会这么做：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = Math.round(<span class="number">5.6</span>);</span><br></pre></td></tr></table></figure></div>
+<p>这明显要比</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Math</span> <span class="variable">m</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Math</span>();</span><br><span class="line">x = m.round();</span><br></pre></td></tr></table></figure></div>
+<p>看来要好很多<br>也就是说，静态方法自然有他们用起来更自然的地方。</p>
+<p>现在，有时类实际上也可以混合使用，可以拥有一个即是静态方法又是非静态方法的类<br>看实例<br>假设我们现在要对<code>Dog</code>实现一个方法能够比较两只狗。<br>所以这个时候需要制作另一只狗，需要在<code>DogLauncher</code>中</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Dog</span> <span class="variable">d2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure></div>
+<p>然后例如我们要实现比大小，例如比较</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Dog</span> <span class="variable">bigger</span> <span class="operator">=</span> Dog.maxDog(d, d2);</span><br></pre></td></tr></table></figure></div>
+<p>这个时候我们想要用一个比较公平的裁判来解决这个问题。那么，我们在Dog中解决这个方法</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Dog <span class="title function_">maxDog</span><span class="params">(Dog d1, Dog d2)</span>&#123; <span class="comment">//不要忘记加返回类型和静态哦（因为是用类名调用该方法</span></span><br><span class="line">        <span class="keyword">if</span>(d1.weightInPounds &gt; d2.weightInPounds)</span><br><span class="line">            <span class="keyword">return</span> d1;</span><br><span class="line">        <span class="keyword">return</span> d2;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+<p>试验一下<br>![[Pasted image 20240110091345.png]]<br>显然这并没有输出，那么需要加上一句让大狗发出声音的语句</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bigger.makeNoise();</span><br></pre></td></tr></table></figure></div>
+<p>![[Pasted image 20240110091642.png]]</p>
+<p>那么可以用非静态方法解决这个问题吗？当然是可以的</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogLaunch</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123; </span><br><span class="line">        <span class="type">Dog</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>);</span><br><span class="line">        <span class="type">Dog</span> <span class="variable">d2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">Dog</span> <span class="variable">bigger</span> <span class="operator">=</span> d.maxDog(d2);</span><br><span class="line">        bigger.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123; </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> weightInPounds;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">(<span class="type">int</span> w)</span> &#123;</span><br><span class="line">        weightInPounds = w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">makeNoise</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(weightInPounds &lt; <span class="number">10</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;yip!&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (weightInPounds &lt; <span class="number">30</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;bark!&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;wooooof!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Dog <span class="title function_">maxDog</span><span class="params">(Dog d1, Dog d2)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(d1.weightInPounds &gt; d2.weightInPounds)</span><br><span class="line">            <span class="keyword">return</span> d1;</span><br><span class="line">        <span class="keyword">return</span> d2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Dog <span class="title function_">maxDog</span><span class="params">(Dog d2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(weightInPounds &gt; d2.weightInPounds)</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">        <span class="keyword">return</span> d2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>![[Pasted image 20240110092342.png]]<br>编译之后依旧得到woooof！在这种情况下，这只狗会自己进行判断自己的体重和另一只狗的体重哪个重。<br>上述是两种方法，一种是加入评委，一种是自己判断大小</p>
+<p>作为一个快速说明，我们也可以定义静态变量。他们是适用于所有狗的属性，所有狗共享这个属性，例如我们给这些狗添加一个种类</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">binomen</span> <span class="operator">=</span> <span class="string">&quot;Canis familiar&quot;</span>;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(d.binomen);</span><br><span class="line">System.out.println(d2.binomen);</span><br></pre></td></tr></table></figure></div>
+<p>![[Pasted image 20240110093004.png]]<br>但是对于上述的d1和d2并不是一种很有效的方式。例如我并不会问嘿那条狗，你的学名是什么，而应该是问，这些狗的学名是什么。上述方式相对来说会令人比较困惑。所以，如果我们有一个静态变量的话，那么就使用类名作为一种好一些方式来确保我们知道我们正在处理什么。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Dog.binomen);</span><br></pre></td></tr></table></figure></div>
+
+<p>Some knowledgepoint</p>
+<h3 id="Static-vs-Non-static"><a href="#Static-vs-Non-static" class="headerlink" title="Static vs. Non-static"></a>Static vs. Non-static</h3><p>A class may have a mix of static and non-static <em>members</em>.</p>
+<ul>
+<li>A variable or method defined in a class is also called a member of that class.</li>
+<li>Static members are accessed using class name, e.g. Dog.binomen.</li>
+<li>Non-static members <strong>cannot</strong> be invoked using class name:<del>Dog.makeNoise()</del></li>
+<li>Static method must access instance variables via a specfic instance e.g. d1.</li>
+</ul>
+<h2 id="Video-b-Exercise"><a href="#Video-b-Exercise" class="headerlink" title="Video b:Exercise"></a>Video b:Exercise</h2><p>Question:Will this program compile? If so, what will it print?</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogLoop</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">		<span class="type">Dog</span> <span class="variable">smallDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">5</span>);</span><br><span class="line">		<span class="type">Dog</span> <span class="variable">mediumDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">25</span>);</span><br><span class="line">		<span class="type">Dog</span> <span class="variable">hugeDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">150</span>);</span><br><span class="line">	</span><br><span class="line">		Dog[] manyDogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[<span class="number">4</span>];</span><br><span class="line">		manyDogs[<span class="number">0</span>] = smallDog;</span><br><span class="line">		manyDogs[<span class="number">1</span>] = hugeDog;</span><br><span class="line">		manyDogs[<span class="number">2</span>] = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">130</span>);</span><br><span class="line"></span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(i &lt; manyDogs.length) &#123;</span><br><span class="line">			Dog.maxDog(manyDogs[i], mediumDog).makeNoise();</span><br><span class="line">			i = i + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="Video-c-Exercise-Solution"><a href="#Video-c-Exercise-Solution" class="headerlink" title="Video c:Exercise Solution"></a>Video c:Exercise Solution</h2><p>在这个网站当中可以将每一步可视化，建议点入之后操作[<a class="link"   target="_blank" rel="noopener" href="http://goo.gl/HLzN6s]%EF%BC%8C%E8%AE%A4%E7%9C%9F%E6%9F%A5%E7%9C%8B%E9%97%AE%E9%A2%98%E6%89%80%E5%9C%A8%E5%92%8C%E7%BB%93%E6%9E%9C%EF%BC%8C" >http://goo.gl/HLzN6s]，认真查看问题所在和结果， <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>答案是</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bark!</span><br><span class="line">woof!</span><br><span class="line">woof!</span><br><span class="line"></span><br><span class="line">Error:...</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="Class-4"><a href="#Class-4" class="headerlink" title="Class 4"></a>Class 4</h1><h2 id="Video-a-Managing-Complexity-LargerThanFourNeighbors"><a href="#Video-a-Managing-Complexity-LargerThanFourNeighbors" class="headerlink" title="Video a:Managing Complexity, LargerThanFourNeighbors"></a>Video a:Managing Complexity, LargerThanFourNeighbors</h2><h3 id="Managing-Complexity-with-Classes-and-Static-Methods"><a href="#Managing-Complexity-with-Classes-and-Static-Methods" class="headerlink" title="Managing Complexity with Classes and Static Methods"></a>Managing Complexity with Classes and Static Methods</h3><h4 id="Some-obvious-questions-arise"><a href="#Some-obvious-questions-arise" class="headerlink" title="Some obvious questions arise:"></a>Some obvious questions arise:</h4><ul>
+<li>Why does Java force us to use classes?</li>
+<li>Why have static methods at all?</li>
+</ul>
+<h4 id="The-Reason"><a href="#The-Reason" class="headerlink" title="The Reason:"></a>The Reason:</h4><ul>
+<li>Fewer choices means fewer ways to do things.<ul>
+<li>Example：Declaring a method static means you can’t use any instance variables in that method.</li>
+</ul>
+</li>
+<li>Fewer ways to do things often means less <strong>complexity</strong></li>
+</ul>
+<p>更少的选择意味着做事的方法更少，如果将一个方法设置为静态，就会对可能得情况施加限制。例如不能使用实例变量。<br>从根本来说，就是降低代码的复杂性</p>
+<h3 id="Goal-largerThanFourNeighbors"><a href="#Goal-largerThanFourNeighbors" class="headerlink" title="Goal: largerThanFourNeighbors"></a>Goal: largerThanFourNeighbors</h3><hr>
+<p>Suppose we want to write a method:</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Dog[] largerThanFourNeighbors(Dog[] dogs)</span><br></pre></td></tr></table></figure></div>
+
+<p>This method will return a new array that contains every Dog that is larger than its 4 closest neighbors, i.e. the two on the left and the two in the right.If there are not enough neighbors, i.e. you ‘re at the end of the array, then consider just the neighbrs that exist.For example:</p>
+<ul>
+<li>input:Dog with size [ 10, 20, <strong>30</strong>, 25, 20, <strong>40</strong>, 10 ]</li>
+<li>Returns: Dog with size[ 30, 40].<ul>
+<li>30 is the larger than 10,20,25 and 20.</li>
+<li>40 is greater than 25, 20, and 10</li>
+</ul>
+</li>
+</ul>
+<p>If input Dog sizes are[10, 15, 20, 15, 10, 5, 10, 15, 22, 20],what will be the size of the Dogs returned？</p>
+<p>It Will be [20, 22]</p>
+<h2 id="Video-b-LargerThanFourNeighbors-With-No-Helper-Methods"><a href="#Video-b-LargerThanFourNeighbors-With-No-Helper-Methods" class="headerlink" title="Video b:LargerThanFourNeighbors With No Helper Methods"></a>Video b:LargerThanFourNeighbors With No Helper Methods</h2><p>在不考虑策略的情况下暂时完成code:<br>打开Intellij</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogProblem</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> staitc Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;</span><br><span class="line">		<span class="keyword">return</span> dogs;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">		Dog[] dogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[] &#123;</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">5</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">22</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),</span><br><span class="line">			<span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>)</span><br><span class="line">		&#125;;</span><br><span class="line">		Dog[] bigDogs1 = largerThanFourNeighbors(dogs);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; bigDogs1.length; k ++)&#123;</span><br><span class="line">			System.out.print(bigDogs1[k].weightInPounds + <span class="string">&quot; &quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>先键入这些基础的输入输出语句，我们的函数目前只能返回<code>dogs</code>。<br>所以首先我们看向我们的larger函数，那么我们首先要做的只能是迭代所有的狗，这看起来很自然，不过棘手的问题是如何迭代邻居们。<br>一个想法是：如果我们从-2到2，那么这应该是迭代狗的邻居。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; dogs.length; i ++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++)&#123;</span><br><span class="line">	<span class="type">Dog</span> <span class="variable">neighborDog</span> <span class="operator">=</span> dogs[i + j]</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>接下来就要处理边界的一些问题，例如我们如果从0开始的话，那么<code>i + j</code>最开始是-2，很明显是数组越界的行为，还有如果j到了数组的最右边，同样也会存在数组越界的问题。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> staitc Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; dogs.length; i ++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++)&#123;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span>(i + j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i + j &gt;= dogs.length) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="type">Dog</span> <span class="variable">neighborDog</span> <span class="operator">=</span> dogs[i + j];</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>那么有了这只邻居狗之后，我们应该如何做呢？<br>定义一个布尔值，默认是正确的，来定义默认情况下我们本身就是最大的狗，但如果邻居狗的体重大于或者等于当前狗的体重，那么最大就是假的，那么有一个重要的事实是，在边界问题上，如果j&#x3D;0，那么就会将自己和自己进行比较，那么显然是没必要的，那么代码如下</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> staitc Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; dogs.length; i ++)&#123;</span><br><span class="line">		<span class="type">boolean</span> <span class="variable">largest</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i + j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i + j &gt;= dogs.length) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(j == <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="type">Dog</span> <span class="variable">neighborDog</span> <span class="operator">=</span> dogs[i + j];</span><br><span class="line">			<span class="keyword">if</span>(neighborDog.weightInPounds &gt;= dogs[i].weightInPounds) &#123;</span><br><span class="line">				largest = <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>这只是考虑，但是发现有一些复杂</p>
+<h2 id="Video-c-LargeThanFourNeighbors-With-Helper-Methods"><a href="#Video-c-LargeThanFourNeighbors-With-Helper-Methods" class="headerlink" title="Video c:LargeThanFourNeighbors With Helper Methods"></a>Video c:LargeThanFourNeighbors With Helper Methods</h2><p>Open Intellij<br>接下来我们使用一些辅助方法来编写代码，辅助方法的好处是让我们在编辑他们之前先使用他们。<br>那么最初的框架就是</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; dogs.length; i ++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(isBiggestOfFour(dogs, i)) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先拆出来一个问题：是不是邻居四个当中的一个</span></span><br><span class="line"><span class="comment">/* Return true if dogs[i] is larger than its four neighbors */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isBiggestFour</span><span class="params">(Dog[] dogs, <span class="type">int</span> i)</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>拆出问题之后，我们来继续完成主函数<br>因为主函数最后返回的值是一个Dog类型的数组，那么，我们就要定义一个返回数组和要返回的数组的大小</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;</span><br><span class="line">	Dog[] returnDogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[dogs.length];</span><br><span class="line">	<span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">	...<span class="comment">//内容同上</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>然后我们对如果这个狗是它的四个邻居当中最大的，那么我们将答案传递给我们最后要返回的那个Dog组，然后完成主函数<code>return returnDogs;</code></p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;</span><br><span class="line">	Dog[] returnDogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[dogs.length];</span><br><span class="line">	<span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; dogs.length; i ++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(isBiggestOfFour(dogs, i)) &#123;</span><br><span class="line">			returnDogs[cnt] = dogs[i];</span><br><span class="line">			cnt ++; <span class="comment">//这样有利于我们进行统计</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> returnDogs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这段代码正确的叙述了读取它，得到返回值。<br>我们通过i小于等于数组的长度来遍历这一整个大的数组。如果是四个当中最大的，那么我们将它添加到这个新的数组当中并返回它。<br>我们现在回到第二个函数，因为对于主函数我们已经不用考虑它了，接下来我们只需要考虑给出是或否的答案就可以了。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">isBiggest</span> <span class="operator">=</span> <span class="literal">true</span>;  </span><br><span class="line">      </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++) &#123;  </span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>我们依旧默认最大值为真。<br>在前面的实例中，我们使用了一堆if语句，当然，在这里，我们还是可以选择用辅助方法来解决这个问题</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">validIndex</span><span class="params">(Dog[] dogs, <span class="type">int</span> i)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span>(i &lt; <span class="number">0</span>)  </span><br><span class="line">       <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    <span class="keyword">if</span>(i &gt;= dogs.length)  </span><br><span class="line">       <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在我们实现完这个函数之后，我们回头看调用它的那个方法，对于方法来讲，我们只需要完成比较的那一部分即可</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isBiggestOfFour</span><span class="params">(Dog[] dogs,<span class="type">int</span> i)</span> &#123;  </span><br><span class="line">    <span class="type">boolean</span> <span class="variable">isBiggest</span> <span class="operator">=</span> <span class="literal">true</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++) &#123;  </span><br><span class="line">       <span class="type">int</span> <span class="variable">comparedIndex</span> <span class="operator">=</span> i + j;  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">if</span>(validIndex(dogs, comparedIndex)) &#123;  </span><br><span class="line">          <span class="keyword">if</span>(dogs[comparedIndex].weightInPounds &gt;= dogs[i].weightInPounds) &#123;  </span><br><span class="line">             isBiggest = <span class="literal">false</span>;  </span><br><span class="line">          &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> isBiggest;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>但是在完成这项之后，我们发现我们似乎遗漏掉了对自己和自己进行比较的情况</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isBiggestOfFour</span><span class="params">(Dog[] dogs,<span class="type">int</span> i)</span> &#123;  </span><br><span class="line">    <span class="type">boolean</span> <span class="variable">isBiggest</span> <span class="operator">=</span> <span class="literal">true</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++) &#123;  </span><br><span class="line">       <span class="type">int</span> <span class="variable">comparedIndex</span> <span class="operator">=</span> i + j; <span class="comment">//只是命名来方便叙述  </span></span><br><span class="line">       <span class="keyword">if</span>(validIndex(dogs, comparedIndex)) &#123;  </span><br><span class="line">          <span class="comment">// avoid comparing ourself to ourself.  </span></span><br><span class="line">          <span class="keyword">if</span>(j == <span class="number">0</span>) &#123;  </span><br><span class="line">             <span class="keyword">continue</span>;  </span><br><span class="line">          &#125;  </span><br><span class="line">          <span class="keyword">if</span>(dogs[comparedIndex].weightInPounds &gt;= dogs[i].weightInPounds) &#123;  </span><br><span class="line">             isBiggest = <span class="literal">false</span>;  </span><br><span class="line">          &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> isBiggest;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这样即可<br>尝试找出如何让程序更加漂亮。<br>整个程序如下</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Lecture2;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogProblem</span> &#123;    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;  </span><br><span class="line">       Dog[] returnDogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[dogs.length];  </span><br><span class="line">       <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; dogs.length;i ++) &#123;  </span><br><span class="line">          <span class="keyword">if</span>(isBiggestOfFour(dogs, i)) &#123;  </span><br><span class="line">             returnDogs[cnt] = dogs[i];  </span><br><span class="line">             cnt ++;  </span><br><span class="line">          &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">       <span class="keyword">return</span> returnDogs;  </span><br><span class="line">    &#125;  </span><br><span class="line"><span class="comment">/* Return true if dogs[i] is larger than its four neighbors */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isBiggestOfFour</span><span class="params">(Dog[] dogs,<span class="type">int</span> i)</span> &#123;  </span><br><span class="line">       <span class="type">boolean</span> <span class="variable">isBiggest</span> <span class="operator">=</span> <span class="literal">true</span>;  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++) &#123;  </span><br><span class="line">          <span class="type">int</span> <span class="variable">comparedIndex</span> <span class="operator">=</span> i + j; <span class="comment">//只是命名来方便叙述  </span></span><br><span class="line">          <span class="keyword">if</span>(validIndex(dogs, comparedIndex)) &#123;  </span><br><span class="line">             <span class="comment">// avoid comparing ourself to ourself.  </span></span><br><span class="line">             <span class="keyword">if</span>(j == <span class="number">0</span>) &#123;  </span><br><span class="line">                <span class="keyword">continue</span>;  </span><br><span class="line">             &#125;  </span><br><span class="line">             <span class="keyword">if</span>(dogs[comparedIndex].weightInPounds &gt;= dogs[i].weightInPounds) &#123;  </span><br><span class="line">                isBiggest = <span class="literal">false</span>;  </span><br><span class="line">             &#125;  </span><br><span class="line">          &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">       <span class="keyword">return</span> isBiggest;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">validIndex</span><span class="params">(Dog[] dogs, <span class="type">int</span> i)</span> &#123;  </span><br><span class="line">       <span class="keyword">if</span>(i &lt; <span class="number">0</span>)  </span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">       <span class="keyword">if</span>(i &gt;= dogs.length)  </span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">       <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;  </span><br><span class="line">       Dog[] dogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[] &#123;  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">5</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">22</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>)  </span><br><span class="line">       &#125;;  </span><br><span class="line">       Dog[] bigDogs1 = largerThanFourNeighbors(dogs);  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; bigDogs1.length; k ++)&#123;  </span><br><span class="line">          System.out.print(bigDogs1[k].weightInPounds + <span class="string">&quot; &quot;</span>);  </span><br><span class="line">       &#125;  </span><br><span class="line">       System.out.println();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>![[Pasted image 20240113142014.png]]<br>我们得到了20和22，这是正确的结果，但是为什么后面还有一串错误信息呢，是因为在答案数组的最后有很多空值，其实这个并没有什么问题，只是会输出这样的信息。我们可以选择用一个方法来消除这个错误</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//cnt is the number of non-null items  </span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Dog[] arrayWithNoNulls(Dog[] dogs, <span class="type">int</span> cnt) &#123;  </span><br><span class="line">    Dog[] noNullDogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[cnt];  </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; cnt; i ++) &#123;  </span><br><span class="line">       noNullDogs[i] = dogs[i];  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> noNullDogs;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>最终代码如下</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Lecture2;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DogProblem</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Dog[] largerThanFourNeighbors(Dog[] dogs) &#123;  </span><br><span class="line">       Dog[] returnDogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[dogs.length];  </span><br><span class="line">       <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; dogs.length;i ++) &#123;  </span><br><span class="line">          <span class="keyword">if</span>(isBiggestOfFour(dogs, i)) &#123;  </span><br><span class="line">             returnDogs[cnt] = dogs[i];  </span><br><span class="line">             cnt ++;  </span><br><span class="line">          &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">  </span><br><span class="line">       returnDogs = arrayWithNoNulls(dogs, cnt);  </span><br><span class="line">       <span class="keyword">return</span> returnDogs;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">//cnt is the number of non-null items  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Dog[] arrayWithNoNulls(Dog[] dogs, <span class="type">int</span> cnt) &#123;  </span><br><span class="line">       Dog[] noNullDogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[cnt];  </span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; cnt; i ++) &#123;  </span><br><span class="line">          noNullDogs[i] = dogs[i];  </span><br><span class="line">       &#125;  </span><br><span class="line">       <span class="keyword">return</span> noNullDogs;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/* Return true if dogs[i] is larger than its four neighbors */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isBiggestOfFour</span><span class="params">(Dog[] dogs,<span class="type">int</span> i)</span> &#123;  </span><br><span class="line">       <span class="type">boolean</span> <span class="variable">isBiggest</span> <span class="operator">=</span> <span class="literal">true</span>;  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> -<span class="number">2</span>; j &lt;= <span class="number">2</span>;j ++) &#123;  </span><br><span class="line">          <span class="type">int</span> <span class="variable">comparedIndex</span> <span class="operator">=</span> i + j; <span class="comment">//只是命名来方便叙述  </span></span><br><span class="line">          <span class="keyword">if</span>(validIndex(dogs, comparedIndex)) &#123;  </span><br><span class="line">             <span class="comment">// avoid comparing ourself to ourself.  </span></span><br><span class="line">             <span class="keyword">if</span>(j == <span class="number">0</span>) &#123;  </span><br><span class="line">                <span class="keyword">continue</span>;  </span><br><span class="line">             &#125;  </span><br><span class="line">             <span class="keyword">if</span>(dogs[comparedIndex].weightInPounds &gt;= dogs[i].weightInPounds) &#123;  </span><br><span class="line">                isBiggest = <span class="literal">false</span>;  </span><br><span class="line">             &#125;  </span><br><span class="line">          &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">       <span class="keyword">return</span> isBiggest;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">validIndex</span><span class="params">(Dog[] dogs, <span class="type">int</span> i)</span> &#123;  </span><br><span class="line">       <span class="keyword">if</span>(i &lt; <span class="number">0</span>)  </span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">       <span class="keyword">if</span>(i &gt;= dogs.length)  </span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">       <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;  </span><br><span class="line">       Dog[] dogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[] &#123;  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">5</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">10</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">22</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">15</span>),  </span><br><span class="line">          <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="number">20</span>)  </span><br><span class="line">       &#125;;  </span><br><span class="line">       Dog[] bigDogs1 = largerThanFourNeighbors(dogs);  </span><br><span class="line">  </span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; bigDogs1.length; k ++)&#123;  </span><br><span class="line">          System.out.print(bigDogs1[k].weightInPounds + <span class="string">&quot; &quot;</span>);  </span><br><span class="line">       &#125;  </span><br><span class="line">       System.out.println();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>![[Pasted image 20240113143928.png]]这段代码包含很多东西<br>首先叙述性更好<br>其次编写时更容易正确执行<br>再次如果遇到到麻烦，则更容易调试</p>
+<p><strong>用好辅助方法，会事半功倍</strong></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> Hello World</li>
+        <li><strong>作者:</strong> Wang LuoQiu</li>
+        <li><strong>创建于
+                :</strong> 2024-03-20 22:21:05</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-03-20 22:24:19
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://github.com/PrimeLuoQiu/2024/03/20/计算机网络/Lecture2-Defining and Using Classes 类的定义和实例化/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Lecture3-List%201%20Refrence%20Recursion%20and%20Lists/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Lecture1-Introduction/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">Hello World</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Class-2"><span class="nav-text">Class 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-a-Defining-and-Instantiating-Classes"><span class="nav-text">Video a:Defining and Instantiating Classes.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dog"><span class="nav-text">Dog</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-b-Defining-and-Instantianing-Classes"><span class="nav-text">Video b:Defining and Instantianing Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-Instantiation"><span class="nav-text">Object Instantiation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-c-Terminology"><span class="nav-text">Video c:Terminology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Instantiating-a-Class-and-Terminology"><span class="nav-text">Instantiating a Class and Terminology</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-d-Arrays-of-Objects"><span class="nav-text">Video d:Arrays of Objects</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Class-3"><span class="nav-text">Class 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-a-Static-vs-Instance-Methods"><span class="nav-text">Video a:Static vs Instance Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-vs-Non-static"><span class="nav-text">Static vs. Non-static</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-b-Exercise"><span class="nav-text">Video b:Exercise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-c-Exercise-Solution"><span class="nav-text">Video c:Exercise Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Class-4"><span class="nav-text">Class 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-a-Managing-Complexity-LargerThanFourNeighbors"><span class="nav-text">Video a:Managing Complexity, LargerThanFourNeighbors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Managing-Complexity-with-Classes-and-Static-Methods"><span class="nav-text">Managing Complexity with Classes and Static Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Goal-largerThanFourNeighbors"><span class="nav-text">Goal: largerThanFourNeighbors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-b-LargerThanFourNeighbors-With-No-Helper-Methods"><span class="nav-text">Video b:LargerThanFourNeighbors With No Helper Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-c-LargeThanFourNeighbors-With-Helper-Methods"><span class="nav-text">Video c:LargeThanFourNeighbors With Helper Methods</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Wang LuoQiu</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 15 篇文章
+                    </span>
+                    
+                        <span>
+                            共 20.8k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

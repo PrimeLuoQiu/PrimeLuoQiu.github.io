@@ -13,18 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://PrimeLuoQiu.github.io/about/"/>
+    <link rel="canonical" href="https://PrimeLuoQiu.github.io/2024/03/20/计算机网络/lecture5 - list3 dllist and arrays/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="abot">
-<meta property="og:url" content="https://primeluoqiu.github.io/about/index.html">
+        <meta name="description" content="之前说到的SLList还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于addLast函数而言，还是相对来说比较缓慢地，效率也是比较低的。 就像是最一开始的size函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了 那便是remove操作，那么如果我们想要删除一个节点的话，那么我们只能首">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lecture 5 - List3">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Lecture5%20-%20List3%20DLList%20And%20Arrays/index.html">
 <meta property="og:site_name" content="秋过冬漫长">
+<meta property="og:description" content="之前说到的SLList还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于addLast函数而言，还是相对来说比较缓慢地，效率也是比较低的。 就像是最一开始的size函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了 那便是remove操作，那么如果我们想要删除一个节点的话，那么我们只能首">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-23T09:13:50.000Z">
-<meta property="article:modified_time" content="2024-03-23T09:13:50.763Z">
+<meta property="article:published_time" content="2024-03-20T14:21:05.839Z">
+<meta property="article:modified_time" content="2024-03-21T13:56:27.690Z">
 <meta property="article:author" content="LuoQiu">
 <meta name="twitter:card" content="summary">
     
@@ -38,7 +40,7 @@
     
     <title>
         
-            abot -
+            Lecture 5 - List3 -
         
         落秋的小屋
     </title>
@@ -611,19 +613,261 @@
             <div class="main-content">
 
                 
-                    <div class="page-template-container">
-    
-    
-    
-    <div class="page-template-content markdown-body">
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">Lecture 5 - List3</h1>
+                </div>
+            
+            </div>
+
         
-            <h1>abot</h1>
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://img2.imgtp.com/2024/03/18/fitTEwGW.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Wang LuoQiu</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-03-20 22:21:05</span>
+        <span class="mobile">2024-03-20 22:21:05</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-03-21 21:56:27</span>
+            <span class="mobile">2024-03-21 21:56:27</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CS61B/">CS61B</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>之前说到的<code>SLList</code>还是很不错的，不过目前来看的话它存在了一个新的问题，就是对于<code>addLast</code>函数而言，还是相对来说比较缓慢地，效率也是比较低的。</p>
+<p>就像是最一开始的<code>size</code>函数，那么我们有什么办法可以提高它的效率呢，我们可以在中间人那里再定义一个last函数用来保存最后一个节点的地址，不过这样的话，就会有新的操作效率较慢了</p>
+<p>那便是<code>remove</code>操作，那么如果我们想要删除一个节点的话，那么我们只能首先遍历到节点那里，然后删除这个节点的指针，然后再将<code>last</code>的那个指针指向删除的节点的前一个节点。这听起来实在是太麻烦了，所以这种方法似乎也是不可取的。那么还有什么别的方法吗</p>
+<p>那么，我们就想到能不能就是给每一个节点添加一个当前节点的前置节点的指针呢？答案是可以的</p>
+<p>这种每个节点都有两个链接的列表叫做双向链表</p>
+<p>完成这种方法之后，我们的添加在头部和尾部，删除头部和尾部的方法就会变得十分的快，不过在中间的节点操作相对来说就会比较慢。</p>
+<p>不过这样的链表还是会存在一个 限制有这样一种情况：最后一个节点的next指针有的时候指向最开始的哨兵节点，有的时候指向我们称之的<code>最开始的节点(real node)</code>。那么就有可能需要我们在后面再去写相关的判断语句来判断它是否真的是哨兵节点。</p>
+<p>为了避免这种麻烦的情况，我们尝试让他变得更纯粹一些。</p>
+<pre><code>所以为了完善我们的方法的最自然的方法就是添加第二个哨兵，然后让着第二个哨兵来指向最后一个节点，我们不再是一个指向最后一项的一个指针，而是在开始和末尾两端都添加一个哨兵（因为此时我们已经有了prev和next指针），这样的话，前面就有一个哨兵，后面也有一个哨兵了，那么这样再添加节点或者项目的时候，就只需要将节点滑入这两个哨兵之间就可以了
+
+那么其实还有一种办法，这里依旧还是只有一个哨兵，它既是前面的哨兵也是后面的哨兵
+
+![[../一些截图（笔记用）/Pasted image 20240226134251.png]]
+就像这里的，先指向哨兵节点，然后指向3，指向9，最终再回到sentinal.所以这实际上更像一个循环。
+</code></pre>
+<p>不过即便是这样，还是会有一个限制，就是说在现实世界中不太好使，就是说，如果我们要添加的东西是数字时，它会非常的好用，但是如果我们添加的是字符串或者字符呢？我们又该怎么办，例如</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLListLauncher</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	<span class="type">SLList</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SLList</span>(<span class="string">&quot;Bone&quot;</span>);</span><br><span class="line">	s1.addFirst(<span class="string">&quot;thugs&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>也就是说，我们不能将字符串转化成整数这样的报错。</p>
+<p>我们可以选择重新创建一个全新的<code>SLList</code>类，不过这意味着我们还需要重新写一遍我们的类。这听起来可太麻烦了。</p>
+<p>不过，还有一种方法就是使<code>SLList</code>参数化，我们可以参数化<code>SLList</code>将采用的类型，这应该如何操作呢</p>
+<p>就是我们要在<code>SLList</code>后面添加新的尖括号<code>&lt;&gt;</code>，然后在尖括号里面添加任意的字符串，例如<code>LochNess</code>，这是充当创建<code>SLList</code>时尚未决定的类型的占位符，因此这个时候我们将使用<code>LochNess</code>来代替<code>int</code>项，然后这个时候我们也会将我们创建一个节点的名字改成</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private class StuffNode(LochNess i, StuffNode n) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>定义是这样的</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SLList</span>&lt;LochNess&gt; &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">StuffNode</span> &#123;</span><br><span class="line">		<span class="keyword">public</span> LochNess item;</span><br><span class="line">		<span class="keyword">public</span> StuffNode next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这个时候我们只需要将main函数修改一下即可</p>
+<p>现在想要创建一个<code>SLList</code>的话，需要指定一个类型</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SLList&lt;String&gt; s1 = <span class="keyword">new</span> <span class="title class_">SLList</span>&lt;String&gt;(<span class="string">&quot;bone&quot;</span>); <span class="comment">//定义并实例化</span></span><br></pre></td></tr></table></figure></div>
+<p>然后就正常工作了。</p>
+<p>在我们使用的时候，我们往&lt;&gt;里传什么，对应的函数里的&lt;&gt;也会传什么，所以它基本上是一个类型变量或类型参数</p>
+<p>在更现代的java中，不再需要在实例化方面指定类型，也是行得通的。</p>
+<p>在指定类型的时候，只需要指定一次计科，可以在其他地方多次使用它。使用的时候尖括号内的首字母需要<strong>大写</strong>!!!</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> Lecture 5 - List3</li>
+        <li><strong>作者:</strong> Wang LuoQiu</li>
+        <li><strong>创建于
+                :</strong> 2024-03-20 22:21:05</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-03-21 21:56:27
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://github.com/PrimeLuoQiu/2024/03/20/计算机网络/Lecture5 - List3 DLList And Arrays/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/03/21/Algorithm/sort/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">acwing -堆排序</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Lecture4-List%202%20SLLists/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
         
     </div>
-    <div class="page-template-comments">
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">Lecture 5 - List3</div>
         
+
     </div>
 </div>
+        </div>
+    
+</div>
+
 
 
                 
@@ -710,6 +954,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
