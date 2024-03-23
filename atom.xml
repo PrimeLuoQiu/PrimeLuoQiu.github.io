@@ -6,7 +6,7 @@
   <link href="https://primeluoqiu.github.io/atom.xml" rel="self"/>
   
   <link href="https://primeluoqiu.github.io/"/>
-  <updated>2024-03-23T06:19:34.253Z</updated>
+  <updated>2024-03-23T12:46:00.036Z</updated>
   <id>https://primeluoqiu.github.io/</id>
   
   <author>
@@ -17,18 +17,21 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>1.1什么是Internet</title>
+    <title>1.6分组延时、丢失和吞吐量</title>
     <link href="https://primeluoqiu.github.io/2024/03/23/1.6/"/>
     <id>https://primeluoqiu.github.io/2024/03/23/1.6/</id>
     <published>2024-03-23T06:21:33.296Z</published>
-    <updated>2024-03-23T06:19:34.253Z</updated>
+    <updated>2024-03-23T12:46:00.036Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://img2.imgtp.com/2024/03/23/y5YJlSvM.jpg" alt="微信图片_20240323140956.jpg" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br><img src="https://img2.imgtp.com/2024/03/23/y5YJlSvM.jpg" alt="微信图片_20240323140956.jpg" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>]]></content>
+    <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/4XZbDEld.jpg"                      alt="17.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/wc80rluy.jpg"                      alt="18.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/mMM91mwr.jpg"                      alt="19.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/o4jbDSvk.jpg"                      alt="20.jpg"                ></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img2.imgtp.com/2024/03/23/y5YJlSvM.jpg&quot; alt=&quot;微信图片_20240323140956.jpg&quot; loading=&quot;lazy&quot; onerror=&#39;this.onerror=null;this.sr</summary>
+    <summary type="html">&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&quot;/images/loading.svg&quot;
+                     data-src=&quot;https://img2.imgtp.com</summary>
       
     
     
