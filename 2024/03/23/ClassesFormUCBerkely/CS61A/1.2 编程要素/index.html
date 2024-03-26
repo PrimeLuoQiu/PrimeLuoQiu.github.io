@@ -20,13 +20,13 @@
     
         <meta name="description" content="编程语言不仅是一种指挥计算机执行任务的手段，它还应该成为一种框架，使我们能够在其中组织自己有关计算过程的思想。程序也会在社区之间互相分享，那么程序必须是人类可读，且恰巧能够被机器执行。 这样，当我们描述一种语言的时候，就需要特别注意该语言所提供的能够将简单思想组合成复杂思想的工具。那么每一种强大的语言都有这样三种机制  原始表达式和语句：语言所关心的最简单的个体。 组合方法：由简单元素组合构建复合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS61A.Chapter2">
+<meta property="og:title" content="1.2编程要素">
 <meta property="og:url" content="https://primeluoqiu.github.io/2024/03/23/ClassesFormUCBerkely/CS61A/1.2%20%E7%BC%96%E7%A8%8B%E8%A6%81%E7%B4%A0/index.html">
 <meta property="og:site_name" content="秋过冬漫长">
 <meta property="og:description" content="编程语言不仅是一种指挥计算机执行任务的手段，它还应该成为一种框架，使我们能够在其中组织自己有关计算过程的思想。程序也会在社区之间互相分享，那么程序必须是人类可读，且恰巧能够被机器执行。 这样，当我们描述一种语言的时候，就需要特别注意该语言所提供的能够将简单思想组合成复杂思想的工具。那么每一种强大的语言都有这样三种机制  原始表达式和语句：语言所关心的最简单的个体。 组合方法：由简单元素组合构建复合">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-22T16:54:16.694Z">
-<meta property="article:modified_time" content="2024-03-22T16:56:21.324Z">
+<meta property="article:modified_time" content="2024-03-26T15:41:01.453Z">
 <meta property="article:author" content="LuoQiu">
 <meta name="twitter:card" content="summary">
     
@@ -40,7 +40,7 @@
     
     <title>
         
-            CS61A.Chapter2 -
+            1.2编程要素 -
         
         落秋的小屋
     </title>
@@ -619,7 +619,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">CS61A.Chapter2</h1>
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">1.2编程要素</h1>
                 </div>
             
             </div>
@@ -647,8 +647,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-03-23 00:56:21</span>
-            <span class="mobile">2024-03-23 00:56:21</span>
+            <span class="desktop">2024-03-26 23:41:01</span>
+            <span class="mobile">2024-03-26 23:41:01</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -675,12 +675,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>754 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.1k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>11 分钟</span>
         </span>
     
     
@@ -718,6 +718,83 @@
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">max</span>(<span class="number">7.5</span>, <span class="number">9.5</span>)</span><br><span class="line"><span class="number">9.5</span></span><br></pre></td></tr></table></figure></div>
 <p>这个调用表达式包含子表达式(subexpression):在括号之前是运算符表达式，而括号里面是一个以逗号分隔的操作数表达式的列表<br>![[..&#x2F;..&#x2F;Pasted image 20240322110143.png]]<br>运算符指定了一个函数，在对这个调用表达式进行求值时，我们会说，使用参数7.5和9.5来调用函数<code>max</code>，最后返回9.5</p>
 <p>调用表达式中参数的顺序是很重要的。例如，<code>pow</code>函数的第二个参数是第一个参数的幂</p>
+<hr>
+<h3 id="1-2-3-导入库函数"><a href="#1-2-3-导入库函数" class="headerlink" title="1.2.3 导入库函数"></a>1.2.3 导入库函数</h3><p>Python定义了大量的函数，但是默认情况下不能直接用名字来进行调用。Python将已知函数和其他东西组织起来放到了模块中，而这些共同组成了Python库。我们在需要的时候直接调用就可以了。例如<code>math</code>提供了各种熟悉的数学函数</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sqrt(<span class="number">256</span>)</span><br><span class="line"><span class="number">16.0</span></span><br></pre></td></tr></table></figure></div>
+<p><code>operator</code>模块提供了中缀运算符对应的函数:</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> operator <span class="keyword">import</span> add, sub, mul</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>add(<span class="number">14</span>, <span class="number">28</span>)</span><br><span class="line"><span class="number">42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub(<span class="number">100</span>, mul(<span class="number">7</span>, add(<span class="number">8</span>, <span class="number">4</span>)))</span><br><span class="line"><span class="number">16</span></span><br></pre></td></tr></table></figure></div>
+<p><code>import</code>语句需要指定模块名称(例如<code>operator</code> 或 <code>math</code>), 然后列出要导入该模块里的具名函数(例如<code>sqrt</code>)。一个函数被导入后就可以被多次调用。</p>
+<p>使用运算符函数和运算符号之间并没有任何区别。<br>尝试使用函数可能会被阅读文档更能使我们了解函数的行为。</p>
+<hr>
+<h3 id="1-2-4-名称和环境"><a href="#1-2-4-名称和环境" class="headerlink" title="1.2.4 名称和环境"></a>1.2.4 名称和环境</h3><p>编程语言的一个要素就是使用名称来引用计算对象，如果一个值被赋予了名称，我们就说名称绑定到了值上面。</p>
+<p>在Python中，我们可以使用赋值语句建立新的绑定。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>radius = <span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>radius</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> * radius</span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure></div>
+<p>名称也可以通过<code>import</code>语句绑定。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> path <span class="keyword">import</span> pi</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pi * <span class="number">71</span> / <span class="number">233</span></span><br><span class="line"><span class="number">1.00023</span>...</span><br></pre></td></tr></table></figure></div>
+
+<p><code>=</code> 在Python中被称为是赋值符号(assignment operator, 其他语言也是)，赋值是最简单的<strong>抽象</strong>方法，它允许我们使用简单名称来指代符合操作的结果，例如上面计算的<code>area</code>。这样，复杂的程序由复杂性递增的计算对象逐步构建。</p>
+<p>将名称和值绑定买之后通过名称检索可能得值，就意味着解释器必须维护某种内存来记录名称、值和绑定，这种内存就是环境(environment)。</p>
+<p>名称也可以与函数绑定。例如，名称<code>max</code>就和我们之前使用的<code>max</code>函数进行了绑定。与数字不同，函数很难以文本实现，当询问一个函数时，Python会输出一个标识来描述</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">max</span></span><br><span class="line">&lt;built-<span class="keyword">in</span> function <span class="built_in">max</span></span><br></pre></td></tr></table></figure></div>
+
+<p>赋值语句可以为现有函数赋予新名称。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = <span class="built_in">max</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f</span><br><span class="line">&lt;bulit-<span class="keyword">in</span> function <span class="built_in">max</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure></div>
+
+<p>之后再次赋值可以将已有名称与新值绑定。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在Python中，名称通常被称为·”变量名 variable names”或”变量 variables”,因为它们可以在执行程序中的过程与不同的值绑定。当一个变量通过赋值语句与一个新值绑定，它就不再绑定以前的值。甚至可以将内置名称和新值绑定。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = x + <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></div>
+
+<p>还可以在单个语句中为多个变量分配值，左右都用括号隔开</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>area, circumference = pi * radius * radius, <span class="number">2</span> * pi * radius</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>area</span><br><span class="line"><span class="number">314.15926535</span>...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>circumference</span><br><span class="line"><span class="number">62.8318530717</span>...</span><br></pre></td></tr></table></figure></div>
+
+<p>更改一个变量的值不会影响其他变量。即使下列代码中<code>area</code>的值由最初的<code>radius</code>绑定，但改变<code>radius</code>的值并不能更新<code>area</code>的值，我们需要另一个赋值语句来更新它。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>radius = <span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>area</span><br><span class="line"><span class="number">314.159</span>..</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>area = pi * radius * radius</span><br><span class="line"><span class="number">380.132711</span></span><br></pre></td></tr></table></figure></div>
+
+<p>对于多重赋值，所有<code>=</code>右边的表达式都会先求值，然后再和左边的名称绑定。在这个规则下，我们可以在单个语句内交换两个变量的值。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x, y = <span class="number">3</span>, <span class="number">4.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y, x = x, y</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line"><span class="number">4.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h3 id="1-2-5-求解嵌套表达式"><a href="#1-2-5-求解嵌套表达式" class="headerlink" title="1.2.5 求解嵌套表达式"></a>1.2.5 求解嵌套表达式</h3><p>第一章的目标之一是在 **”以程序的角度思考”**，举一个恰当的例子，就是在思考一下在求解嵌套表达式时，解释器自身的操作过程</p>
+<p>为了求值一个表达式，Python将执行以下操作：</p>
+<ul>
+<li>求解运算符子表达式和操作数字表达式</li>
+<li>将操作数子表达式的值作为运算值表达式的函数的参数<br>这个简单的过程也说明了了有关流程的一些要点<br>第一步规定：为了求出调用表达式，必须首先求出其他表达式。因此求值程序本质上是递归的，也就是说它会自己调用自己作为步骤之一。<br>例如，此式子需要应用四次求值过程。</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sub(pow(2, add(1, 10)), pow(2, 5))</span><br><span class="line">2016</span><br></pre></td></tr></table></figure></div>
+
+<p>如果把每个需要求解的表达式都抽出来，我们可以看到这个求值过程的称此结构<br>![[Pasted image 20240325143703.png]]<br>树从上到下增长，树中的每个点叫做节点，这里表示的是表达式和表达式的值。</p>
+<p>求解根节点(即顶部的完整表达式)，需要先求解子表达式，也就是分支节点。叶子节点表示函数或者数值。内部节点有两部分：想要应用的求值规则的调用表达式，以及该表达式结果。观察可得，操作数的值会向上流动，从叶子节点开始一步步向上组合。</p>
+<p>接下来，观察第一步的重复应用，将我们带到我们需要求解的原始表达式，而不是调用表达式，如数字和名称，我们规定基本逻辑为：</p>
+<ul>
+<li>数字的值就是它们所表示的数值</li>
+<li>名称的值是环境中关联此名称的对象<br>注意环境在决定表达式中的符号意义上有重要作用。在Python中，不指定任何环境信息去谈论一个值是没有意义的，例如名称<code>x</code>和<code>add</code>。环境为求解提供了上下文信息，对理解程序执行过程有重要作用。</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>add(X, <span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>这个求解步骤并不能对所有Python代码求值，它仅能求解调用表达式、数字和名称。例如，它并不能处理赋值语句。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">3</span></span><br></pre></td></tr></table></figure></div>
+
+<p>因为赋值语句的目的是将名称与值绑定，它并不返回值，也不应用参数去求解函数。也就是说，赋值语句不但求解但”被执行”，它们只是做出一些改变但不产生值。每种类型的表达式或语句都有自己的求解或执行过程。</p>
+<p>注意：当我们说”一个数字求解为一个数值”时，实际上是Python解释器将数字求解为数值，是解释器赋予了编程语言这个意义。鉴于解释器是一个始终表现一致的固定程序，我们就可以说数组(以及表达式)会在python程序的上下文中被求解为值。</p>
+<hr>
+<h3 id="1-2-6非纯函数print"><a href="#1-2-6非纯函数print" class="headerlink" title="1.2.6非纯函数print"></a>1.2.6非纯函数print</h3><p>在本节中，我们将区分两种类型的函数。<br><strong>纯函数(Pure functions)</strong>:函数有一些输入(参数)并返回一些输出(调用返回结果)。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">abs</span>(-<span class="number">2</span>)</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以将内置函数<code>abs</code>描述为接受输入并产生输出的小型机器。<br>![[Pasted image 20240325152212.png]]<br><code>abs</code>就是纯函数，纯函数在调用时除了返回值不会造成其他影响，而且在使用相同的参数调用纯函数时总是会返回相同的值。</p>
+<p><strong>非纯函数(Non-pure functions)</strong>: 除了返回值，调用一个非纯函数还会产生其他改变解释器和计算机状态的副作用(side effect)。一个常见的副作用就是使用<code>print</code>函数产生(非返回值的)额外输出。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure></div>
+
+<p>虽然<code>print</code>和<code>abs</code>在这些例子中看起来很相似，但它们的工作方式基本1不同。<code>print</code>返回的值始终为<code>None</code>，这是一个不代表任何内容的特殊Python值。而叫不是Python解释器并不会自动打印<code>None</code>值，所以<code>print</code>函数的额外输出就是它的副作用<br>![[Pasted image 20240325153052.png]]<br>下面这个调用<code>print</code>的嵌套表达式就展示了非纯函数的特征</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">print</span>(<span class="number">1</span>), <span class="built_in">print</span>(<span class="number">2</span>))</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="literal">None</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以尝试画一个表达式树来解释求解该表达式会产生特殊输出的原因。<br>小心使用<code>print</code>函数!它返回<code>None</code>意味着它不应该应用于赋值语句。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>two = <span class="built_in">print</span>(<span class="number">2</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(two)</span><br><span class="line"><span class="literal">None</span></span><br></pre></td></tr></table></figure></div>
+
+<p>纯函数不能有副作用，或是随着时间推移的改变的限制，但是对其施加这些限制会带来很大的好处。首先，纯函数可以更可靠地组成复合调用表达式。在上面的实例中可以看到在操作数表达式中使用非纯函数<code>print</code>并不能返回有用的结果，但另一方面，我们已经能看出来<code>max, pow, sqrt</code>等函数可以在嵌套表达式中有效使用。</p>
+<p>第二，纯函数更容易测试。相同的参数列表会返回相同的值，我们可以将其与预期的返回值进行比较。</p>
+<p>第三，纯函数对于编写可以同时计算多个调用表达式的并发程序来说是必不可少的。</p>
 
         </div>
 
@@ -725,14 +802,14 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> CS61A.Chapter2</li>
+        <li><strong>标题:</strong> 1.2编程要素</li>
         <li><strong>作者:</strong> Wang LuoQiu</li>
         <li><strong>创建于
                 :</strong> 2024-03-23 00:54:16</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-03-23 00:56:21
+                    :</strong> 2024-03-26 23:41:01
             </li>
         
         <li>
@@ -846,8 +923,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">CS61A.Chapter2</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">1.2.1 表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E8%B0%83%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">1.2.2 调用表达式</span></a></li></ol>
+        <div class="page-title">1.2编程要素</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">1.2.1 表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E8%B0%83%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">1.2.2 调用表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E5%AF%BC%E5%85%A5%E5%BA%93%E5%87%BD%E6%95%B0"><span class="nav-text">1.2.3 导入库函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4-%E5%90%8D%E7%A7%B0%E5%92%8C%E7%8E%AF%E5%A2%83"><span class="nav-text">1.2.4 名称和环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-5-%E6%B1%82%E8%A7%A3%E5%B5%8C%E5%A5%97%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">1.2.5 求解嵌套表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-6%E9%9D%9E%E7%BA%AF%E5%87%BD%E6%95%B0print"><span class="nav-text">1.2.6非纯函数print</span></a></li></ol>
 
     </div>
 </div>
@@ -884,7 +961,7 @@
                     </span>
                     
                         <span>
-                            共 31.5k 字
+                            共 33.8k 字
                         </span>
                     
                 </p>
