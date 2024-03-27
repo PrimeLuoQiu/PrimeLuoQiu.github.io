@@ -6,7 +6,7 @@
   <link href="https://primeluoqiu.github.io/atom.xml" rel="self"/>
   
   <link href="https://primeluoqiu.github.io/"/>
-  <updated>2024-03-27T12:10:08.736Z</updated>
+  <updated>2024-03-27T14:07:07.517Z</updated>
   <id>https://primeluoqiu.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1.4设计函数</title>
+    <link href="https://primeluoqiu.github.io/2024/03/27/ClassesFormUCBerkely/CS61A/1.4%20%E8%AE%BE%E8%AE%A1%E5%87%BD%E6%95%B0/"/>
+    <id>https://primeluoqiu.github.io/2024/03/27/ClassesFormUCBerkely/CS61A/1.4%20%E8%AE%BE%E8%AE%A1%E5%87%BD%E6%95%B0/</id>
+    <published>2024-03-27T14:06:19.040Z</published>
+    <updated>2024-03-27T14:07:07.517Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-4-设计函数"><a href="#1-4-设计函数" class="headerlink" title="1.4 设计函数"></a>1.4 设计函数</h1><p>函数是所有程序(无论大小)的基本组成部分，并且是我们使用编程语言来表达计算过程的主要媒介。本节内容是如何设计一个好的函数。</p><p>那么好函数共有的品质就是：它们都强化了”函数就是抽象”理念。</p><ul><li>每个函数应该只负责一个任务，且该任务要用一个简短的名称来识别，并在一行文本中进行描述。按顺序执行多个任务的函数应该分为多个函数。</li><li>不要重复自己(Don’t repeat yourself)是软件工程的核心原则。这个所谓的DRY原则直出，多个代码片段不应该描述重复的逻辑。相反，逻辑应该只实现一次，为其指定一个名称后多次使用。</li><li>定义通用函数。比如作为<code>pow</code>函数的一个特例的平方函数就不在<code>Python</code>库中，因为<code>pow</code>函数可以将数字计算为任意次方。</li></ul><p>这些准则提高了代码的可读性，减少了错误的数量，并且通常最大限度地减少了便携的代码总量。将复杂的任务分解为简洁的功能是一项需要经验才能掌握的技能。不过好在Python提供了多种特性来支持工作</p><h3 id="1-4-1-文档"><a href="#1-4-1-文档" class="headerlink" title="1.4.1 文档"></a>1.4.1 文档</h3><p>函数定义通常包括描述函数的文档，称为”文档字符串 docstring”，它必须在函数体中缩进。文档字符串通常使用三个引号，第一行描述函数的任务，随后的几行可以描述参数并解释函数的意图</p><div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">pressure</span>(<span class="params">v, t, n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    计算理想气体的压力，单位为帕斯卡</span></span><br><span class="line"><span class="string">     v -- 气体体积，单位为立方米</span></span><br><span class="line"><span class="string">        t -- 绝对温度，单位为开尔文</span></span><br><span class="line"><span class="string">        n -- 气体粒子</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    k = <span class="number">1.38</span>e - <span class="number">23</span>  <span class="comment">#玻尔兹曼常数</span></span><br><span class="line">    <span class="keyword">return</span> n * k * t / v </span><br></pre></td></tr></table></figure></div><p>当你使用函数名称作为参数调用<code>help</code>时，你会看到它的文档字符串(键入<code>q</code>以退出Python help)。</p><div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">help</span>(pressure)</span><br></pre></td></tr></table></figure></div><p>编写Python程序时，除了最简单的函数之外，都要包含文档字符串。要记住，虽然代码只编写一次，但是会在之后阅读多次。Python文档包含了文档字符串准则，它会在不同的Python项目中保持一致。</p><p>注释：Python中的注释可以附加到<code>#</code>号后的行尾。例如，上面代码中的<code>#</code>后面的注释描述了k变量的含义。这些注释不会出现在Python的<code>help</code>中，而且会被解释器忽略，它们只为了注释而出现</p><hr><h3 id="1-4-2-参数默认值"><a href="#1-4-2-参数默认值" class="headerlink" title="1.4.2 参数默认值"></a>1.4.2 参数默认值</h3><p>定义通用函数的结果是引入了额外的参数。具有许多参数的函数可能调用起来很麻烦并且难以阅读。</p><p>在Python中，我们可以为函数的参数提供默认值。当调用该函数时，具有默认值的参数是可选的。如果未提供，则将默认值绑定到形参上。例如，如果程序通常用于计算”一摩尔”粒子的压力，则可以提供此值作为默认值</p><div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">pressure</span>(<span class="params">v, t, n = <span class="number">6.022e23</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    计算理想气体的压力，单位为帕斯卡</span></span><br><span class="line"><span class="string">     v -- 气体体积，单位为立方米</span></span><br><span class="line"><span class="string">        t -- 绝对温度，单位为开尔文</span></span><br><span class="line"><span class="string">        n -- 气体粒子</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    k = <span class="number">1.38</span>e - <span class="number">23</span>  <span class="comment">#玻尔兹曼常数</span></span><br><span class="line">    <span class="keyword">return</span> n * k * t / v </span><br></pre></td></tr></table></figure></div><p><code>=</code>符号在此等示例中表示两种不同的含义，具体取决于使用它的上下文。在def语句中,<code>=</code>不执行赋值，而是指示调用<code>pressure</code>函数时使用的默认值。相比之下，函数体中对<code>k</code>的赋值语句中将名称<code>k</code>与玻尔兹曼常数的近似值进行了绑定。</p><div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pressure(<span class="number">1</span>, <span class="number">273.15</span>)</span><br><span class="line"><span class="number">2269.974834</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pressure(<span class="number">1</span>, <span class="number">237.15</span>, <span class="number">3</span> * <span class="number">6.022e23</span>)</span><br><span class="line"><span class="number">6809.924502</span></span><br></pre></td></tr></table></figure></div><p><code>pressure</code>函数的定义接受三个参数，但上面的第一个调用表达式中值提供了两个。在这种情况下，n的值取自<code>def</code>语句的默认值。如果提供了，那么默认值就会被忽略</p><p>作为准则，函数主体中使用的大多数数据值都应该表示为具名参数(named arguments)的默认值，这样会使他们更易于检查，并且可以被函数调用者更改。一些永远不会改变的值，例如基本常量k可以绑定在函数体或全局帧中。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-4-设计函数&quot;&gt;&lt;a href=&quot;#1-4-设计函数&quot; class=&quot;headerlink&quot; title=&quot;1.4 设计函数&quot;&gt;&lt;/a&gt;1.4 设计函数&lt;/h1&gt;&lt;p&gt;函数是所有程序(无论大小)的基本组成部分，并且是我们使用编程语言来表达计算过程的主要媒介。本</summary>
+      
+    
+    
+    
+    <category term="CS61A" scheme="https://primeluoqiu.github.io/categories/CS61A/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>1.8历史</title>
@@ -450,31 +472,6 @@
     <updated>2024-03-23T06:28:32.926Z</updated>
     
     <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/3d5Unwa7.jpg"                      alt="5.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/5hqppVMQ.jpg"                      alt="6.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/PaiZxOFi.jpg"                      alt="7.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/QaC6Sdnu.jpg"                      alt="8.jpg"                ></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;img  
-                     lazyload
-                     src=&quot;/images/loading.svg&quot;
-                     data-src=&quot;https://img2.imgtp.com</summary>
-      
-    
-    
-    
-    <category term="计网" scheme="https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>1.2网络边缘</title>
-    <link href="https://primeluoqiu.github.io/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.2/"/>
-    <id>https://primeluoqiu.github.io/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.2/</id>
-    <published>2024-03-23T06:21:30.368Z</published>
-    <updated>2024-03-23T06:28:33.782Z</updated>
-    
-    <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/t3uhqPrU.jpg"                      alt="3.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/mZeqzUZB.jpg"                      alt="4.jpg"                ></p>]]></content>
     
     
       
