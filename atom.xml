@@ -6,7 +6,7 @@
   <link href="https://primeluoqiu.github.io/atom.xml" rel="self"/>
   
   <link href="https://primeluoqiu.github.io/"/>
-  <updated>2024-03-27T14:07:07.517Z</updated>
+  <updated>2024-03-28T15:22:22.428Z</updated>
   <id>https://primeluoqiu.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2.0-2.1应用层概述及应用层原理</title>
+    <link href="https://primeluoqiu.github.io/2024/03/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.0.1/"/>
+    <id>https://primeluoqiu.github.io/2024/03/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.0.1/</id>
+    <published>2024-03-28T15:08:54.880Z</published>
+    <updated>2024-03-28T15:22:22.428Z</updated>
+    
+    <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/28/jP11UBQt.jpg"                      alt="31.jpg"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/28/VmylFgdU.jpg"                      alt="32.jpg"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/28/u1KArs2u.jpg"                      alt="33.jpg"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/28/qyFjL5eT.jpg"                      alt="34.jpg"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/28/gxDfjYvy.jpg"                      alt="35.jpg"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/28/gcWxPUxg.jpg"                      alt="36.jpg"                ></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&quot;/images/loading.svg&quot;
+                     data-src=&quot;https://img2.imgtp.com</summary>
+      
+    
+    
+    
+    <category term="计网" scheme="https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>1.4设计函数</title>
@@ -452,31 +477,6 @@
     <updated>2024-03-23T06:28:32.926Z</updated>
     
     <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/3d5Unwa7.jpg"                      alt="5.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/5hqppVMQ.jpg"                      alt="6.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/PaiZxOFi.jpg"                      alt="7.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/QaC6Sdnu.jpg"                      alt="8.jpg"                ></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;img  
-                     lazyload
-                     src=&quot;/images/loading.svg&quot;
-                     data-src=&quot;https://img2.imgtp.com</summary>
-      
-    
-    
-    
-    <category term="计网" scheme="https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>1.2网络边缘</title>
-    <link href="https://primeluoqiu.github.io/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.2/"/>
-    <id>https://primeluoqiu.github.io/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.2/</id>
-    <published>2024-03-23T06:21:30.368Z</published>
-    <updated>2024-03-23T06:28:33.782Z</updated>
-    
-    <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/t3uhqPrU.jpg"                      alt="3.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/23/mZeqzUZB.jpg"                      alt="4.jpg"                ></p>]]></content>
     
     
       
