@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://primeluoqiu.github.io/2024/03/30/Dairy/0330/</loc>
+    
+    <lastmod>2024-03-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://primeluoqiu.github.io/2024/03/29/ClassesFormUCBerkely/CS61A/1.5%E6%8E%A7%E5%88%B6/</loc>
     
     <lastmod>2024-03-29</lastmod>
@@ -319,7 +328,7 @@
 
   <url>
     <loc>https://primeluoqiu.github.io/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -329,63 +338,63 @@
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/Algorithm/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/acwing/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/CS61B/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/CSAPP/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/CS61A/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/Expriment/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/Dairy/</loc>
-    <lastmod>2024-03-29</lastmod>
+    <lastmod>2024-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
