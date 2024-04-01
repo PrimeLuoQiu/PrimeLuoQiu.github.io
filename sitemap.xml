@@ -412,13 +412,6 @@
   </url>
   
   <url>
-    <loc>https://primeluoqiu.github.io/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B/</loc>
-    <lastmod>2024-04-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/</loc>
     <lastmod>2024-04-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -433,6 +426,20 @@
   </url>
   
   <url>
+    <loc>https://primeluoqiu.github.io/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B/</loc>
+    <lastmod>2024-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://primeluoqiu.github.io/categories/CS61A/</loc>
+    <lastmod>2024-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://primeluoqiu.github.io/categories/CSAPP/</loc>
     <lastmod>2024-04-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -441,13 +448,6 @@
   
   <url>
     <loc>https://primeluoqiu.github.io/categories/Expriment/</loc>
-    <lastmod>2024-04-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://primeluoqiu.github.io/categories/CS61A/</loc>
     <lastmod>2024-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
