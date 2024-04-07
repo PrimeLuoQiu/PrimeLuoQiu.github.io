@@ -6,7 +6,7 @@
   <link href="https://primeluoqiu.github.io/atom.xml" rel="self"/>
   
   <link href="https://primeluoqiu.github.io/"/>
-  <updated>2024-04-06T13:59:01.246Z</updated>
+  <updated>2024-04-07T03:50:54.070Z</updated>
   <id>https://primeluoqiu.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2.9 UDP套接字编程 + 本章小节</title>
+    <link href="https://primeluoqiu.github.io/2024/04/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.9/"/>
+    <id>https://primeluoqiu.github.io/2024/04/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.9/</id>
+    <published>2024-04-07T03:50:18.322Z</published>
+    <updated>2024-04-07T03:50:54.070Z</updated>
+    
+    <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/07/E2uC02S0.jpg"                      alt="59.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/07/m8szHXnc.jpg"                      alt="60.jpg"                ></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&quot;/images/loading.svg&quot;
+                     data-src=&quot;https://img2.imgtp.com</summary>
+      
+    
+    
+    
+    <category term="计网" scheme="https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2.8 TCP套接字编程</title>
@@ -454,31 +479,6 @@
     
     
     <category term="CS61A" scheme="https://primeluoqiu.github.io/categories/CS61A/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>1.8历史</title>
-    <link href="https://primeluoqiu.github.io/2024/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.8/"/>
-    <id>https://primeluoqiu.github.io/2024/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.8/</id>
-    <published>2024-03-27T12:03:09.041Z</published>
-    <updated>2024-03-27T12:10:08.736Z</updated>
-    
-    <content type="html"><![CDATA[<p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/27/aeIYP5H3.jpg"                      alt="26.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/27/O4212m1R.jpg"                      alt="27.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/27/4wlj58Tf.jpg"                      alt="29.jpg"                ><br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/03/27/9i4NYHEt.jpg"                      alt="30.jpg"                ></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;img  
-                     lazyload
-                     src=&quot;/images/loading.svg&quot;
-                     data-src=&quot;https://img2.imgtp.com</summary>
-      
-    
-    
-    
-    <category term="计网" scheme="https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/"/>
     
     
   </entry>
