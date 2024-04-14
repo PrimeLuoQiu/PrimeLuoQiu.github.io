@@ -499,28 +499,14 @@
 
   
   <url>
-    <loc>https://primeluoqiu.github.io/categories/Algorithm/</loc>
-    <lastmod>2024-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://primeluoqiu.github.io/categories/acwing/</loc>
-    <lastmod>2024-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://primeluoqiu.github.io/categories/OpenHarmonyDeveloper/</loc>
-    <lastmod>2024-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://primeluoqiu.github.io/categories/Dairy/</loc>
+    <lastmod>2024-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://primeluoqiu.github.io/categories/Algorithm/</loc>
     <lastmod>2024-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -541,7 +527,21 @@
   </url>
   
   <url>
+    <loc>https://primeluoqiu.github.io/categories/acwing/</loc>
+    <lastmod>2024-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://primeluoqiu.github.io/categories/CS61B/</loc>
+    <lastmod>2024-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://primeluoqiu.github.io/categories/OpenHarmonyDeveloper/</loc>
     <lastmod>2024-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
