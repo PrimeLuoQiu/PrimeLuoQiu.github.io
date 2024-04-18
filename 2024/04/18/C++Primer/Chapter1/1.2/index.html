@@ -13,16 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://PrimeLuoQiu.github.io/categories/计网/"/>
+    <link rel="canonical" href="https://PrimeLuoQiu.github.io/2024/04/18/c++primer/chapter1/1.2/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="秋过冬漫长">
-<meta property="og:url" content="https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/index.html">
+        <meta name="description" content="1.2初识输入输出C++语句并未定义任何输入输出，取而代之包含了一个全面的标准库(standard library)来提供IO机制。对于很多用途，我们只需要了解IO库中一部分基本概念和操作。 iostream库包含两个基础类型:istream和ostream。分别对应in和out。一个流就是一个字符序列，是从IO设备读出或写入IO设备的。术语”流”想要表达的是，随着时间的推移，字符是顺序生成或消耗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写一个简单的C++程序">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/04/18/C++Primer/Chapter1/1.2/index.html">
 <meta property="og:site_name" content="秋过冬漫长">
+<meta property="og:description" content="1.2初识输入输出C++语句并未定义任何输入输出，取而代之包含了一个全面的标准库(standard library)来提供IO机制。对于很多用途，我们只需要了解IO库中一部分基本概念和操作。 iostream库包含两个基础类型:istream和ostream。分别对应in和out。一个流就是一个字符序列，是从IO设备读出或写入IO设备的。术语”流”想要表达的是，随着时间的推移，字符是顺序生成或消耗">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-18T15:50:10.094Z">
+<meta property="article:modified_time" content="2024-04-18T15:52:39.579Z">
 <meta property="article:author" content="LuoQiu">
 <meta name="twitter:card" content="summary">
     
@@ -36,7 +40,7 @@
     
     <title>
         
-            分类: 计网 -
+            编写一个简单的C++程序 -
         
         落秋的小屋
     </title>
@@ -346,7 +350,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/categories"
                                         >
                                     
@@ -485,7 +489,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/categories"
                         >
                             <span>
@@ -609,134 +613,231 @@
             <div class="main-content">
 
                 
-                    <div class="category-container">
-    <div class="category-name">
-        <i class="fa-solid fa-folder"></i>&nbsp;计网
-    </div>
-    <div class="category-post-list">
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">编写一个简单的C++程序</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://img2.imgtp.com/2024/03/18/fitTEwGW.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Wang LuoQiu</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-04-18 23:50:10</span>
+        <span class="mobile">2024-04-18 23:50:10</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-04-18 23:52:39</span>
+            <span class="mobile">2024-04-18 23:52:39</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/C-Primer/">C++ Primer</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
         
 
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">10</span>
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="1-2初识输入输出"><a href="#1-2初识输入输出" class="headerlink" title="1.2初识输入输出"></a>1.2初识输入输出</h1><p>C++语句并未定义任何输入输出，取而代之包含了一个全面的标准库(standard library)来提供IO机制。对于很多用途，我们只需要了解IO库中一部分基本概念和操作。</p>
+<p>iostream库包含两个基础类型:istream和ostream。分别对应in和out。一个流就是一个字符序列，是从IO设备读出或写入IO设备的。术语”流”想要表达的是，随着时间的推移，字符是顺序生成或消耗的。</p>
+<h2 id="标准输入输出对象"><a href="#标准输入输出对象" class="headerlink" title="标准输入输出对象"></a>标准输入输出对象</h2><p>标准库定义了4个IO对象。为了处理输入，我们使用一个名为cin的istream的对象。这个对象也被称为<strong>标准输入</strong>。对于输出，我们使用一个名为cout的ostream类型的对象。此对象也被称为标准输出。标准库还定义了其他两个ostream类型的对象，名为ccer和clog。我们通常用cerr来输出警告和错误信息，因此它也被称为标准错误。而clog用来输出程序运行时的一般性信息。 	</p>
+<p>系统通常将程序所运行得窗口与这些对象关联起来。因此当我们读取cin，数据将从程序正在运行的窗口读入，当我们向cout、cerr和clog写入数据时，将会写到同一个窗口。</p>
+<h2 id="一个使用IO库的程序"><a href="#一个使用IO库的程序" class="headerlink" title="一个使用IO库的程序"></a>一个使用IO库的程序</h2><p>我们先看一下如何将两个数相加。通过IO库，我们可以扩展main程序，使之能提示用户输入两个数，然后输出他们的和</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Enter two numbers: &quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="type">int</span> v1 = <span class="number">0</span>, v2 = <span class="number">0</span>;</span><br><span class="line">    std::cin &gt;&gt; v1 &gt;&gt; v2;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;The sum of &quot;</span> &lt;&lt; v1 &lt;&lt; <span class="string">&quot; and &quot;</span> &lt;&lt; v2 &lt;&lt; <span class="string">&quot; is &quot;</span> &lt;&lt; v1 + v2 &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>第一行告诉编辑器我们想要使用iostream库，尖括号中的名字指出了一个头文件。每个使用标准库的设施的程序都必须包含相关的头文件。#include指令和头文件的名字必须写在同一行中。通常情况下，#include指令必须出现在所有函数之外。</p>
+<h2 id="向流写入数据"><a href="#向流写入数据" class="headerlink" title="向流写入数据"></a>向流写入数据</h2><p>在C++中，一个表达式产生一个计算结果，它是由一个或多个运算对象和一个运算符组成。这条语句中的表达式使用了**输出运算符&lt;&lt;**再标准输出上打印消息</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="string">&quot;Enter two numbers:&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure></div>
+
+<p>&lt;&lt;运算符接受两个运算对象：左侧的运算对象必须是一个<strong>ostream</strong>对象，右侧的运算对象是要打印的值。此运算符将给定的值写到给定的ostream对象中。输出运算符的计算结果就是其左侧运算对象。也就是说，计算结果就是写入给定值的那个ostream对象。</p>
+<p>我们的输出语句使用了两次&lt;&lt;运算符。因为运算符返回其左侧的运算对象，因此第一个运算符的结果成为了第二个运算符的左侧运算对象。这样，我们就可以将输出请求连接起来。</p>
+<p>endl是一个操纵符的特殊值。写入endl的效果是结束当前行。并将与设备关联的缓冲区(buffer)中的内容刷到设备中。	</p>
+<p>缓冲刷新操作可以保证到目前为止程序所产生的所有输出都真正写入输出流中，而不是仅停留在内存中等待写入流。</p>
+<h3 id="使用标准库中的名字"><a href="#使用标准库中的名字" class="headerlink" title="使用标准库中的名字"></a>使用标准库中的名字</h3><p>前缀std::指出cout和endl是定义在名为std的命名空间中的。命名空间可以帮助我们避免不经意的名字定义冲突，以及使用库中相同名字导致的冲突。标准库定义的所有名字都在命名空间std中</p>
+<p>不过通过命名空间使用标准库有个副作用：当使用标准库中的一个名字时，必须显式说明我们想使用来自命名空间std中的名字。例如，需要写出std::cout，通过使用**作用域运算符(::)**来指出我们想使用定义在命名空间中std中的名字cout。</p>
+<h3 id="从流中读取数据"><a href="#从流中读取数据" class="headerlink" title="从流中读取数据"></a>从流中读取数据</h3><p>**输入运算符(&gt;&gt;)**与输出运算符类似，他接受一个istream作为其左侧运算对象，接受一个对象作为其右侧运算对象。它从给定的istream读入数据，并存入给定对象中。输入运算符返回其左侧运算对象作为其运算结果。</p>
+<p>标准库定义了不同版本的输入输出运算符，来处理输出语句中的不同类型的运算对象。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 编写一个简单的C++程序</li>
+        <li><strong>作者:</strong> Wang LuoQiu</li>
+        <li><strong>创建于
+                :</strong> 2024-04-18 23:50:10</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-04-18 23:52:39
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://github.com/PrimeLuoQiu/2024/04/18/C++Primer/Chapter1/1.2/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
             </div>
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
-              
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-08'>
                 
-                    
-                        <a href="/2024/04/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3.1-3/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">3.1-3 概述和传输层服务、多路复用和解复用、无连接传输UDP</span>
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/04/18/C++Primer/Chapter1/1.1/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">编写一个简单的C++程序</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
                         </a>
-                    
-              
+                    </div>
                 
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-07'>
-                
-                    
-                        <a href="/2024/04/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.9/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.9 UDP套接字编程 + 本章小节</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-06'>
-                
-                    
-                        <a href="/2024/04/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.8/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.8 TCP套接字编程</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-05'>
-                
-                    
-                        <a href="/2024/04/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.7/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.7 CDN(内容分发网络)</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-04'>
-                
-                    
-                        <a href="/2024/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.6/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.6 P2P</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-03'>
-                
-                    
-                        <a href="/2024/04/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.5/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.5 DNS</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-02'>
-                
-                    
-                        <a href="/2024/04/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.3.4/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.3 &amp; 2.4 FTP &amp; Email</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-01'>
-                
-                    
-                        <a href="/2024/04/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.2/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.2 Web &amp; HTTP</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-28'>
-                
-                    
-                        <a href="/2024/03/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2.0.1/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">2.0-2.1应用层概述及应用层原理</span>
-                        </a>
-                    
-              
-                
-                    
-                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-27'>
-                
-                    
-                        <a href="/2024/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.8/" class="block overflow-hidden w-fit">
-                            <span class="article-title mb-0.5 text-2xl">1.8历史</span>
-                        </a>
-                    
-              
-            </ul>
-        </section>
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
     
 </div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">编写一个简单的C++程序</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2%E5%88%9D%E8%AF%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-text">1.2初识输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">标准输入输出对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8IO%E5%BA%93%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-text">一个使用IO库的程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E6%B5%81%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-text">向流写入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E5%BA%93%E4%B8%AD%E7%9A%84%E5%90%8D%E5%AD%97"><span class="nav-text">使用标准库中的名字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E6%B5%81%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">从流中读取数据</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
-<div class="category-paginator">
-    <div class="paginator">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/%E8%AE%A1%E7%BD%91/page/2/">2</a><a class="extend next" rel="next" href="/categories/%E8%AE%A1%E7%BD%91/page/2/"><i class="fa-regular fa-angle-right"></i></a>
-</div>
-
+        </div>
+    
 </div>
 
 
@@ -825,6 +926,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
