@@ -66,7 +66,7 @@ https://primeluoqiu.github.io/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B/
 https://primeluoqiu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/
 https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/
 https://primeluoqiu.github.io/categories/CS61B/
-https://primeluoqiu.github.io/categories/CSAPP/
 https://primeluoqiu.github.io/categories/C-Primer/
+https://primeluoqiu.github.io/categories/CSAPP/
 https://primeluoqiu.github.io/categories/CS61A/
 https://primeluoqiu.github.io/categories/Expriment/
