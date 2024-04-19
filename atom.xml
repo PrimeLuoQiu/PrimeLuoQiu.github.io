@@ -6,7 +6,7 @@
   <link href="https://primeluoqiu.github.io/atom.xml" rel="self"/>
   
   <link href="https://primeluoqiu.github.io/"/>
-  <updated>2024-04-19T13:49:18.898Z</updated>
+  <updated>2024-04-19T14:03:00.837Z</updated>
   <id>https://primeluoqiu.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>广域通信网</title>
     <link href="https://primeluoqiu.github.io/2024/04/19/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%B9%BF%E5%9F%9F%E9%80%9A%E4%BF%A1%E7%BD%91/"/>
     <id>https://primeluoqiu.github.io/2024/04/19/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%B9%BF%E5%9F%9F%E9%80%9A%E4%BF%A1%E7%BD%91/</id>
     <published>2024-04-19T13:51:36.823Z</published>
-    <updated>2024-04-19T13:49:18.898Z</updated>
+    <updated>2024-04-19T14:03:00.837Z</updated>
     
     <content type="html"><![CDATA[<h1 id="广域通信网"><a href="#广域通信网" class="headerlink" title="广域通信网"></a>广域通信网</h1><p>本章考察较少，一般1-2分，最常考点：帧中继、HDLC</p><h2 id="广域网通信基础"><a href="#广域网通信基础" class="headerlink" title="广域网通信基础"></a>广域网通信基础</h2><h3 id="1-公共交换电话网-PSTN"><a href="#1-公共交换电话网-PSTN" class="headerlink" title="1.公共交换电话网 PSTN"></a>1.公共交换电话网 PSTN</h3><p>PSTN: Public Switched Telephone Network 为了语音通信建立的网络，20c60s开始用于数据传输</p><ul><li>三个部分组成：本地回路、干线和交换机</li><li>干线和交换机采用数字传输和交换技术，本地回路基本采用模拟线路</li><li>电话线联网时需要在发送端通过调制解调器把数字信号变换成模拟信号，接收端再用同样设备转换成数字信号</li></ul><h3 id="2-本地回路"><a href="#2-本地回路" class="headerlink" title="2.本地回路"></a>2.本地回路</h3><p>DTE(Data Terminal Equipment)数据终端：通信链路的端点</p><p>DCE(Data Circuit Equipment)数据电路设备：用于信号变换器、自动呼叫等</p><p>DTE：PC&#x2F;电话机</p><p>DCE：猫&#x2F;调制解调器&#x2F;Modem</p><p>以RS-232-C接口为例说明机械特性及技术特性</p><p>机械特性描述DTE和DCE之间物理上的分界线，规定连机器的几何形状，尺寸大小，引线数、引线、排列方式及锁定装置等。 上述接口没有正式规定连机器的标准，只有在其附录中建议用<strong>25针</strong>的D型连接器，也有很多使用其他连接器，特别是在微型机RS-232-C串行接口上，大多使用<strong>9针</strong>连接器</p><p>电气特性：</p><p>上述设备采用的<strong>V.28标准</strong>电路，速率20kb&#x2F;s，最长15米</p><p>信号源产生3-15V的信号，±3V之间是信号电平过渡区</p><p>3-15V表示1，控制线和定时线OFF，</p><p>功能特性：对接口连线的功能给出明确定义 上述设备采用的是V.24</p><p>【2009上】</p><p>RS-232-C电气特性采用V.28标准电路，允许的数据速率是(),传输距离不大于()</p><p>a.1kbps b. 20Kbps c.100Kbps d. 1Mbps</p><p>a.1m b.15m c.100m d.1000m</p><p>【2009上】关于RS-232-C标准的描述中，正确的是</p><p>A.可以实现长距离远程通信</p><p>B.可以使用9针或25针D型连接器</p><p>C.必须采用24根线的电缆进线连接</p><p>D.通常用于连接并行打印机</p><h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><h3 id="流量控制和差错控制"><a href="#流量控制和差错控制" class="headerlink" title="流量控制和差错控制"></a>流量控制和差错控制</h3><p>流量控制指协调发送和接受的步调，避免发送过快</p><ul><li>两种协议：TCP、X.25 都考</li></ul><p>差错控制：检测和纠正传输错误的机制</p><ul><li>检错码：CRC   纠错码：海明码</li></ul><p>流量控制有两种协议</p><ul><li><p>停止等待协议</p><ul><li><p>发送方直到接收到接受方发来的应答信号(ACK)后再发送下一帧。如果不应答就等待</p></li><li><p>$$<br>TFA&#x3D;2t_p+t_f<br>$$</p></li><li><p>tp是路上时间，tf是发送时间。</p></li></ul></li><li><p>滑动窗口协议</p><ul><li>滑动窗口主要思想：允许连续发送多个帧而无需等待应答。</li><li>TCP&#x2F;X.25都是这种机制</li></ul></li></ul><p>应付差错的办法：</p><ol><li>肯定回答</li><li>否定回答</li><li>超时重传(最常用)<ol><li>停止等待ARQ(Automatic Repeat reQuest)自动重传协议</li><li>选择重发ARQ协议</li><li>后退N帧ARQ协议</li></ol></li></ol><p>停止等待ARQ：是停等流控制技术和自动请求重发技术的结合，发送站发送出一帧之后必须等待应答，收到肯定应答后再发送下一帧。收到NAK或者超时都要重发</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/19/y8DhaQ6C.png"                      alt="17.png"                ></p><p>选择重发ARQ：重传特定的某一帧<br>$$<br>W_发&#x3D;W_收≤2^{k-1}<br>$$<br>后退N帧ARQ：重传此帧和后续的N帧<br>$$<br>W_发&#x3D;W_收≤2^k-1<br>$$<br>HDLC(High Level Data Link Control, 高级数据链路控制)，是一种面向位(bit)的数据链路层控制协议，通常使用CRC-16、CRC-32校验，帧边界**”01111110”**</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/19/cIrslMMl.png"                      alt="16.png"                ></p><p>【2009下】对于选择重发ARQ协议，如果帧编号字段为k位，则窗口大小()</p><p>A.W≤2^k -1  B.W≤2^K-1  C.W&#x3D;2^k D. W &lt; 2^k - 1</p><p>【2019上】采用HDLC协议进行数据传输，帧0-7循环编号为0、1、2、3、4的5帧时，收到了对方应答帧REJ3,此时发送站应该发送的后续3帧为()；若收到对方的应答帧为SREJ3,则发送站应发送的后续3帧为()</p><p>A 2 3 4 B. 3 4 5 C. 3 5 6 D. 5 6 7</p><p>A 2\3\4  B. 3\4\5 C. 3\5\6 D. 5\6\7</p><p>【2009上】HDLC协议是一种(), 采用()标志作为帧定界符</p><p>A.面向比特的同步链路控制协议B</p><p>B.面向字节技术的同步链路控制协议</p><p>C.面向字符的同步链路控制协议</p><p>D.异步链路控制协议</p><p>A.10000001 B.01111110 C.10101010 D.101101011</p><h2 id="X-25与帧中继"><a href="#X-25与帧中继" class="headerlink" title="X.25与帧中继"></a>X.25与帧中继</h2><p>已经被IP和以太网取代了</p><h3 id="X-25公共数据网（了解）"><a href="#X-25公共数据网（了解）" class="headerlink" title="X.25公共数据网（了解）"></a>X.25公共数据网（了解）</h3><ul><li>X.25分为三个协议层，即<em>物理层、链路层和分组层</em>，分别对应OSI模型低三层</li><li>X.25是一种分组交换技术，面向连接，建立虚链路</li><li>X.25支持<strong>差错控制和流量控制</strong>，传输速率：64Kbps</li></ul><h3 id="帧中继FR-Frame-Relay-选择常考"><a href="#帧中继FR-Frame-Relay-选择常考" class="headerlink" title="帧中继FR(Frame Relay) 选择常考"></a>帧中继FR(Frame Relay) 选择常考</h3><ul><li>帧中继在第二层建立虚链路，提供<strong>虚链路服务</strong>，本地表示<strong>DLCI</strong></li><li>基于分组交换的透明传输，可提供<strong>面向连接</strong>的服务。</li><li><em>只做检错和拥塞控制，没有流量控制和重传机制，开销很少</em></li><li>既可以按需要提供带宽，也可以应对突发的数据传输 <strong>CIR(承诺速率) EIR(扩展速率)</strong></li><li><strong>帧长可变</strong>，长度可达1600-4096字节，可以承载各种局域网的数据帧</li><li>可以达到很高的速率，<strong>2-45Mbps</strong></li><li>不适合对延迟敏感的应用(语音、视频)</li><li>数据的丢失依赖于运营商对虚电路的配置</li><li>不保障可靠的提交</li></ul><p> 【2013下】帧中继的网络虚电路建立在(),这种虚电路的特点是()</p><p>A.数据链路层  B.网络层 C.传输层  D.会话层</p><p>A.没有流量控制功能，也没有拥塞控制功能</p><p>B.没有流量控制功能，但具有拥塞控制功能</p><p>C.具有流量控制功能，但没有拥塞控制功能</p><p>D.具有流量控制功能，也具有拥塞控制功能</p><p>【2012下】下面用于表示帧中继虚链路标识符是()</p><p>A.CIR  B.LMI C.DLCI D.VPI</p><p>ISDN和ATM</p><ul><li><p>ISDN综合数字业务网，目的是以数字系统代替模拟电话系统（PSTW），把音频、视频、数据业务放在一个网上统一传输</p></li><li><p>分为窄带ISDN和宽带ISDN，窄带ISDN提供两种用户接口</p><ul><li>基本速率<em>BRI</em>&#x3D;2B+D&#x3D;<strong>144Kbps</strong></li><li>集群速率<em>PRI</em>&#x3D;30B+D&#x3D;<strong>2.048Mbps</strong></li></ul></li><li><p>宽带ISDN即ATM</p></li><li><p>ATM是<strong>信元交换</strong>，信元为<strong>53字节</strong>固定长度</p></li><li><p>ATM依然是以虚链路提供面向连接的服务</p></li><li><p>ATM典型速率为<strong>150M</strong></p></li></ul><p>【2014下】典型运营商提供的ISDN服务有两种不同接口，其中供小型企业和家庭使用的基本速率接口(BRI)速率是(),供大型企业使用的接口速率是()</p><p>A.128Kb&#x2F;s B.144Kb&#x2F;s C.1024Kb&#x2F;s D.2048Kb&#x2F;s</p><p>A.128Kb&#x2F;s B.144Kb&#x2F;s C.1024Kb&#x2F;s D.2048Kb&#x2F;s</p>]]></content>
     
@@ -33,6 +33,8 @@
       
     
     
+    
+    <category term="网络工程师" scheme="https://primeluoqiu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
     
     
   </entry>
