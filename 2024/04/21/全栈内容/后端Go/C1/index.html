@@ -13,23 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://PrimeLuoQiu.github.io/2024/03/23/计算机网络/1.2/"/>
+    <link rel="canonical" href="https://PrimeLuoQiu.github.io/2024/04/21/全栈内容/后端go/c1/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="article">
-<meta property="og:title" content="1.2网络边缘">
-<meta property="og:url" content="https://primeluoqiu.github.io/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.2/index.html">
+        <meta name="description" content="Chapter 4 基本结构和基本数据类型2.Go程序的基本结构和要素1.包的概念、导入和可见性包是结构化代码的一种方式：每个程序都由包(pkg)的概念组成，可以使用自身的包或者从其他包中导入内容。每个go文件都属于且仅属于一个包，一个包可以有很多go程序，文件名和包名一般来说是不相同的。 必须在源文件中非注释的第一行指明这个文件属于哪个包，如package main。package main表示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go基本的结构和基本数据类型">
+<meta property="og:url" content="https://primeluoqiu.github.io/2024/04/21/%E5%85%A8%E6%A0%88%E5%86%85%E5%AE%B9/%E5%90%8E%E7%AB%AFGo/C1/index.html">
 <meta property="og:site_name" content="秋过冬漫长">
+<meta property="og:description" content="Chapter 4 基本结构和基本数据类型2.Go程序的基本结构和要素1.包的概念、导入和可见性包是结构化代码的一种方式：每个程序都由包(pkg)的概念组成，可以使用自身的包或者从其他包中导入内容。每个go文件都属于且仅属于一个包，一个包可以有很多go程序，文件名和包名一般来说是不相同的。 必须在源文件中非注释的第一行指明这个文件属于哪个包，如package main。package main表示">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img2.imgtp.com/2024/03/23/t3uhqPrU.jpg">
-<meta property="og:image" content="https://img2.imgtp.com/2024/03/23/mZeqzUZB.jpg">
-<meta property="article:published_time" content="2024-03-23T06:21:30.368Z">
-<meta property="article:modified_time" content="2024-03-23T06:28:33.782Z">
+<meta property="article:published_time" content="2024-04-21T15:45:29.730Z">
+<meta property="article:modified_time" content="2024-04-21T15:50:13.682Z">
 <meta property="article:author" content="LuoQiu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img2.imgtp.com/2024/03/23/t3uhqPrU.jpg">
     
     
     <!--- Icon Part-->
@@ -41,7 +40,7 @@
     
     <title>
         
-            1.2网络边缘 -
+            Go基本的结构和基本数据类型 -
         
         落秋的小屋
     </title>
@@ -620,7 +619,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">1.2网络边缘</h1>
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">Go基本的结构和基本数据类型</h1>
                 </div>
             
             </div>
@@ -641,15 +640,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-03-23 14:21:30</span>
-        <span class="mobile">2024-03-23 14:21:30</span>
+        <span class="desktop">2024-04-21 23:45:29</span>
+        <span class="mobile">2024-04-21 23:45:29</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-03-23 14:28:33</span>
-            <span class="mobile">2024-03-23 14:28:33</span>
+            <span class="desktop">2024-04-21 23:50:13</span>
+            <span class="mobile">2024-04-21 23:50:13</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -663,7 +662,7 @@
                     
                         
                         <li>
-                            <a href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>&nbsp;
+                            <a href="/categories/%E5%85%A8%E6%A0%88%E5%90%8E%E7%AB%AF/">全栈后端</a>&nbsp;
                         </li>
                     
                     
@@ -675,9 +674,13 @@
 
     
     
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.6k 字</span>
+        </span>
+    
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>13 分钟</span>
         </span>
     
     
@@ -696,17 +699,112 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img2.imgtp.com/2024/03/23/t3uhqPrU.jpg"
-                      alt="3.jpg"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img2.imgtp.com/2024/03/23/mZeqzUZB.jpg"
-                      alt="4.jpg"
-                ></p>
+            <h1 id="Chapter-4-基本结构和基本数据类型"><a href="#Chapter-4-基本结构和基本数据类型" class="headerlink" title="Chapter 4 基本结构和基本数据类型"></a>Chapter 4 基本结构和基本数据类型</h1><h2 id="2-Go程序的基本结构和要素"><a href="#2-Go程序的基本结构和要素" class="headerlink" title="2.Go程序的基本结构和要素"></a>2.Go程序的基本结构和要素</h2><h3 id="1-包的概念、导入和可见性"><a href="#1-包的概念、导入和可见性" class="headerlink" title="1.包的概念、导入和可见性"></a>1.包的概念、导入和可见性</h3><p>包是结构化代码的一种方式：每个程序都由包(pkg)的概念组成，可以使用自身的包或者从其他包中导入内容。每个go文件都属于且仅属于一个包，一个包可以有很多go程序，文件名和包名一般来说是不相同的。</p>
+<p>必须在源文件中非注释的第一行指明这个文件属于哪个包，如<code>package main</code>。<code>package main</code>表示一个可独立执行的程序，每个go程序都包含一个可独立执行的程序，每个go都应该包含一个名为<code>main</code>的包</p>
+<p>一个应用程序也可以包含不同的包，不必要把所有代码写在main中，可以用小文件，所有的包名都应该使用小写字母。</p>
+<h4 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h4><p>Go 的标准库包含了大量的包，如fmt和os，也可以创建自己的包。想要构建一个程序，则包和包内的文件都必须以正确的顺序进行编译。包的依赖关系决定了其构建顺序。属于同一个包的源文件必须全部被一起编译，一个包即是编译时的一个单元，因此根据管理，每个目录都只包含一个包。<strong>如果对一个包进行更改或重新编译，所有引用这个包的客户端都必须全部重新编译</strong>。 </p>
+<p><strong>每一段代码只会被编译一次。</strong> 一个go程序通过”import”关键字将一组包连接在一起。<code>import &quot;fmt&quot;</code>告诉go编译器这个程序需要使用<code>fmt</code>包(的函数，或其他元素)，”fmt”包实现了格式化IO的函数。包名被封闭在半角双引号中，如果打算从已编译的包中导入并加载公开声明的方法，不需要插入已编译包的源代码。</p>
+<p>如果需要多个包，可以被分别导入</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;os&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>或者</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span>; <span class="keyword">import</span> <span class="string">&quot;os&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>还有短且优雅的方法(被称为因式分解关键字，方法同样适用于const, var 和 Type的声明或定义):</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;os&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+
+<p>甚至可以更短，不过使用fmt之后会强制换行</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>(<span class="string">&quot;fmt&quot;</span>, <span class="string">&quot;os&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>如果包名不以<code>.</code>或<code>/</code>开头，如<code>&quot;fmt&quot;</code>，会在全局文件进行查找;如果以<code>./</code>开头，会在相对目录中查找，或者绝对路径查找<br>导入包等同于包含了这个包的所有的代码对象。<br>除了符号<code>_</code>，包中所有代码对象的标识符必须是唯一的，避免名称冲突<br>可以通过下述被编译器强制执行的规则来决定是否将自身的代码对象暴露给外部文件：</p>
+<h4 id="可见性规则"><a href="#可见性规则" class="headerlink" title="可见性规则"></a>可见性规则</h4><p>当标识符以一个大写字母开头，如Group1，那么使用这种形式的标识符的对象就可以被外部包的代码所使用(前提是已经被导入)，这被称之为导出；标识符如果以小写字母开头，则对包外是不可见的，但在整个包内部是可见并可用的。(private)</p>
+<p>大写字母可以使用任何Unicode编码的字符，例如希腊文</p>
+<p>因此在导入一个外部包之后，能够且只能够访问该包中导出的对象。</p>
+<p>假设在pack1中有一个变量或函数叫做Thing，那么在当前包中导入pack1包，Thing就可以像面向对象语言那样使用点标记来调用。<code>pack1.Thing</code></p>
+<p>因此包也可以作为命名空间使用，帮助避免命名冲突，两个包中的同名变量区别在于包名。</p>
+<p>也可以通过使用包的别名来解决包名之间的名称冲突，或者根据个人喜好对包名进行重新设置，例如</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> fm <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fm.Println(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>如果导入一个包之后没有进行使用，则会在构建程序时引发错误，如<code>imported and not used: os</code>，这遵循了go的格言：没有不必要的代码</p>
+<p>也可以在使用<code>import</code>导入包之后定义或声明0个或多个常量(cosnt)、变量(var)和类型(type)，这些对象的作用域都是全局的(在本包范围内)，所以可以被本包中所有的函数调用，然后声明一个或多个函数(func)</p>
+<h3 id="2-函数"><a href="#2-函数" class="headerlink" title="2.函数"></a>2.函数</h3><p>这是定义一个函数最简单的方式</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">functionName</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以在括号中写入0个或多个函数的参数，(使用，分隔)，参数名称后面必须跟着参数的类型。</p>
+<p><strong>main函数是每一个可执行程序所必须包含的</strong>，一般来说都是在启动后<strong>第一个执行的函数</strong>(如果有init()函数则会先执行该函数)。如果main包的<strong>源代码</strong>没有包含<em>main</em>函数，则会引发构建错误。main函数既没有参数，也没有返回类型。<strong>添加</strong>也会出现<strong>构建错误</strong></p>
+<p>在程序开始执行并完成初始化之后，第一个调用(程序的入口点)的函数是<code>main.main()</code>该函数一旦返回就表示程序已成功执行并立即退出。</p>
+<p>函数体使用大括号括起来。 <code>&#123;</code>必须与方法的声明放在<strong>同一行</strong>，这是<strong>强制规定</strong>，否则就会出现相关错误<br>原因是因为编译器会产生<code>func main();</code>这样的结果，这很明显是错的</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`bulid-error: syntax error: unexpected semicolon or newline before &#123;`</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>Go语言虽然看起来不使用分号作为语句的结束，但实际上这一过程是由编译器自动完成，因此才会引发像上面这样的错误</strong></p>
+<p><code>&#125;</code>需要被放在紧接着函数体的下一行，如果函数非常简短，也可以放在同一行</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sum</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123; <span class="keyword">return</span> a + b &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>大括号使用规则在任何时候都是相同的。<br>因此符合规范的函数一般写成如下形式</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">functionName</span><span class="params">(parameter_list)</span></span> (return_value_list) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>其中：</p>
+<ul>
+<li>parameter_list的形式为(param1 type1, param2 type2, …)</li>
+<li>return_value_list的形式为(ret1 type1, ret2 type2, …)<br>只有当某个函数需要被外部包调用的时候才使用大写字母开头，并遵循Pascal命名法：否则就遵循驼峰命名法(第一个单词的首字母小写，其余单词首字母大写)。</li>
+</ul>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(<span class="string">&quot;Hello, world&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>这一行调用了fmt包的Println函数，将字符串输出到控制台并自动增加换行符，使用”Hello,world\n”可以得到同样效果。</p>
+<p><code>Print</code>和<code>Println</code>也支持使用变量，如果没有特别指定，他们会以默认方式输出变量到控制台，如果只是单纯打印一个字符或者变量也可以用预定义的方式来实现<code>print</code>、<code>println</code>，不过这些函数只用于调试阶段，在部署的时候务必换成<code>fmt</code>中的相关函数。</p>
+<p>当被调用的函数的代码执行到结束符<code>&#125;</code>或返回语句就会返回，然后继续执行调用函数之后的代码</p>
+<p>正常退出的代码为0，异常被终止为非零值，可以用来测试是否成功执行一个程序。</p>
+<h3 id="3-注释"><a href="#3-注释" class="headerlink" title="3.注释"></a>3.注释</h3><p>如果使用国际化字符直接用输出语句输出即可，注释不会被翻译，但可以用goddoc来使用。</p>
+<p>单行注释很常见，或者多行注释(块状注释)，一般用于包的文档描述或者注释成块的代码片段。</p>
+<p>每个包应该有相关注释，package之前的注释被默认成为这个包的文档说明，其中应该提供一些相关信息并对整体功能做简要的介绍。在首行的简要注释之后可以用成段的注释来进行更详细的说明，不必挤在一起，在多段注释之间用用空行加以区分。</p>
+<p>几乎所有全局作用域的类型，常量、变量、函数和被导出的对象都应该有一个合理的注释。如果这种注释出现在函数前面，例如函数Abcd，则要以<code>&quot;Abcd...&quot;</code>作为开头。</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// enterOrbit cause Superman to fly into low Earth orbit, a postion</span></span><br><span class="line"><span class="comment">// that presents sevral possibilities for planet salvation</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">enterOrbit</span><span class="params">()</span></span> <span class="type">error</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>goddoc工具会手机这些注释并产生一个技术文档</p>
+<h3 id="4-类型"><a href="#4-类型" class="headerlink" title="4.类型"></a>4.类型</h3><p>可以包含的数据的变量或常量。可以使用不同的数据类型或类型来保存数据，使用<code>var</code>声明的变量的值会自动初始化为该类型的0值。类型定义了某个变量的值得集合与可对其进行操作的集合</p>
+<p>类型可以是基本类型，也可以是结构化的 struct, array，或者只描述类型的行为的。interface</p>
+<p>结构化的类型没有真正的值，使用nil作为默认值(Null)。值得注意的是，Go中不存在类型继承。</p>
+<p>函数也可以是一个确定的类型，就是以函数作为返回类型。这种类型的声明要写在函数名和可选的参数列表之后，例如</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FunctionName</span><span class="params">(a typea, b typeb)</span></span> typeFunc</span><br></pre></td></tr></table></figure></div>
+<p>可以在函数体中的某处返回使用类型为typeFunc的变量var：</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">var</span></span><br></pre></td></tr></table></figure></div>
+<p>一个函数可以拥有多返回值，返回类型之间需要使用逗号分隔，并使用小括号括起来</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FunctionName</span> <span class="params">(a typea, b typeb)</span></span>(t1 type1, t2 type2)</span><br></pre></td></tr></table></figure></div>
+<p>示例：函数Atoi(4.7节)<code>func Atoi(s string) (i int, err error)</code><br>返回的形式：</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> var1, var2</span><br></pre></td></tr></table></figure></div>
+<p>这种多返回值一般用于判断某个函数是否执行成功(true&#x2F;false)或与其他返回值一同返回错误消息</p>
+<p>使用<code>type</code>关键字可以定义自己的类型，可以是一个结构体，也可以定义一个已经存在的类型的别名，如</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> IZ <span class="type">int</span></span><br></pre></td></tr></table></figure></div>
+<p><strong>这里并不是真正意义上的别名，因为使用这种方法定义之后的类型可以拥有更多的特性，且在类型转换时必须显示转换。</strong><br>然后我们可以使用下面的方式声明变量：</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a IZ = <span class="number">5</span></span><br></pre></td></tr></table></figure></div>
+<p>这里可以看到int是变量a的底层类型，这也使得它们之间存在相互转换的可能。如果有多个类型需要定义，也可以使用因式分解关键字的方式，例如:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> (</span><br><span class="line">    IZ <span class="type">int</span></span><br><span class="line">    Fz <span class="type">float64</span></span><br><span class="line">    STR <span class="type">string</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>每个值都必须在经过编译之后属于某个类型(编译器必须能够推断出所有值的类型)，因为Go语言是一种静态类型语言。</p>
+<h3 id="5-Go程序的一般结构"><a href="#5-Go程序的一般结构" class="headerlink" title="5.Go程序的一般结构"></a>5.Go程序的一般结构</h3><p>下面的程序虽然可以顺利的编译，但是什么都做不了，不过这很好的展示了一个Go程序的首选结构，这种结构没有被强制要求，且编译器也不关心main函数的位置，但是使用统一的结构能够在从上至下阅读Go代码时有更好的体验</p>
+<p>总体思路</p>
+<ul>
+<li>在完成包的import之后，开始对常量、变量和类型的定义或声明。</li>
+<li>如果存在int函数的话，则对该函数进行定义(这是一个特殊的函数，每个含有该函数的包都会首先执行这个函数)。</li>
+<li>如果当前包是main包，则定义main函数</li>
+<li>然后定义其余的函数，首先是类型的方法，接着是按照main函数中先后调用的顺序来定义相关函数，如果有很多函数，则可以按照字母顺序来进行排序</li>
+</ul>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c = <span class="string">&quot;C&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> v <span class="type">int</span> = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123; <span class="comment">//initialization of package</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="type">int</span></span><br><span class="line">	Func1()</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t T)</span></span> Method1() &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Func1</span><span class="params">()</span></span> &#123; <span class="comment">//exported function Func1</span></span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>顺序如下：</p>
+<ol>
+<li>按顺序导入所有被main包引用的其他包，然后在每个包中执行如下流程：</li>
+<li>如果该包又导入了其他的包，则从第一步开始递归执行，但是每个包只会被导入一次</li>
+<li>然后以相反的顺序在每个包中初始化常量和变量，如果该包含有init函数的话，则调用该函数</li>
+<li>在完成这一切之后，main也执行同样的过程，最后调用main函数开始执行程序。</li>
+</ol>
+<h3 id="6-类型转换"><a href="#6-类型转换" class="headerlink" title="6.类型转换"></a>6.类型转换</h3><p>在必要以及可行的情况下，一个类型的值可以被转换成另一种类型的值。由于go语言不存在隐式类型转换，因此所有的转换都必须显示说明，就像调用一个函数一样。(类型在这里的作用可以看作是一种函数):</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">valueOfTypeB = typeB(valueofTypeA)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>类型B的值&#x3D;类型B(类型A的值)</strong></p>
+<p>示例:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a := <span class="number">5.0</span></span><br><span class="line">b := <span class="type">int</span>(a)</span><br></pre></td></tr></table></figure></div>
+<p>这只能在定义正确的情况下转换成功，如果从一个取值范围较小的类型转换到要给取值范围较大的类型(int 16-32)。如果从大到小的话，将会发生精度丢失的情况，于是编译器捕捉到非法的类型转换时会引发编译时错误，否则将引发运行时错误。<br>具有相同底层类型的变量可以相互转换。</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a IZ = <span class="number">5</span></span><br><span class="line">c := (<span class="type">int</span>) a</span><br><span class="line">d := IZ(c)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="7-Go命名规范"><a href="#7-Go命名规范" class="headerlink" title="7.Go命名规范"></a>7.Go命名规范</h3><p>干净、可读的代码和简洁性是Go追求的主要目标，通过gofmt来强制实现统一的代码风格。Go中对象的命名也应该是简洁而有意义的。像是java和python中那样使用混着大小写和下划线的冗长的名称会降低代码的可读性，名称不需要指出自己所属的包。因为在调用的时候会使用包名作为限定符，返回某个对象的函数或方法的名称一般都是使用名词。没有<code>Get ...</code>之类的字符。如果是用于修改某个对象，则使用<code>SetName</code>。有必须要的话可以使用大小写混合的方式，如MixedCaps或mixedCaps，而不是用下划线来分割多个名称。</p>
 
         </div>
 
@@ -714,18 +812,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 1.2网络边缘</li>
+        <li><strong>标题:</strong> Go基本的结构和基本数据类型</li>
         <li><strong>作者:</strong> Wang LuoQiu</li>
         <li><strong>创建于
-                :</strong> 2024-03-23 14:21:30</li>
+                :</strong> 2024-04-21 23:45:29</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-03-23 14:28:33
+                    :</strong> 2024-04-21 23:50:13
             </li>
         
         <li>
-            <strong>链接:</strong> https://github.com/PrimeLuoQiu/2024/03/23/计算机网络/1.2/
+            <strong>链接:</strong> https://github.com/PrimeLuoQiu/2024/04/21/全栈内容/后端Go/C1/
         </li>
         <li>
             <strong>
@@ -750,29 +848,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.3/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">1.3网络核心</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1.1%E4%BB%80%E4%B9%88%E6%98%AFInternet/"
+                        href="/2024/04/19/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%B9%BF%E5%9F%9F%E9%80%9A%E4%BF%A1%E7%BD%91/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">1.1什么是Internet</span>
+                                <span class="post-nav-title-item">广域通信网</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -835,8 +918,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">1.2网络边缘</div>
-        
+        <div class="page-title">Go基本的结构和基本数据类型</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-4-%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">Chapter 4 基本结构和基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%92%8C%E8%A6%81%E7%B4%A0"><span class="nav-text">2.Go程序的基本结构和要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%81%E5%AF%BC%E5%85%A5%E5%92%8C%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-text">1.包的概念、导入和可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%87%BD%E6%95%B0"><span class="nav-text">2.函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B3%A8%E9%87%8A"><span class="nav-text">3.注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%B1%BB%E5%9E%8B"><span class="nav-text">4.类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Go%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B8%80%E8%88%AC%E7%BB%93%E6%9E%84"><span class="nav-text">5.Go程序的一般结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-text">6.类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Go%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-text">7.Go命名规范</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
