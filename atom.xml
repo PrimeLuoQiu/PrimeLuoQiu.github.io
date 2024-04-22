@@ -6,7 +6,7 @@
   <link href="https://primeluoqiu.github.io/atom.xml" rel="self"/>
   
   <link href="https://primeluoqiu.github.io/"/>
-  <updated>2024-04-21T16:10:42.032Z</updated>
+  <updated>2024-04-22T15:23:41.592Z</updated>
   <id>https://primeluoqiu.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>局域网和城域网</title>
+    <link href="https://primeluoqiu.github.io/2024/04/22/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%92%8C%E5%9F%8E%E5%9F%9F%E7%BD%91/"/>
+    <id>https://primeluoqiu.github.io/2024/04/22/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%92%8C%E5%9F%8E%E5%9F%9F%E7%BD%91/</id>
+    <published>2024-04-22T15:22:02.696Z</published>
+    <updated>2024-04-22T15:23:41.592Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="局域网和城域网"><a href="#局域网和城域网" class="headerlink" title="局域网和城域网"></a>局域网和城域网</h1><p>最常考点:CSMA&#x2F;CD 、VLAN 、 STP</p><h2 id="局域网体系与拓扑结构"><a href="#局域网体系与拓扑结构" class="headerlink" title="局域网体系与拓扑结构"></a>局域网体系与拓扑结构</h2><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/19/zWGjZM4w.png"                      alt="18.png"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/19/eQg4COy9.png"                      alt="19.png"                ></p><h2 id="CSMA-CD与监听算法"><a href="#CSMA-CD与监听算法" class="headerlink" title="CSMA&#x2F;CD与监听算法"></a>CSMA&#x2F;CD与监听算法</h2><p>对于总线型、星形和树形拓扑访问控制协议是CSMA&#x2F;CS(Carrier Sense Multiple Access&#x2F;Collision Detection)</p><ul><li>CSMA基本原理：发送数据之前，先监听信道上是否有人在发送，若有，说明信道正忙，否则空闲，然后根据预定的策略决定<ul><li>若信道空闲，是否立即发送</li><li>若信道忙，是否继续监听</li></ul></li><li>如果连续发生<strong>16</strong>次碰撞后，认为网络繁忙有问题，不再尝试发送</li></ul><p>三种监听算法</p><ol><li>非坚持型监听算法：后退随机时间</li></ol><p>由于随机时延后退，从而减少了冲突的概率。问题是因为后退而使信道闲置一段时间，这使信道的利用率降低，而且增加了发送时延，类似蹲坑，但是坑有人，选择出去憋一会再等等</p><ol start="2"><li>1-坚持型监听算法：继续监听，不等待</li></ol><p>有利于抢占信道，减少信道空闲时间。但是多个站同时都在监听信道时必然会发生冲突。<em>冲突概率和利用率都高(双高）</em> 不等人，敲门催促</p><ol start="3"><li><p>P-坚持型监听算法</p><p>若信道空闲，以概率P发送，以概率(1-P)延迟一个时间单位，P大小可调整。</p></li></ol><p>【2011年下】以太网介质访问控制策略可以采取不同的监听算法，其中一种是：“一旦介质空闲就发送数据，假如介质忙，继续监听，直到介质空闲后立即发送数据”这种算法称为()监听算法，该算法的主要特点是()</p><p>A.1-坚持型 B.非坚持性 C.P-坚持型 D.0-坚持型</p><p>A.介质利用率和冲突概率都低 B.介质利用率和冲突概率都高</p><p>C.介质利用率低且无法避免冲突 D.介质利用率高且可以有效避免冲突</p><p>【2015下】以下关于CSMA&#x2F;CD协议的叙述中，正确的是()</p><p>A.每个节点按照逻辑顺序占用一个时间片轮流发送</p><p>B.每个节点检查介质是否空闲，如果空闲立即发送</p><p>C.每个节点想发就发，如果没有冲突则继续发送</p><p>D.得到令牌的节点发送，没有得到令牌的节点等待</p><h2 id="冲突检测原理"><a href="#冲突检测原理" class="headerlink" title="冲突检测原理"></a>冲突检测原理</h2><p>载波监听只能减小冲突的概率，不能完全避免冲突</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;局域网和城域网&quot;&gt;&lt;a href=&quot;#局域网和城域网&quot; class=&quot;headerlink&quot; title=&quot;局域网和城域网&quot;&gt;&lt;/a&gt;局域网和城域网&lt;/h1&gt;&lt;p&gt;最常考点:CSMA&amp;#x2F;CD 、VLAN 、 STP&lt;/p&gt;
+&lt;h2 id=&quot;局域网体系与拓扑</summary>
+      
+    
+    
+    
+    <category term="网络工程师" scheme="https://primeluoqiu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>第七周总结 + 第八周学习计划</title>
@@ -455,28 +478,6 @@
     
     
     <category term="计网" scheme="https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Week5 and Daily Schedule</title>
-    <link href="https://primeluoqiu.github.io/2024/04/01/%E6%AF%8F%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/Week5/"/>
-    <id>https://primeluoqiu.github.io/2024/04/01/%E6%AF%8F%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/Week5/</id>
-    <published>2024-04-01T13:54:40.572Z</published>
-    <updated>2024-04-07T13:41:25.771Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Daily-Schedule"><a href="#Daily-Schedule" class="headerlink" title="Daily Schedule"></a>Daily Schedule</h1><h2 id="Total-Schedule"><a href="#Total-Schedule" class="headerlink" title="Total Schedule"></a>Total Schedule</h2><ol><li>《计算机网络》-郑铨老师的 2.3-2.10(第二章看完)</li><li>CS61A 看完第一章</li><li>每天更新一点算法内容</li></ol><p>每天任务的话，先看周一吧，周一相对来说课不算多，下午有一节毛概，毛概课的话得补半节课的数电笔记和作业</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Daily-Schedule&quot;&gt;&lt;a href=&quot;#Daily-Schedule&quot; class=&quot;headerlink&quot; title=&quot;Daily Schedule&quot;&gt;&lt;/a&gt;Daily Schedule&lt;/h1&gt;&lt;h2 id=&quot;Total-Schedule&quot;&gt;&lt;</summary>
-      
-    
-    
-    
-    <category term="大二下" scheme="https://primeluoqiu.github.io/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B/"/>
     
     
   </entry>
