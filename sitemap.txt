@@ -1,6 +1,7 @@
+https://primeluoqiu.github.io/2024/04/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%9F%8E%E5%9F%9F%E7%BD%91%E5%9F%BA%E7%A1%80/
+https://primeluoqiu.github.io/2024/04/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%92%8C%E5%9F%8E%E5%9F%9F%E7%BD%91/
 https://primeluoqiu.github.io/2024/04/23/SchoolHomework/%E8%AE%A1%E7%BD%91/Experiment3/
 https://primeluoqiu.github.io/2024/03/25/SchoolHomework/%E8%AE%A1%E7%BD%91/Experiment2/
-https://primeluoqiu.github.io/2024/04/22/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%92%8C%E5%9F%8E%E5%9F%9F%E7%BD%91/
 https://primeluoqiu.github.io/2024/04/22/%E6%AF%8F%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/Week7/
 https://primeluoqiu.github.io/categories/index.html
 https://primeluoqiu.github.io/2024/04/21/%E5%85%A8%E6%A0%88%E5%86%85%E5%AE%B9/%E5%90%8E%E7%AB%AFGo/C1/
@@ -71,7 +72,7 @@ https://primeluoqiu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5
 https://primeluoqiu.github.io/categories/%E8%AE%A1%E7%BD%91/
 https://primeluoqiu.github.io/categories/CS61B/
 https://primeluoqiu.github.io/categories/C-Primer/
-https://primeluoqiu.github.io/categories/CSAPP/
 https://primeluoqiu.github.io/categories/CS61A/
-https://primeluoqiu.github.io/categories/%E5%85%A8%E6%A0%88%E5%90%8E%E7%AB%AF/
+https://primeluoqiu.github.io/categories/CSAPP/
 https://primeluoqiu.github.io/categories/Expriment/
+https://primeluoqiu.github.io/categories/%E5%85%A8%E6%A0%88%E5%90%8E%E7%AB%AF/
