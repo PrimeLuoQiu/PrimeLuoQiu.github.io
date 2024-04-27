@@ -6,7 +6,7 @@
   <link href="https://primeluoqiu.github.io/atom.xml" rel="self"/>
   
   <link href="https://primeluoqiu.github.io/"/>
-  <updated>2024-04-27T07:37:27.392Z</updated>
+  <updated>2024-04-27T07:38:25.388Z</updated>
   <id>https://primeluoqiu.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>局域网和城域网</title>
+    <link href="https://primeluoqiu.github.io/2024/04/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%9F%8E%E5%9F%9F%E7%BD%91%E5%9F%BA%E7%A1%80/"/>
+    <id>https://primeluoqiu.github.io/2024/04/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%9F%8E%E5%9F%9F%E7%BD%91%E5%9F%BA%E7%A1%80/</id>
+    <published>2024-04-27T05:38:10.891Z</published>
+    <updated>2024-04-27T07:38:25.388Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="城域网基础"><a href="#城域网基础" class="headerlink" title="城域网基础"></a>城域网基础</h1><p>E-LAN基本技术是802.1Q的VLAN帧标记，双层标记，打了<strong>两层VLAN标签</strong>，这种技术被定义为<strong>IEEE 802.1ad</strong>，也称为<strong>QinQ</strong>技术。</p><p>QinQ实际是把用户VLAN嵌套在城域以太网的VLAN中传送</p><p>另一种城域网技术IEEE 802.1ah也被称为PBB，也叫<strong>MAC-IN-MAC</strong>技术</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/27/cavf0NV1.png"                      alt="8.png"                ></p><p>【2014上】</p><p>城域以太网在各个用户以太网之间建立多点第二层连接，IEEE 802.1ad定义运营商网桥协议提供的基本技术是在以太网帧中插入()字段，这种技术被称为()技术</p><p>A.运营商VLAN标记 B.运营商虚电路标识 C.用户VLAN标记 D.用户帧类型biaoji</p><p>A.Q-in-Q B.IP-in-IP C.NAT-in-NAT D.MAC-in-MAC</p><p>A A</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;城域网基础&quot;&gt;&lt;a href=&quot;#城域网基础&quot; class=&quot;headerlink&quot; title=&quot;城域网基础&quot;&gt;&lt;/a&gt;城域网基础&lt;/h1&gt;&lt;p&gt;E-LAN基本技术是802.1Q的VLAN帧标记，双层标记，打了&lt;strong&gt;两层VLAN标签&lt;/strong&gt;，</summary>
+      
+    
+    
+    
+    <category term="网络工程师" scheme="https://primeluoqiu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>局域网和城域网</title>
@@ -30,28 +52,6 @@
       
     <summary type="html">&lt;h1 id=&quot;局域网和城域网&quot;&gt;&lt;a href=&quot;#局域网和城域网&quot; class=&quot;headerlink&quot; title=&quot;局域网和城域网&quot;&gt;&lt;/a&gt;局域网和城域网&lt;/h1&gt;&lt;p&gt;最常考点:CSMA&amp;#x2F;CD 、VLAN 、 STP&lt;/p&gt;
 &lt;h2 id=&quot;局域网体系与拓扑</summary>
-      
-    
-    
-    
-    <category term="网络工程师" scheme="https://primeluoqiu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>局域网和城域网</title>
-    <link href="https://primeluoqiu.github.io/2024/04/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%9F%8E%E5%9F%9F%E7%BD%91%E5%9F%BA%E7%A1%80/"/>
-    <id>https://primeluoqiu.github.io/2024/04/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/%E5%9F%8E%E5%9F%9F%E7%BD%91%E5%9F%BA%E7%A1%80/</id>
-    <published>2024-04-27T05:38:10.891Z</published>
-    <updated>2024-04-27T07:38:25.388Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="城域网基础"><a href="#城域网基础" class="headerlink" title="城域网基础"></a>城域网基础</h1><p>E-LAN基本技术是802.1Q的VLAN帧标记，双层标记，打了<strong>两层VLAN标签</strong>，这种技术被定义为<strong>IEEE 802.1ad</strong>，也称为<strong>QinQ</strong>技术。</p><p>QinQ实际是把用户VLAN嵌套在城域以太网的VLAN中传送</p><p>另一种城域网技术IEEE 802.1ah也被称为PBB，也叫<strong>MAC-IN-MAC</strong>技术</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://img2.imgtp.com/2024/04/27/cavf0NV1.png"                      alt="8.png"                ></p><p>【2014上】</p><p>城域以太网在各个用户以太网之间建立多点第二层连接，IEEE 802.1ad定义运营商网桥协议提供的基本技术是在以太网帧中插入()字段，这种技术被称为()技术</p><p>A.运营商VLAN标记 B.运营商虚电路标识 C.用户VLAN标记 D.用户帧类型biaoji</p><p>A.Q-in-Q B.IP-in-IP C.NAT-in-NAT D.MAC-in-MAC</p><p>A A</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;城域网基础&quot;&gt;&lt;a href=&quot;#城域网基础&quot; class=&quot;headerlink&quot; title=&quot;城域网基础&quot;&gt;&lt;/a&gt;城域网基础&lt;/h1&gt;&lt;p&gt;E-LAN基本技术是802.1Q的VLAN帧标记，双层标记，打了&lt;strong&gt;两层VLAN标签&lt;/strong&gt;，</summary>
       
     
     
